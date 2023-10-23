@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/marvelous-adventures/static/css/main.7acaea2f.css",
+    "main.js": "/marvelous-adventures/static/js/main.07d3183d.js",
+    "index.html": "/marvelous-adventures/index.html",
+    "main.7acaea2f.css.map": "/marvelous-adventures/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/marvelous-adventures/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}

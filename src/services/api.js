@@ -13,22 +13,19 @@ const data = {
 axios.defaults.baseURL = 'http://gateway.marvel.com/v1/public/';
 
 export const getCharacters = async () => {
-  const res = await axios.get('/characters?offset=10', { params: data });
+  const res = await axios.get('/comics?orderBy=-focDate', { params: data });
   return res.data.data;
 };
 
 export const getCharacterByName = async (name) => {
-    const res = await axios.get(`/characters?name=${name}`, { params: data });
+    const res = await axios.get(`/comics?name=${name}`, { params: data });
     return res.data.data;
   };
 
   export const getHomePageChar = async () => {
     // const main ={}
-    const res = await axios.get('/characters?modifiedSince=12122023', { params: data });
+    const res = await axios.get('/comics?modifiedSince=12122023', { params: data });
     return res.data.data;
   }
 
-export const getComics = async () => {
-  const res = await axios.get('/comics', { params: data });
-  return res.data.results;
-};
+

@@ -37,7 +37,7 @@ const sizes = {
 
 export function getImage(url) {
   console.log(url)
-  const { path, extension, imageSize = 'standard_fantastic' } = url;
+  const { path, extension, imageSize = 'portrait_uncanny' } = url;
   // return `${path}.${extension}`;
   return `${path}/${imageSize}.${extension}`;
 }

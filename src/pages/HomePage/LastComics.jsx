@@ -1,27 +1,26 @@
-import { getHomePageChar } from 'services/api';
+import { getCharacters } from 'services/api';
 import { useEffect, useState } from 'react';
 import { getImage } from 'helpers/imageConverter';
 
-const HomePage = () => {
+const LastComics = () => {
   const [data, setData] = useState('');
   useEffect(() => {
     (async () => {
-      const data = await getHomePageChar();
+      const data = await getCharacters();
 
       setData(data.results);
     })();
   }, []);
   return (
-    <div style={style.div}>
-      HomePage
+    <div>
+      LastComics
       <ul style={style.grid}>
         {data &&
           data.map(card => (
-            <li key={card.name} style={style.flex}>
-              <p>{card.name}</p>
+            <li key={card.title} style={style.flex}>
+              <p>{card.title}</p>
 
               <img src={getImage(card.thumbnail)} alt="character" />
-              {/* <p>{card.description}</p> */}
             </li>
           ))}
       </ul>
@@ -29,7 +28,7 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default LastComics;
 
 const style = {
   div: {
@@ -52,10 +51,10 @@ const style = {
   },
   flex: {
     flexGrow: '400px',
-    maxWidth: '250px',
+    maxWidth: '300px',
     display: 'flex',
     flexDirection: 'column',
-    // justifyContent: 'space-between',
+    justifyContent: 'space-between',
     alignItems: 'flex-start',
     gap: '24px',
   },

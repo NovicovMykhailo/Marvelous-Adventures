@@ -12,7 +12,7 @@ const data = {
 };
 
 const instance = axios.create({
-    baseURL: 'http://gateway.marvel.com/v1/public/',
+    baseURL: 'https://gateway.marvel.com/v1/public/',
     headers: {
         'Accept': '*/*'
     },

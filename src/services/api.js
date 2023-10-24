@@ -8,14 +8,25 @@ const data = {
   ts,
   apikey: publicKey,
   hash: md5(ts + privateKey + publicKey),
+
+
+const instance = axios.create({
+    baseURL: 'http://gateway.marvel.com/v1/public/',
+    headers: {
+        'Accept': '*/*'
+    }
+'params': {...data}
+});
+
+
 };
 
-axios.defaults.baseURL = 'http://gateway.marvel.com/v1/public/';
+
+
+
 
 export const getComics = async () => {
-  const res = await axios.get('/comics?orderBy=-focDate&startYear=2020', {
-    params: data,
-  });
+  const res = await instance.get('/comics?orderBy=-focDate&startYear=2020);
   return res.data.data;
 };
 

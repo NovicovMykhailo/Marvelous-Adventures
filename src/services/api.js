@@ -26,7 +26,7 @@ params: {...data}
 
 
 export const getComics = async () => {
-  const res = await instance.get('/comics?orderBy=-focDate&startYear=2020);
+  const res = await instance.get('/comics?orderBy=-focDate&startYear=2020');
   return res.data.data;
 };
 

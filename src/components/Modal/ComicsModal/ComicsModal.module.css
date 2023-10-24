@@ -1,0 +1,170 @@
+.modalCard {
+  width: 70%;
+  min-width: 1000px;
+  margin: 0 auto;
+  background-color: var(--bg);
+  color: var(--text-prime);
+  border-radius: var(--radius);
+  position: relative;
+  padding: 64px 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.descriptionBlock {
+  width: calc(100% - (332px + 16px));
+  padding: 32px 16px;
+  background-color: var(--bg2);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: 498px;
+  height: 100%;
+}
+
+
+
+.charactersImage,
+.creatorImage {
+  border-radius: var(--radius);
+  width: 60px;
+  height: 60px;
+}
+.charactersListItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.characters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  column-gap: 16px;
+
+  height: 100%;
+}
+
+.creatorDescr {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.creatorCard {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+.modalTitle {
+  color: var(--text-prime);
+
+  font-size: 24px;
+
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.48px;
+}
+
+.modalText {
+  color: var(--text-prime);
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+/* About block */
+.aboutHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 19px;
+}
+
+.authorDetailTitle {
+  display: flex;
+  gap: 8px;
+  color: var(--text-secondary);
+  position: relative;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+.authorDetailTitle > li:first-child:after {
+  content: '|';
+  margin-left: 8px;
+}
+
+/* Details block */
+.details {
+  display: flex;
+  gap: 32px;
+}
+.details>li {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+
+}
+.detailName {
+  color: var(--text-secondary);
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+/* creators */
+.creatorsBlock, .characters{
+  margin-top: 32px;
+}
+.creatorsBlock{
+  display: flex;
+  gap: 16px;
+}
+.creatorRole{
+  color: var(--text-secondary);
+
+
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 14px; 
+}
+
+/* Gallery */
+.photoBlock {
+  width: 332px;
+
+}
+.img {
+  width: 100%;
+  height: auto;
+}
+.imageGallery{
+  width: 100%;
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.imageGallery>li{
+  border-radius: var(--radius);
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  cursor:pointer;
+}
+.galleryImage{
+  object-fit: contain;
+  transform: scale(1.8)
+}

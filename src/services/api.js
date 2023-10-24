@@ -12,20 +12,59 @@ const data = {
 
 axios.defaults.baseURL = 'http://gateway.marvel.com/v1/public/';
 
-export const getCharacters = async () => {
-  const res = await axios.get('/comics?orderBy=-focDate', { params: data });
+export const getComics = async () => {
+  const res = await axios.get('/comics?orderBy=-focDate&startYear=2020', {
+    params: data,
+  });
   return res.data.data;
 };
 
-export const getCharacterByName = async (name) => {
-    const res = await axios.get(`/comics?name=${name}`, { params: data });
-    return res.data.data;
+export const getComicsById = async id => {
+  const comic = await axios.get(`/comics/${id}`, { params: data });
+  const series = comic.data.data.results[0].series.resourceURI;
+
+  const writers = comic.data.data.results[0].creators.items.filter(creator => creator.role === 'writer');
+
+  const writerObj = await Promise.all(
+    writers.map(async writer => {
+      const name = writer.name.split(' ');
+      const result = axios
+        .get(`/creators?firstName=${name[0]}&lastName=${name[1]}`, { params: data })
+        .then(result => result.data.data.results[0]);
+      return result;
+    })
+  );
+  const serials = await axios.get(series, { params: data });
+
+  const stories = serials.data.data.results[0].comics.collectionURI;
+  const storiesF = await axios.get(stories, { params: data });
+
+  const characters = await axios.get(`/comics/${id}/characters`, {
+    params: data,
+  });
+
+  const res = {
+    result: comic.data.data.results[0],
+    creators: writerObj,
+    characters: characters.data.data.results,
+    stories: storiesF.data.data.results
   };
 
-  export const getHomePageChar = async () => {
-    // const main ={}
-    const res = await axios.get('/comics?modifiedSince=12122023', { params: data });
-    return res.data.data;
-  }
+  return res;
+};
 
+export const getHomePageChar = async () => {
+  // const main ={}
+  const res = await axios.get('/comics?modifiedSince=12122023', {
+    params: data,
+  });
+  return res.data.data;
+};
 
+export const getCarackters = async () => {
+  // const main ={}
+  const res = await axios.get('/comics?modifiedSince=12122023', {
+    params: data,
+  });
+  return res.data.data;
+};

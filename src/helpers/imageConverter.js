@@ -7,7 +7,6 @@ const sizes = {
     portrait_fantastic: '168x252px',
     portrait_incredible: '216x324px',
     portrait_uncanny: '300x450px',
-
   },
 
   Standard: {
@@ -18,7 +17,6 @@ const sizes = {
     standard_amazing: '180x180px',
     standard_xlarge: '200x200px',
     standard_fantastic: '250x250px',
-
   },
 
   Landscape: {
@@ -30,14 +28,22 @@ const sizes = {
     landscape_amazing: '250x156px',
     landscape_incredible: '464x261px',
   },
-  full:{
+  full: {
     // path.exension
-  }
+  },
 };
 
-export function getImage(url) {
-  console.log(url)
-  const { path, extension, imageSize = 'portrait_uncanny' } = url;
-  // return `${path}.${extension}`;
-  return `${path}/${imageSize}.${extension}`;
+const sizeList = {
+  full_P: 'portrait_uncanny',
+  med_P: 'portrait_medium',
+  full_Sq: 'standard_fantastic',
+  med_Sq: 'standard_amazing',
+  full_Land: 'landscape_incredible',
+  med_Land: ' landscape_medium',
+};
+
+export function getImage(url, size) {
+  const { path, extension } = url;
+
+  return `${path}/${sizeList[size || "full_P"]}.${extension}`;
 }

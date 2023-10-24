@@ -9,6 +9,7 @@ const data = {
   apikey: publicKey,
   hash: md5(ts + privateKey + publicKey),
 
+};
 
 const instance = axios.create({
     baseURL: 'http://gateway.marvel.com/v1/public/',
@@ -19,7 +20,6 @@ params: {...data}
 });
 
 
-};
 
 
 

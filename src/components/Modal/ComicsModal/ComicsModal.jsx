@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { getComicsById } from '../../../services/api';
-import { getImage } from 'helpers/imageConverter';
 import css from './ComicsModal.module.css';
 import CloseBtn from './../../../elements/CloseBtn';
 import Characters from './Characters';

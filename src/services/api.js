@@ -10,13 +10,13 @@ const data = {
   hash: md5(ts + privateKey + publicKey),
 
 };
+const header= { Accept: "*/*"}
 
 const instance = axios.create({
-    baseURL: 'https://gateway.marvel.com/v1/public/',
-    headers: {
-        'Accept': '*/*'
-    },
-params: {...data}
+ baseURL:
+'https://gateway.marvel.com/v1/public',
+ headers: header,
+ params: {...data},
 });
 
 
@@ -39,16 +39,16 @@ export const getComicsById = async id => {
   const writerObj = await Promise.all(
     writers.map(async writer => {
       const name = writer.name.split(' ');
-      const result = 
+      const result = await 
 instance.get(`/creators?firstName=${name[0]}&lastName=${name[1]}`)
         .then(result => result.data.data.results[0]);
       return result;
     })
   );
-  const serials = await instance.get(series);
+  const serials = await axios.get(series, {params: data,headers: header});
 
   const stories = serials.data.data.results[0].comics.collectionURI;
-  const storiesF = await instance.get(stories);
+  const storiesF = await axios.get(stories,{params: data,headers: header});
 
   const characters = await instance.get(`/comics/${id}/characters`);
 

@@ -15,7 +15,7 @@ const instance = axios.create({
     headers: {
         'Accept': '*/*'
     }
-'params': {...data}
+params: {...data}
 });
 
 

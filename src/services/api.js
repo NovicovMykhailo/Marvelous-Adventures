@@ -31,7 +31,7 @@ export const getComics = async () => {
 };
 
 export const getComicsById = async id => {
-  const comic = await axios.get(`/comics/${id}`, { params: data });
+  const comic = await instance.get(`/comics/${id}`);
   const series = comic.data.data.results[0].series.resourceURI;
 
   const writers = comic.data.data.results[0].creators.items.filter(creator => creator.role === 'writer');
@@ -39,20 +39,18 @@ export const getComicsById = async id => {
   const writerObj = await Promise.all(
     writers.map(async writer => {
       const name = writer.name.split(' ');
-      const result = axios
-        .get(`/creators?firstName=${name[0]}&lastName=${name[1]}`, { params: data })
+      const result = 
+instance.get(`/creators?firstName=${name[0]}&lastName=${name[1]}`)
         .then(result => result.data.data.results[0]);
       return result;
     })
   );
-  const serials = await axios.get(series, { params: data });
+  const serials = await instance.get(series);
 
   const stories = serials.data.data.results[0].comics.collectionURI;
-  const storiesF = await axios.get(stories, { params: data });
+  const storiesF = await instance.get(stories);
 
-  const characters = await axios.get(`/comics/${id}/characters`, {
-    params: data,
-  });
+  const characters = await instance.get(`/comics/${id}/characters`);
 
   const res = {
     result: comic.data.data.results[0],

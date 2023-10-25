@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 const SharedLayout = () => {
   return (
-    <div>
+    <div >
       SharedLayout
       <div>hedder</div>
       <Outlet />

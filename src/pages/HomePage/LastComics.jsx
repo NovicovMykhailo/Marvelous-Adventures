@@ -51,5 +51,6 @@ const style = {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: '24px',
+    justifyContent: 'center',
   },
 };

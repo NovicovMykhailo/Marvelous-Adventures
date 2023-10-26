@@ -1,61 +1,81 @@
 import axios from 'axios';
 import options from './options';
 import urlNormaliszer from 'helpers/urlNormalizer';
-// import selector from 'helpers/selector';
-
-
-
 
 const instance = axios.create({
   baseURL: 'https://gateway.marvel.com/v1/public',
-  ...options
+  ...options,
 });
-
+//GET ALL
 export const getComics = async () => {
-  const res = await instance.get('/comics?orderBy=-focDate&startYear=2020');
+  const res = await instance.get('/comics?orderBy=-focDate&startYear=2018&format=comic&noVariants=true');
   return res.data.data;
 };
-
+//GET Comic by ID for Modal
 export const getComicsById = async id => {
   const comic = await instance.get(`/comics/${id}`);
-  const series = comic.data.data.results[0].series.resourceURI;
+  const characters = await instance.get(`/characters?comics=${id}`);
 
-  const writers = comic.data.data.results[0].creators.items.filter(creator => creator.role === 'writer');
+  const seriesSelector = comic.data.data.results[0].series.resourceURI;
+  const writersFiltered = comic.data.data.results[0].creators.items.filter(creator => creator.role === 'writer');
 
   const writerObj = await Promise.all(
-    writers.map(async writer => {
+    writersFiltered.map(async writer => {
       const name = writer.name.split(' ');
       const result = await instance.get(`/creators?firstName=${name[0]}&lastName=${name[1]}`).then(result => result.data.data.results[0]);
       return result;
     })
   );
-  console.log(urlNormaliszer(series))
-  const serials = await axios.get(urlNormaliszer(series),  options);
 
-  const stories = serials.data.data.results[0].comics.collectionURI;
- 
-  const storiesF = await axios.get(urlNormaliszer(stories),  options);
-
-  const characters = await instance.get(`/comics/${id}/characters`);
+  const series = await axios.get(urlNormaliszer(seriesSelector), options);
+  const storiesSelector = series.data.data.results[0].comics.collectionURI;
+  const stories = await axios.get(urlNormaliszer(storiesSelector), options);
 
   const res = {
     result: comic.data.data.results[0],
     creators: writerObj,
+    desription: series.data.data.results[0].description,
     characters: characters.data.data.results,
-    stories: storiesF.data.data.results,
+    stories: stories.data.data.results,
   };
 
   return res;
 };
+//GET TOP 12 COMIC for Main Page
+export const getHomePageComics = async () => {
+  const res = await instance.get('/comics?orderBy=-focDate&startYear=2023&format=comic&noVariants=true&hasDigitalIssue=true&limit=12');
+  return res.data.data;
+};
+//GET Character Info By ID
 
-// export const getHomePageChar = async () => {
-//   // const main ={}
-//   const res = await instance.get('/comics?modifiedSince=12122023');
-//   return res.data.data;
-// };
+export const getCaracter = async id => {
+  const res = await instance.get(`/characters/${id}`);
 
-// export const getCarackters = async () => {
-//   // const main ={}
-//   const res = await instance.get('/comics?modifiedSince=12122023');
-//   return res.data.data;
-// };
+  const comicsListSelector = res.data.data.results[0].comics.items;
+  const storiesSelector = res.data.data.results[0].series.items
+
+  const comicsData = await Promise.all(
+    comicsListSelector
+      .reverse()
+      .splice(0, 3)
+      .map(async ({ resourceURI }) => {
+        const result = await axios.get(urlNormaliszer(resourceURI), options).then(result => result.data.data.results[0]);
+        return result;
+      })
+  );
+  const storiesData = await Promise.all(
+    storiesSelector
+      .map(async ({ resourceURI }) => {
+        const result = await axios.get(urlNormaliszer(resourceURI), options).then(result => result.data.data.results[0]);
+        return result;
+      })
+
+  );
+  console.log('storiesData', storiesData)
+  const response = {
+    character: res.data.data.results[0],
+    comicsList: comicsData,
+    stories: storiesData,
+  };
+  return response;
+};

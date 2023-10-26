@@ -1,0 +1,32 @@
+.card {
+  flex-grow: 400px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.cardImage {
+  width: 100%;
+  border-radius: var(--radius);
+}
+.cardBottomTab {
+  font-display: auto;
+  flex-direction: column;
+  text-align: left;
+  gap: 8px;
+}
+.cardTitle {
+  color: var(--text-prime);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.48px;
+}
+
+.cardAuthor {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 18px;
+}

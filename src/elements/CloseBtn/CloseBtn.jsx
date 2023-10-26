@@ -1,4 +1,4 @@
-import svg from '../images/close.svg';
+import svg from '../../images/close.svg';
 import css from'./CloseBtn.module.css'
 
 const CloseBtn = ({ onClick }) => {

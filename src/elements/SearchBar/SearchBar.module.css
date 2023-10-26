@@ -1,0 +1,35 @@
+.form,
+.input::placeholder {
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.form {
+  background-color: transparent;
+  border: 1px solid var(--text-secondary);
+  border-radius: 1000px;
+  max-width: 130px;
+  padding: 7px 18px 7px 42px;
+  position: relative;
+}
+.input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.icon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 18px;
+  top: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
+}

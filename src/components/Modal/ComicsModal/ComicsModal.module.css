@@ -24,8 +24,6 @@
   height: 100%;
 }
 
-
-
 .charactersImage,
 .creatorImage {
   border-radius: var(--radius);
@@ -36,6 +34,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 .characters {
   display: grid;
@@ -77,6 +76,9 @@
   font-weight: 400;
   line-height: 18px;
 }
+.modalText > li:not(:last-child) {
+  margin-bottom: 0.6em;
+}
 
 /* About block */
 .aboutHeader {
@@ -97,9 +99,8 @@
   font-weight: 400;
   line-height: 18px;
 }
-.authorDetailTitle > li:first-child:after {
-  content: '|';
-  margin-left: 8px;
+.authorDetailTitle > li:first-child {
+  text-align: end;
 }
 
 /* Details block */
@@ -107,11 +108,15 @@
   display: flex;
   gap: 32px;
 }
-.details>li {
+.details > li {
   display: flex;
   gap: 8px;
   flex-direction: column;
-
+}
+.decoLine {
+  display: block;
+  width: 1px;
+  border: 1px solid var(--text-secondary);
 }
 .detailName {
   color: var(--text-secondary);
@@ -124,47 +129,67 @@
 }
 
 /* creators */
-.creatorsBlock, .characters{
+.creatorsBlock,
+.characters {
   margin-top: 32px;
 }
-.creatorsBlock{
+.creatorsBlock {
   display: flex;
   gap: 16px;
 }
-.creatorRole{
+.creatorRole {
   color: var(--text-secondary);
 
-
-font-size: 12px;
-font-style: normal;
-font-weight: 400;
-line-height: 14px; 
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
 }
 
 /* Gallery */
 .photoBlock {
   width: 332px;
-
 }
 .img {
+  opacity: 1;
+  background-color: var(--bg2);
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+.imgBG {
+  border-radius: var(--radius);
+  display: block;
+  background-color: var(--bg2);
   width: 100%;
   height: auto;
 }
-.imageGallery{
+.imageGallery {
   width: 100%;
   margin-top: 16px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
-.imageGallery>li{
+.imageGallery > li {
   border-radius: var(--radius);
   width: 60px;
   height: 60px;
   overflow: hidden;
-  cursor:pointer;
+  cursor: pointer;
 }
-.galleryImage{
+.galleryImage {
   object-fit: contain;
-  transform: scale(1.8)
+  transform: scale(1.8);
+}
+
+/* animation */
+.fadeIn {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 1s ease;
 }

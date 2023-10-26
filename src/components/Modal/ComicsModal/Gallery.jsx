@@ -1,14 +1,65 @@
 import { getImage } from 'helpers/imageConverter';
+import { useState, useEffect, useRef } from 'react';
+import useOnLoadImages from 'hooks/useOnLoadImages';
 import css from './ComicsModal.module.css';
-import { useState } from 'react';
 
-const Gallery = ({ comicsData, stories }) => {
+const Gallery = ({ comicsData, stories, setHeight }) => {
   const { thumbnail, images } = comicsData;
   const [mainPhoto, setMainPhoto] = useState(thumbnail);
+  const [fadeProp, setFadeProp] = useState(css.fadeOut);
+
+  const ref = useRef(null);
+  const imageContainer = useRef(null);
+  const imagesAreLoaded = useOnLoadImages(imageContainer);
+
+  useEffect(() => {
+    setHeight(ref.current.clientHeight);
+  }, [imagesAreLoaded, setHeight]);
+
+  // animation
+  let galleryItems = stories
+    .map(({ thumbnail }) => {
+      if (!thumbnail.path.includes('image_not_available')) {
+        return thumbnail;
+      } else {
+        return null;
+      }
+    })
+    .reverse();
+
+  let i = galleryItems.length;
+  const interval = 5000;
+
+  useEffect(() => {
+    switcher();
+  }, [setHeight]);
+
+  useEffect(() => {
+    const handle = setInterval(() => {
+      if (i !== 1) {
+        i -= 1;
+        setMainPhoto(galleryItems[i]);
+        switcher();
+      } else {
+        setFadeProp(css.fadeIn);
+        setMainPhoto(thumbnail);
+      }
+    }, interval);
+
+    return () => clearInterval(handle);
+  }, [i]);
+
+  const switcher = () => {
+    setFadeProp(css.fadeIn);
+    setTimeout(() => setFadeProp(css.fadeOut), interval - 1000);
+  };
 
   return (
-    <div className={css.photoBlock}>
-      <img className={css.img} src={getImage(mainPhoto)} alt="cover" />
+    <div className={css.photoBlock} ref={ref}>
+      <span className={css.imgBG}>
+        <img className={`${css.img} ${fadeProp}`} src={getImage(mainPhoto)} alt="cover" />
+      </span>
+
       <div>
         {images?.length > 0 &&
           images.map(image => {
@@ -17,7 +68,7 @@ const Gallery = ({ comicsData, stories }) => {
             } else return null;
           })}
       </div>
-      <ul className={css.imageGallery}>
+      <ul className={css.imageGallery} ref={imageContainer}>
         {stories &&
           stories.map(({ id, thumbnail, title }) => {
             if (!thumbnail.path.includes('image_not_available')) {

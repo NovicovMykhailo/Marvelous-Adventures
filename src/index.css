@@ -7,12 +7,14 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--text-prime);
+  font-weight: 400;
+  background-color: var(--bg);
+}
+html::-webkit-scrollbar{
+  display:none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
 img{
   display: block;

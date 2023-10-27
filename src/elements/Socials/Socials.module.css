@@ -1,0 +1,27 @@
+.socials {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.elements{
+    width: 40px;
+    height: 40px;
+    display: block;
+    border-radius: var(--radius);
+    box-shadow: 0px 0px 1px 0px var(--text-secondary);
+    border: 1px solid var(--text-secondary);
+
+}
+.icons{
+    width: 100%;
+    object-fit: contain;
+    will-change: transform;
+    transition: transform 0.2s ease
+}
+
+.elements:hover .icons{
+    transform: scale(1.2)
+}

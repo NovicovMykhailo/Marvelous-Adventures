@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 
+
+
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -38,5 +41,24 @@ ol, li{
   --btn: #34387F;
   --radius: 8px;
 
+  --blue: #34387F;
+  --red: #600404;
+  --green: #5B7F3C;
+
+
 }
 
+
+  .visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }

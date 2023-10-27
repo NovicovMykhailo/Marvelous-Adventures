@@ -1,7 +1,7 @@
-import React from 'react';
+
 
 const CharactersPage = props => {
-  return <div>CharactersPage</div>;
+  return <div style={{backgroundColor: "teal", height: "80vh", color: "white", fontSize: "64px", display: "flex", alignItems:"center", justifyContent:"center"}}>CharactersPage</div>;
 };
 
 export default CharactersPage;

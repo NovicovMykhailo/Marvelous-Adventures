@@ -1,0 +1,91 @@
+.slide {
+  height: 100%;
+  width: 100%;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  padding-left: 32px;
+  gap: 145px;
+}
+
+.infoBlock {
+  width: 538px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.about {
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 160%;
+  text-transform: uppercase;
+}
+.title {
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 80px;
+  letter-spacing: -1.6px;
+}
+.description {
+  font-size: 16px;
+  line-height: 18px;
+}
+.slideBtn {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  margin-top: 16px;
+  width: 131px;
+  text-decoration: none;
+  color: inherit;
+  padding: 12px 24px;
+  border-radius: 1000px;
+  will-change: transform;
+  transition: transform 0.3s ease;
+}
+.slideBtn.blue,
+.leftImageBlock.blue {
+  background-color: var(--blue);
+}
+.slideBtn.red,
+.leftImageBlock.red {
+  background-color: var(--red);
+}
+.slideBtn.green,
+.leftImageBlock.green {
+  background-color: var(--green);
+}
+
+.slideBtn:is(:hover, :active) {
+  transform: scale(1.1);
+}
+
+.vertLine {
+  display: block;
+  width: 2px;
+  height: 800px;
+  background-color: #fff;
+  margin-left: 77px;
+}
+
+.imageBlock {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  height: 97%;
+  justify-content: flex-end;
+  gap: 32px;
+}
+
+.imageBlock > div:nth-child(1) {
+  align-self: flex-end;
+}
+
+
+
+

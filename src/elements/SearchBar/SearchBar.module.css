@@ -9,6 +9,7 @@
 
 .form {
   background-color: transparent;
+  box-shadow: 0px 0px 1px 0px var(--text-secondary);
   border: 1px solid var(--text-secondary);
   border-radius: 1000px;
   max-width: 130px;
@@ -32,4 +33,10 @@
   top: 50%;
   cursor: pointer;
   transform: translateY(-50%);
+  will-change: transform;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover{
+  transform: scale(1.2) translateY(-50%)
 }

@@ -2,7 +2,7 @@ import { getHomePageComics } from 'services/api';
 import { useEffect, useState } from 'react';
 import { readFromLocalStorage, writeToLocalStorage } from '../../../helpers/LocalStotageApi';
 import { Swiper, SwiperSlide } from 'components/Slider/Slider';
-import {Autoplay} from 'swiper/modules';
+// import {Autoplay} from 'swiper/modules';
 
 import ComicsCard from 'elements/ComicCard/ComicsCard';
 import Modal from 'components/Modal/Modal';

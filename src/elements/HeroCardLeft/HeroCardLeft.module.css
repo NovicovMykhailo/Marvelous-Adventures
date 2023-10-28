@@ -19,6 +19,7 @@
   width: 100%;
   height: 100%;
   z-index: 3;
+  filter: drop-shadow(2px 2px 4px #292828);
 }
 
 .charImage.blue {

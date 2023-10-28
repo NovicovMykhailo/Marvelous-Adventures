@@ -7,6 +7,8 @@
 }
 .hero{
     height: 748px;
+    margin-bottom: 168px;
+    position: relative;
 }
 
 .swiper-slide {
@@ -22,14 +24,16 @@
   height: 4px;
   width: calc(100px * 3 + 2 * 14px);
   position: absolute;
-  left: 387px;
+  left: 25em;
   top: 333px;
+
 }
 .pageElement {
   flex-grow: 1;
   height: 100%;
   background-color: #171717b3;
   cursor: pointer;
+  transition: background-color 0.5s ease;
 }
 .pageElement:nth-child(1).active {
   background-color: var(--blue);

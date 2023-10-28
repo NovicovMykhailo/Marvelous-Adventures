@@ -10,9 +10,6 @@ const Footer = () => {
         <h3 className={css.comics}>Comics</h3>
         <Socials />
       </div>
-      <div className={css.liscenceBlock}>
-        <h4 className={css.liscence}>Privacy Policy Public Offering Agreement</h4>
-      </div>
     </>
   );
 };

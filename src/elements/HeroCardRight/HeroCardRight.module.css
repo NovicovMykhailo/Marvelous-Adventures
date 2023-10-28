@@ -21,6 +21,8 @@
   bottom: 20%;
   right: 0;
 
+  transition: transform 0.3s ease;  
+
 
   width: 332px;
   height: 300px;
@@ -54,6 +56,7 @@ filter: blur(47px);
   z-index: 3;
   background-repeat: no-repeat;
   background-position: bottom right;
+  filter: drop-shadow(2px 2px 4px #292828);
 }
 .charImage.blue {
   background-image: url('../../images/Hero/RightCard/panther-r-dsk.png');
@@ -168,6 +171,8 @@ filter: blur(47px);
 
 /*  bottom sphere */
 .cardName {
+  color: var(--text-prime);
+  text-decoration: none;
   position: absolute;
   bottom: 16px;
   left: 16px;
@@ -175,6 +180,8 @@ filter: blur(47px);
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: transform 0.3s ease;
 
   border-radius: 50%;
 
@@ -200,4 +207,8 @@ filter: blur(47px);
 }
 .cardRight.red > .cardName {
   background: radial-gradient(81.15% 81.15% at 50% 18.85%, #600404 0%, #171717 100%);
+}
+
+.cardName:hover,  .container:has(.cardRight > .cardName:hover)  #lightBulb{
+  transform: scale(1.1)
 }

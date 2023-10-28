@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, EffectFade} from 'swiper/modules';
+import { Mousewheel, Autoplay} from 'swiper/modules';
 import { useRef, useState } from 'react';
 
 import HeroSlide1 from '../HeroSlide1';
@@ -7,7 +7,6 @@ import HeroSlide2 from '../HeroSlide2';
 import HeroSlide3 from '../HeroSlide3';
 
 import './HeroSlider.css';
-import 'swiper/css/effect-fade';
 
 
 const HeroSlider = () => {
@@ -19,21 +18,25 @@ const HeroSlider = () => {
   });
 
   function onSlideChange(e) {
+    console.log(e.slides)
+    setTimeout(()=>{
+      switch (e.activeIndex) {
+        case 0:
+          setNavBar({ firstBar: 'active', secondBar: '', thirdBar: '' });
+          break;
+        case 1:
+          setNavBar({ firstBar: '', secondBar: 'active', thirdBar: '' });
+          break;
+        case 2:
+          setNavBar({ firstBar: '', secondBar: '', thirdBar: 'active' });
+          break;
+        default:
+          setNavBar({ firstBar: 'active', secondBar: '', thirdBar: '' });
+          break;
+      }
+    }, 1300)
 
-    switch (e.activeIndex) {
-      case 0:
-        setNavBar({ firstBar: 'active', secondBar: '', thirdBar: '' });
-        break;
-      case 1:
-        setNavBar({ firstBar: '', secondBar: 'active', thirdBar: '' });
-        break;
-      case 2:
-        setNavBar({ firstBar: '', secondBar: '', thirdBar: 'active' });
-        break;
-      default:
-        setNavBar({ firstBar: 'active', secondBar: '', thirdBar: '' });
-        break;
-    }
+  
   }
 
   function HandleClick(e) {
@@ -60,21 +63,27 @@ const HeroSlider = () => {
         height={780}
         direction={'vertical'}
         ref={swiperRef}
-        effect={'fade'}
         slidesPerView={1}
         spaceBetween={0}
         mousewheel={true}
-        modules={[ Mousewheel]}
+        modules={[Autoplay, Mousewheel]}
+        speed={2500}
+        // loop={true}
+        // autoplay={{
+        //   delay: 2500,
+        //   disableOnInteraction: false,
+        //   pauseOnMouseEnter:true,
+        // }}
         className="swiper"
         onSlideChange={onSlideChange}
       >
-        <SwiperSlide>
+        <SwiperSlide data-blue>
           <HeroSlide1 />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide data-red>
           <HeroSlide2 />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide data-green>
           <HeroSlide3 />
         </SwiperSlide>
       </Swiper>

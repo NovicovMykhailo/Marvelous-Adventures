@@ -11,6 +11,7 @@ export const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/search" element={<CharactersPage />} />
+        <Route path="/search/:name" element={<CharactersPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

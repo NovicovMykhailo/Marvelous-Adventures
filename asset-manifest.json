@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/marvelous-adventures/static/css/main.024f6465.css",
-    "main.js": "/marvelous-adventures/static/js/main.8214dba3.js",
+    "main.js": "/marvelous-adventures/static/js/main.e4ba84e3.js",
     "static/media/panther-dsk.png": "/marvelous-adventures/static/media/panther-dsk.4a68b8ec28633b83272e.png",
     "static/media/hulk-dsk.png": "/marvelous-adventures/static/media/hulk-dsk.07075f1fb5205f2413eb.png",
     "static/media/spider-dsk.png": "/marvelous-adventures/static/media/spider-dsk.b6dafa5ae63c40f05e99.png",
@@ -16,10 +16,10 @@
     "static/media/fb.svg": "/marvelous-adventures/static/media/fb.ec368342021068bff626201741c32b5f.svg",
     "static/media/close.svg": "/marvelous-adventures/static/media/close.d3e18fa924d81215bc9262d69665be72.svg",
     "main.024f6465.css.map": "/marvelous-adventures/static/css/main.024f6465.css.map",
-    "main.8214dba3.js.map": "/marvelous-adventures/static/js/main.8214dba3.js.map"
+    "main.e4ba84e3.js.map": "/marvelous-adventures/static/js/main.e4ba84e3.js.map"
   },
   "entrypoints": [
     "static/css/main.024f6465.css",
-    "static/js/main.8214dba3.js"
+    "static/js/main.e4ba84e3.js"
   ]
 }

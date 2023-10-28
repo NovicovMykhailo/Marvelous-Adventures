@@ -1,9 +1,9 @@
 export const readFromLocalStorage = key => {
-  const item = localStorage.getItem(`${key}`);
+  const item = sessionStorage.getItem(`${key}`);
   return JSON.parse(item);
 };
 
 export const writeToLocalStorage = (key, obj) => {
-  localStorage.setItem(`${key}`, JSON.stringify(obj));
+  sessionStorage.setItem(`${key}`, JSON.stringify(obj));
   return true;
 };

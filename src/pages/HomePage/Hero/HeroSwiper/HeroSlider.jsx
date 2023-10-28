@@ -18,7 +18,6 @@ const HeroSlider = () => {
   });
 
   function onSlideChange(e) {
-    console.log(e.slides)
     setTimeout(()=>{
       switch (e.activeIndex) {
         case 0:
@@ -69,11 +68,11 @@ const HeroSlider = () => {
         modules={[Autoplay, Mousewheel]}
         speed={2500}
         // loop={true}
-        // autoplay={{
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        //   pauseOnMouseEnter:true,
-        // }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+          pauseOnMouseEnter:true,
+        }}
         className="swiper"
         onSlideChange={onSlideChange}
       >

@@ -43,7 +43,7 @@ export const getComicsById = async id => {
 };
 //GET TOP 12 COMIC for Main Page
 export const getHomePageComics = async () => {
-  const res = await instance.get('/comics?orderBy=-focDate&startYear=2023&format=comic&noVariants=true&hasDigitalIssue=true&limit=12');
+  const res = await instance.get('/comics?orderBy=-focDate&startYear=2022&format=comic&noVariants=true&hasDigitalIssue=true&limit=12');
   return res.data.data;
 };
 //GET Character Info By ID

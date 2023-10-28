@@ -48,13 +48,13 @@ const LastComics = () => {
         spaceBetween={16}
         speed={2000}
         height={600}
-        loop={true}
-        modules={[Autoplay]}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
+        // loop={true}
+        // modules={[Autoplay]}
+        // autoplay={{
+        //   delay: 4000,
+        //   disableOnInteraction: false,
+        //   pauseOnMouseEnter: true,
+        // }}
       >
         {data &&
           data.map(card => (

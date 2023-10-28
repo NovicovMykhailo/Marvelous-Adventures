@@ -27,7 +27,7 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
     })
     .reverse();
 
-  let i = galleryItems.length;
+ 
   const interval = 5000;
 
   useEffect(() => {
@@ -35,6 +35,7 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
   }, [setHeight]);
 
   useEffect(() => {
+    let i = galleryItems.length;
     const handle = setInterval(() => {
       if (i !== 1) {
         i -= 1;
@@ -47,7 +48,7 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
     }, interval);
 
     return () => clearInterval(handle);
-  }, [i]);
+  }, [galleryItems, thumbnail]);
 
   const switcher = () => {
     setFadeProp(css.fadeIn);
@@ -70,7 +71,7 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
       </div>
       <ul className={css.imageGallery} ref={imageContainer}>
         {stories &&
-          stories.map(({ id, thumbnail, title }) => {
+          stories.slice(0,10).map(({ id, thumbnail, title }) => {
             if (!thumbnail.path.includes('image_not_available')) {
               return (
                 <li key={id}>

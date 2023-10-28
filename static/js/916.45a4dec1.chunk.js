@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkmarvelous_adventures=self.webpackChunkmarvelous_adventures||[]).push([[916],{916:function(e,r,u){u.r(r);u(791);var a=u(184);r.default=function(e){return(0,a.jsx)("div",{children:"CharactersPage"})}}}]);
-//# sourceMappingURL=916.45a4dec1.chunk.js.map

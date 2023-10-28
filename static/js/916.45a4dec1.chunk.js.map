@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/916.45a4dec1.chunk.js","mappings":"2JAMA,UAJuB,SAAAA,GACrB,OAAO,2CACR,C","sources":["pages/CharactersPage.jsx"],"sourcesContent":["import React from 'react';\n\nconst CharactersPage = props => {\n  return <div>CharactersPage</div>;\n};\n\nexport default CharactersPage;\n"],"names":["props"],"sourceRoot":""}

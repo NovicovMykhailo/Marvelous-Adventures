@@ -1,16 +1,25 @@
 {
   "files": {
-    "main.css": "/marvelous-adventures/static/css/main.7b0d93ad.css",
-    "main.js": "/marvelous-adventures/static/js/main.d5728029.js",
-    "static/js/916.45a4dec1.chunk.js": "/marvelous-adventures/static/js/916.45a4dec1.chunk.js",
+    "main.css": "/marvelous-adventures/static/css/main.024f6465.css",
+    "main.js": "/marvelous-adventures/static/js/main.8214dba3.js",
+    "static/media/panther-dsk.png": "/marvelous-adventures/static/media/panther-dsk.4a68b8ec28633b83272e.png",
+    "static/media/hulk-dsk.png": "/marvelous-adventures/static/media/hulk-dsk.07075f1fb5205f2413eb.png",
+    "static/media/spider-dsk.png": "/marvelous-adventures/static/media/spider-dsk.b6dafa5ae63c40f05e99.png",
+    "static/media/hulk-r-dsk.png": "/marvelous-adventures/static/media/hulk-r-dsk.da44a1c39d569c8b9fbf.png",
+    "static/media/panther-r-dsk.png": "/marvelous-adventures/static/media/panther-r-dsk.4b9e506429dd105c35f9.png",
+    "static/media/spider-r-dsk.png": "/marvelous-adventures/static/media/spider-r-dsk.b62560dfbb1dfc641074.png",
+    "static/media/logo.svg": "/marvelous-adventures/static/media/logo.da7f0f3d52e1f009ac5dbe1e5e3e4c9d.svg",
+    "static/media/insta.svg": "/marvelous-adventures/static/media/insta.b33ff9b40b40fbb4f6a2c44c58521d40.svg",
     "index.html": "/marvelous-adventures/index.html",
+    "static/media/tweet.svg": "/marvelous-adventures/static/media/tweet.fd5cc5242b1577e6c05511f823e3ab79.svg",
+    "static/media/search.svg": "/marvelous-adventures/static/media/search.5804bf024cba0fe3218b939b794871d2.svg",
+    "static/media/fb.svg": "/marvelous-adventures/static/media/fb.ec368342021068bff626201741c32b5f.svg",
     "static/media/close.svg": "/marvelous-adventures/static/media/close.d3e18fa924d81215bc9262d69665be72.svg",
-    "main.7b0d93ad.css.map": "/marvelous-adventures/static/css/main.7b0d93ad.css.map",
-    "main.d5728029.js.map": "/marvelous-adventures/static/js/main.d5728029.js.map",
-    "916.45a4dec1.chunk.js.map": "/marvelous-adventures/static/js/916.45a4dec1.chunk.js.map"
+    "main.024f6465.css.map": "/marvelous-adventures/static/css/main.024f6465.css.map",
+    "main.8214dba3.js.map": "/marvelous-adventures/static/js/main.8214dba3.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b0d93ad.css",
-    "static/js/main.d5728029.js"
+    "static/css/main.024f6465.css",
+    "static/js/main.8214dba3.js"
   ]
 }

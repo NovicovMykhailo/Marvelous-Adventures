@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import searchIcon from '../../images/search.svg';
 import css from './SearchBar.module.css';
-const SearchBar = props => {
+import { useNavigate } from 'react-router-dom';
+const SearchBar = () => {
   const [q, setQ] = useState('');
+const navigate= useNavigate();
 
 
   document.addEventListener('keydown', e => {
@@ -14,7 +16,8 @@ const SearchBar = props => {
   });
 
   function onSubmit() {
-    console.log(q);
+    navigate(`/search/${q}`)
+
     setQ('');
   }
 

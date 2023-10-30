@@ -16,3 +16,36 @@
   justify-content: flex-start;
 }
 
+.LastComicsPaginations {
+  display: flex;
+  width: 104px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 32px;
+  margin-bottom: 128px;
+}
+.arrowR,
+.arrowL {
+  fill: var(--text-prime);
+  background-color: var(--blue);
+  border: 1px solid var(--text-secondary);
+  border-radius: 50%;
+
+  height: 40px;
+  width: 40px;
+  will-change: transform;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.arrowR:is(:hover, :active),
+.arrowL:is(:hover, :active) {
+  transform: scale(1.05);
+}
+
+.inactive {
+  border: 1px solid var(--text-secondary);
+  fill: var(--text-secondary);
+  background-color: transparent;
+}

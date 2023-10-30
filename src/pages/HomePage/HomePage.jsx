@@ -1,12 +1,13 @@
 import HeroSlider from './Hero/HeroSwiper/HeroSlider';
-import LastComics from './LastComics/LastComics';
+import LastComicsSlider from './LastComics/LastComicsSlider/LastComicsSlider';
+
 
 const HomePage = () => {
   return (
     <>
       <h1 className="visuallyHidden">Web-based platform: Marvelous Adventures</h1>
       <HeroSlider />
-      <LastComics />
+      <LastComicsSlider />
     </>
   );
 };

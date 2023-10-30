@@ -3,6 +3,7 @@ import { register } from 'swiper/element/bundle';
 
 export function Swiper(props) {
   const swiperRef = useRef(null);
+
   const { children, ...rest } = props;
 
   useEffect(() => {

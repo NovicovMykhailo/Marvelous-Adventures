@@ -39,7 +39,6 @@ const HeroSlider = () => {
   }
 
   function HandleClick(e) {
-    console.log();
     switch (e.target.attributes[1].nodeName) {
       case 'data-first':
         swiperRef.current.swiper.slideTo(0);
@@ -60,6 +59,7 @@ const HeroSlider = () => {
     <div className="hero">
       <Swiper
         height={780}
+    
         direction={'vertical'}
         ref={swiperRef}
         slidesPerView={1}
@@ -67,7 +67,7 @@ const HeroSlider = () => {
         mousewheel={true}
         modules={[Autoplay, Mousewheel]}
         speed={2500}
-        // loop={true}
+        loop={true}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,

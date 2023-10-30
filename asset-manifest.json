@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/marvelous-adventures/static/css/main.024f6465.css",
-    "main.js": "/marvelous-adventures/static/js/main.e4ba84e3.js",
+    "main.css": "/marvelous-adventures/static/css/main.718bd04e.css",
+    "main.js": "/marvelous-adventures/static/js/main.5ba18b10.js",
     "static/media/panther-dsk.png": "/marvelous-adventures/static/media/panther-dsk.4a68b8ec28633b83272e.png",
     "static/media/hulk-dsk.png": "/marvelous-adventures/static/media/hulk-dsk.07075f1fb5205f2413eb.png",
     "static/media/spider-dsk.png": "/marvelous-adventures/static/media/spider-dsk.b6dafa5ae63c40f05e99.png",
@@ -12,14 +12,16 @@
     "static/media/insta.svg": "/marvelous-adventures/static/media/insta.b33ff9b40b40fbb4f6a2c44c58521d40.svg",
     "index.html": "/marvelous-adventures/index.html",
     "static/media/tweet.svg": "/marvelous-adventures/static/media/tweet.fd5cc5242b1577e6c05511f823e3ab79.svg",
+    "static/media/arrowR.svg": "/marvelous-adventures/static/media/arrowR.bbc65c4d8632781a58f250d0d5d1dbf7.svg",
+    "static/media/arrow.svg": "/marvelous-adventures/static/media/arrow.ebcde9d4f2aad84b6169dde9d8f28174.svg",
     "static/media/search.svg": "/marvelous-adventures/static/media/search.5804bf024cba0fe3218b939b794871d2.svg",
     "static/media/fb.svg": "/marvelous-adventures/static/media/fb.ec368342021068bff626201741c32b5f.svg",
     "static/media/close.svg": "/marvelous-adventures/static/media/close.d3e18fa924d81215bc9262d69665be72.svg",
-    "main.024f6465.css.map": "/marvelous-adventures/static/css/main.024f6465.css.map",
-    "main.e4ba84e3.js.map": "/marvelous-adventures/static/js/main.e4ba84e3.js.map"
+    "main.718bd04e.css.map": "/marvelous-adventures/static/css/main.718bd04e.css.map",
+    "main.5ba18b10.js.map": "/marvelous-adventures/static/js/main.5ba18b10.js.map"
   },
   "entrypoints": [
-    "static/css/main.024f6465.css",
-    "static/js/main.e4ba84e3.js"
+    "static/css/main.718bd04e.css",
+    "static/js/main.5ba18b10.js"
   ]
 }

@@ -1,0 +1,80 @@
+.form {
+  display: flex;
+  margin: 0 auto;
+  max-width: 835px;
+  gap: 16px;
+}
+.form > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+.form > label:last-child{
+  height: 76px;
+}
+
+input::placeholder {
+  color: #fafafa;
+  font-size: 16px;
+  line-height: 18px;
+}
+.lableText {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.search,
+.dateInput {
+  color: inherit;
+  padding: 16px 24px;
+  background-color: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: 100px;
+
+  padding: 16px 24px;
+
+  outline: none;
+}
+
+.search {
+  width: 360px;
+}
+.dateInput {
+  width: 167px;
+  background-color: transparent;
+  overflow: hidden;
+  
+}
+
+.picker {
+  position: absolute;
+  fill: var(--text-prime);
+  right: 16px;
+  bottom: 14px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.picker.active {
+  transform: rotate(180deg);
+}
+
+.icon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 24px;
+  bottom: 22px;
+  cursor: pointer;
+
+  will-change: transform;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}

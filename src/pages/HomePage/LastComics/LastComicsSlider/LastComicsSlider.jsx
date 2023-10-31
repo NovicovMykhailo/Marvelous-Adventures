@@ -22,7 +22,7 @@ const LastComicsSlider = () => {
   const [comicsCode, setComicsCode] = useState(null);
   const [characterCode, setCharacterCode] = useState(null);
   const LastComicsSlider = useRef();
-  const [isStartBtnActive, setStartBtnActive]=useState(false);
+  const [isStartBtnActive, setStartBtnActive]=useState(true);
   const [isEndBtnActive, setIsEndBtnActive] = useState(false);
 
   useEffect(() => {
@@ -78,7 +78,6 @@ const LastComicsSlider = () => {
         slidesPerView={3}
         spaceBetween={16}
         speed={2000}
-        height={600}
         ref={LastComicsSlider}
         modules={[Autoplay, Mousewheel]}
         mousewheel={true}

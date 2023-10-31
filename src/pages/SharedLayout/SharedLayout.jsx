@@ -5,17 +5,13 @@ import License from 'components/Footer/License/License';
 const SharedLayout = () => {
   return (
     <>
-    <div className='container'>
-      <Header />
-      <div style={{ padding: '0 32px' }}>
+      <div className="container">
+        <Header />
         <Outlet />
+        <Footer />
       </div>
-
-      <Footer />
-    </div>
-    <License/>
+      <License />
     </>
-    
   );
 };
 

@@ -67,7 +67,7 @@ const HeroSlider = () => {
         mousewheel={true}
         modules={[Autoplay, Mousewheel]}
         speed={2500}
-        loop={true}
+        // loop={true}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,

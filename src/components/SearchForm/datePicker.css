@@ -1,0 +1,69 @@
+.react-datepicker {
+  background-color: var(--bg2);
+  border-radius: 20px;
+  /* border-color: var(--blue); */
+  border-color: transparent;
+  padding: 0;
+}
+.react-datepicker__header {
+  background-color: var(--bg2);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px !important;
+  border-bottom-color: var(--blue);
+}
+
+.react-datepicker div {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-prime);
+}
+.react-datepicker__day .react-datepicker__day--030 .react-datepicker__day--selected .react-datepicker__day--today {
+  background-color: var(--blue);
+}
+.react-datepicker__day:hover,
+.react-datepicker__month-text:hover,
+.react-datepicker__quarter-text:hover,
+.react-datepicker__year-text:hover {
+  border-radius: 0.3rem;
+  background-color: var(--text-secondary);
+  color: var(--text-prime) !important;
+  transform: scale(1.4);
+}
+
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__quarter-text--keyboard-selected,
+.react-datepicker__year-text--keyboard-selected {
+  border-radius: 0.3rem;
+  background-color: var(--blue);
+  color: rgb(0, 0, 0);
+}
+
+.react-datepicker__day,
+.react-datepicker__month-text,
+.react-datepicker__quarter-text,
+.react-datepicker__year-text {
+  cursor: pointer;
+  color: var(--text-secondary) !important;
+}
+
+.react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle::before,
+.react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle::after {
+  border-top: none;
+  border-bottom-color: var(--blue);
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range {
+  transform: scale(1.4);
+  color: var(--text-prime)!important;
+}

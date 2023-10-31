@@ -17,7 +17,6 @@ const HeroSlide1 = () => {
           All comics
         </Link>
       </article>
-      {/* <span className={css.vertLine}></span> */}
       <div className={css.imageBlock}>
         <HeroCardLeft color={'blue'} />
         <HeroCardRight color={'blue'}/>

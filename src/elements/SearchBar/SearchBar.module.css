@@ -1,7 +1,7 @@
 .form,
 .input::placeholder {
-  color: var(--text-primary);
-  font-size: 12px;
+  color: var(--text-prime);
+  font-size: 14px;
   font-weight: 500;
   line-height: 14px;
   text-transform: uppercase;

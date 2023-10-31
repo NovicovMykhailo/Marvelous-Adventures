@@ -1,0 +1,23 @@
+.placeholder {
+  height: calc(477px - 64px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  color: #fafafa;
+
+  font-size: 24px;
+
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.48px;
+  background-image: url('./BGImage.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 375px 221px;
+}
+.text {
+  max-width: 192px;
+}

@@ -1,17 +1,13 @@
+import CardContainer from './CardContainer/CardContainer';
+import CharactersHero from './CharactersHero/CharactersHero';
+import SearchForm from 'components/SearchForm/SearchForm';
+
 const CharactersPage = props => {
   return (
-    <div
-      style={{
-        backgroundColor: 'teal',
-        height: '80vh',
-        color: 'white',
-        fontSize: '64px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      CharactersPage
+    <div>
+      <CharactersHero />
+      <SearchForm/>
+      <CardContainer />
     </div>
   );
 };

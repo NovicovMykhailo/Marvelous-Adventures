@@ -4,19 +4,26 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  flex-grow: 1;
+
 }
+.footer:first-child, .footer > ul{
+  width: 202px;
+}
+
+
 .comics {
   font-size: 16px;
   line-height: 18px;
   font-weight: 400;
-  margin-right: 92px;
+  text-align: center;
+  width: 202px;
 }
 .liscenceBlock {
   width: 100%;
   padding-top: 18px;
   padding-bottom: 18px;
   background-color: #34387f;
+ 
 }
 
 .liscence {

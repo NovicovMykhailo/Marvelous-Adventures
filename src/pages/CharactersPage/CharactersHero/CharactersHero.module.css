@@ -1,0 +1,49 @@
+.charHero {
+  background: linear-gradient(91deg, rgba(12, 11, 11, 0) 78.74%, #0c0b0b 96%),
+    linear-gradient(2deg, #0c0b0b 2.15%, rgba(12, 11, 11, 0) 32.65%), linear-gradient(84deg, #0c0b0b 4.87%, rgba(12, 11, 11, 0) 15.93%),
+    linear-gradient(180deg, #0c0b0b 0%, rgba(12, 11, 11, 0) 72.35%), url('../../../images/CharactersHero/char-hero-dsk.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left 348px top 11px;
+
+  height: 780px;
+  width: 100%;
+  color: white;
+  font-size: 64px;
+  padding-left: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.infoBlock {
+    width: 830px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.about {
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 160%;
+  text-transform: uppercase;
+}
+.title {
+
+  font-size: 150px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150px;
+  letter-spacing: -3px;
+}
+.description {
+    position: relative;
+  left: 88px;
+  max-width: 469px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.32px;
+}

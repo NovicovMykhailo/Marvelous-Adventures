@@ -8,7 +8,7 @@ const CharactersHero = props => {
         <p className={css.about}>Web-based platform</p>
         <h2 className={css.title}>Comics</h2>
         <p className={css.description}>
-        Comics is a medium used to express ideas with images, often combined with text or other visual information. 
+          Comics is a medium used to express ideas with images, often combined with text or other visual information.
         </p>
       </article>
       <GoBackBtn />

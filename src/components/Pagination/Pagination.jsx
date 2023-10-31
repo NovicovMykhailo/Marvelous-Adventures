@@ -4,13 +4,13 @@ import { ReactComponent as Prev } from './iconLeft.svg';
 import { ReactComponent as Next } from './iconRight.svg';
 
 
-import { useState } from 'react';
+// import { useState } from 'react';
 
-const PaginationComponent = ({currentPage = 0, changePage, totalPages = 10}) => {
-  const [page, setPage] = useState(currentPage);
+const PaginationComponent = ({currentPage, changePage, totalPages = 10}) => {
+  // const [page, setPage] = useState(0);
+
 
   const handlePageChange = page => {
-    setPage(page);
     changePage(page)
   };
 
@@ -18,7 +18,7 @@ const PaginationComponent = ({currentPage = 0, changePage, totalPages = 10}) => 
     <div>
    
       <Pagination
-        currentPage={page}
+        currentPage={currentPage}
         setCurrentPage={handlePageChange}
         totalPages={totalPages}
         edgePageCount={2}
@@ -41,8 +41,7 @@ const PaginationComponent = ({currentPage = 0, changePage, totalPages = 10}) => 
           </Pagination.NextButton>
         </div>
       </Pagination>
-      <p style={{width:"100%", textAlign: 'center', marginTop: '32px',}}> Current page: {page}</p>
-     
+    
     </div>
   );
 };

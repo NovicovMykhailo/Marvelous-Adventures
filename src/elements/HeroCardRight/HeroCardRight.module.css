@@ -181,7 +181,7 @@ filter: blur(47px);
   align-items: center;
   justify-content: center;
 
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease !important;
 
   border-radius: 50%;
 
@@ -210,5 +210,5 @@ filter: blur(47px);
 }
 
 .cardName:hover,  .container:has(.cardRight > .cardName:hover)  #lightBulb{
-  transform: scale(1.1)
+  transform: scale(1.1) !important
 }

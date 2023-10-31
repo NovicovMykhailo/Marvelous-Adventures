@@ -7,8 +7,12 @@ const instance = axios.create({
   ...options,
 });
 //GET ALL
-export const getComics = async () => {
-  const res = await instance.get('/comics?orderBy=-focDate&startYear=2018&format=comic&noVariants=true');
+export const getComics = async (page, params) => {
+  // const {orderBy, startYear,format, title}= params
+  const paramsObj = { orderBy: '-focDate', startYear: '2018', format: 'comic', noVariants: true, limit: '12' };
+  const searchParams = new URLSearchParams(paramsObj);
+  const offset = page * 12;
+  const res = await instance.get(`/comics?${searchParams}&offset=${offset}`);
   return res.data.data;
 };
 //GET Comic by ID for Modal
@@ -52,7 +56,7 @@ export const getCaracter = async id => {
   const res = await instance.get(`/characters/${id}`);
 
   const comicsListSelector = res.data.data.results[0].comics.items;
-  const storiesSelector = res.data.data.results[0].series.items
+  const storiesSelector = res.data.data.results[0].series.items;
 
   const comicsData = await Promise.all(
     comicsListSelector
@@ -64,14 +68,12 @@ export const getCaracter = async id => {
       })
   );
   const storiesData = await Promise.all(
-    storiesSelector
-      .map(async ({ resourceURI }) => {
-        const result = await axios.get(urlNormaliszer(resourceURI), options).then(result => result.data.data.results[0]);
-        return result;
-      })
-
+    storiesSelector.map(async ({ resourceURI }) => {
+      const result = await axios.get(urlNormaliszer(resourceURI), options).then(result => result.data.data.results[0]);
+      return result;
+    })
   );
-  console.log('storiesData', storiesData)
+  console.log('storiesData', storiesData);
   const response = {
     character: res.data.data.results[0],
     comicsList: comicsData,

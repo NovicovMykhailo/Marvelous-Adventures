@@ -1,6 +1,9 @@
 import { getHomePageComics } from 'services/api';
 import { useEffect, useRef, useState } from 'react';
-import { readFromLocalStorage, writeToLocalStorage } from '../../../../helpers/LocalStotageApi';
+import {
+  readFromLocalStorage,
+  writeToLocalStorage,
+} from '../../../../helpers/LocalStotageApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
@@ -21,9 +24,10 @@ const LastComicsSlider = () => {
   const [showCharacterModal, setShowCharacteModal] = useState(false);
   const [comicsCode, setComicsCode] = useState(null);
   const [characterCode, setCharacterCode] = useState(null);
-  const LastComicsSlider = useRef();
-  const [isStartBtnActive, setStartBtnActive]=useState(true);
+  const [isStartBtnActive, setStartBtnActive] = useState(true);
   const [isEndBtnActive, setIsEndBtnActive] = useState(false);
+
+  const LastComicsSlider = useRef();
 
   useEffect(() => {
     if (!readFromLocalStorage('TopComics')) {
@@ -63,54 +67,70 @@ const LastComicsSlider = () => {
   };
 
   function isButtonActive(e) {
-    e.isBeginning ?  setStartBtnActive( true ):  setStartBtnActive( false)
-    e.isEnd ?setIsEndBtnActive( true ):  setIsEndBtnActive( false)
-
+    e.isBeginning ? setStartBtnActive(true) : setStartBtnActive(false);
+    e.isEnd ? setIsEndBtnActive(true) : setIsEndBtnActive(false);
   }
 
-  
+  return (
 
-  return (prev=> prev, 
-    <div className="lastComics">
-      <h2 className={css.title}>Last Comics</h2>
-      <Swiper
-        containerModifierClass={'swiper-lastComics'}
-        slidesPerView={3}
-        spaceBetween={16}
-        speed={2000}
-        ref={LastComicsSlider}
-        modules={[Autoplay, Mousewheel]}
-        mousewheel={true}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-        onSlideChange={isButtonActive}
-      >
-        {data &&
-          data.map(card => (
-            <SwiperSlide key={card.id}>
-              <ComicsCard card={card} openModal={openModal} size={'hero'} />
-            </SwiperSlide>
-          ))}
-      </Swiper>
-      <div className={css.LastComicsPaginations}>
-        <ArrowL data-prev className={`${css.arrowL} ${isStartBtnActive && css.inactive}`} onClick={handleClick} />
-        <ArrowR data-next className={`${css.arrowR} ${isEndBtnActive && css.inactive}`} onClick={handleClick} />
+    
+      <div className="lastComics">
+        <h2 className={css.title}>Last Comics</h2>
+        <Swiper
+          containerModifierClass={'swiper-lastComics'}
+          slidesPerView={3}
+          spaceBetween={16}
+          speed={2000}
+          ref={LastComicsSlider}
+          modules={[Autoplay, Mousewheel]}
+          effect={'slide'}
+          mousewheel={true}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          onSlideChange={isButtonActive}
+        >
+          {data &&
+            data.map(card => (
+              <SwiperSlide key={card.id}>
+                <ComicsCard card={card} openModal={openModal} size={'hero'} />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+        <div className={css.LastComicsPaginations}>
+          <ArrowL
+            data-prev
+            className={`${css.arrowL} ${isStartBtnActive && css.inactive}`}
+            onClick={handleClick}
+          />
+          <ArrowR
+            data-next
+            className={`${css.arrowR} ${isEndBtnActive && css.inactive}`}
+            onClick={handleClick}
+          />
+        </div>
+
+        {showModal && (
+          <Modal onClose={() => setShowModal(prev => !prev)} active={showModal}>
+            <ComicsModal
+              comicsCode={comicsCode}
+              closeModal={() => setShowModal(prev => !prev)}
+              openCharackterModal={openCharackterModal}
+            />
+          </Modal>
+        )}
+        {showCharacterModal && (
+          <Modal onClose={() => setShowCharacteModal(prev => !prev)} active={showModal}>
+            <CharacterModal
+              id={characterCode}
+              closeModal={() => setShowCharacteModal(prev => !prev)}
+            />
+          </Modal>
+        )}
       </div>
-
-      {showModal && (
-        <Modal onClose={() => setShowModal(prev => !prev)} active={showModal}>
-          <ComicsModal comicsCode={comicsCode} closeModal={() => setShowModal(prev => !prev)} openCharackterModal={openCharackterModal} />
-        </Modal>
-      )}
-      {showCharacterModal && (
-        <Modal onClose={() => setShowCharacteModal(prev => !prev)} active={showModal}>
-          <CharacterModal id={characterCode} closeModal={() => setShowCharacteModal(prev => !prev)} />
-        </Modal>
-      )}
-    </div>
+    
   );
 };
 

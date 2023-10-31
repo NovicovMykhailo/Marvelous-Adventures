@@ -46,7 +46,7 @@
   padding: 12px 24px;
   border-radius: 1000px;
   will-change: transform;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease !important;
 }
 .slideBtn.blue,
 .leftImageBlock.blue {
@@ -62,7 +62,7 @@
 }
 
 .slideBtn:is(:hover, :active) {
-  transform: scale(1.1);
+  transform: scale(1.1) !important;
 }
 
 .vertLine {

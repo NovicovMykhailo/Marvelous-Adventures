@@ -1,7 +1,6 @@
 import HeroSlider from './Hero/HeroSwiper/HeroSlider';
 import LastComicsSlider from './LastComics/LastComicsSlider/LastComicsSlider';
 
-
 const HomePage = () => {
   return (
     <>

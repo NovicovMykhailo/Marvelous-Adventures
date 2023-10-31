@@ -4,7 +4,7 @@ import SearchForm from 'components/SearchForm/SearchForm';
 
 const CharactersPage = props => {
   return (
-    <div>
+    <div data-scroll-section>
       <CharactersHero />
       <SearchForm/>
       <CardContainer />

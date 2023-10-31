@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, Autoplay} from 'swiper/modules';
+import { Mousewheel, Parallax, Autoplay } from 'swiper/modules';
 import { useRef, useState } from 'react';
 
 import HeroSlide1 from '../HeroSlide1';
@@ -8,9 +8,8 @@ import HeroSlide3 from '../HeroSlide3';
 
 import './HeroSlider.css';
 
-
 const HeroSlider = () => {
-  const swiperRef =  useRef()
+  const swiperRef = useRef();
   const [navBar, setNavBar] = useState({
     firstBar: 'active',
     secondBar: '',
@@ -18,7 +17,7 @@ const HeroSlider = () => {
   });
 
   function onSlideChange(e) {
-    setTimeout(()=>{
+    setTimeout(() => {
       switch (e.activeIndex) {
         case 0:
           setNavBar({ firstBar: 'active', secondBar: '', thirdBar: '' });
@@ -33,9 +32,7 @@ const HeroSlider = () => {
           setNavBar({ firstBar: 'active', secondBar: '', thirdBar: '' });
           break;
       }
-    }, 1300)
-
-  
+    }, 1300);
   }
 
   function HandleClick(e) {
@@ -44,10 +41,10 @@ const HeroSlider = () => {
         swiperRef.current.swiper.slideTo(0);
         break;
       case 'data-second':
-        swiperRef.current.swiper.slideTo(1)
+        swiperRef.current.swiper.slideTo(1);
         break;
       case 'data-third':
-        swiperRef.current.swiper.slideTo(2)
+        swiperRef.current.swiper.slideTo(2);
         break;
 
       default:
@@ -59,19 +56,18 @@ const HeroSlider = () => {
     <div className="hero">
       <Swiper
         height={780}
-    
         direction={'vertical'}
         ref={swiperRef}
+        effect={'slide'}
+        parallax={true}
         slidesPerView={1}
         spaceBetween={0}
-        mousewheel={true}
-        modules={[Autoplay, Mousewheel]}
+        modules={[Autoplay, Parallax, Mousewheel]}
         speed={2500}
-        // loop={true}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
-          pauseOnMouseEnter:true,
+          // pauseOnMouseEnter: true,
         }}
         className="swiper"
         onSlideChange={onSlideChange}
@@ -87,11 +83,23 @@ const HeroSlider = () => {
         </SwiperSlide>
       </Swiper>
       <div className="pagination">
-        <div className={`pageElement ${navBar.firstBar}`} onClick={HandleClick} data-first></div>
-        <div className={`pageElement ${navBar.secondBar}`} onClick={HandleClick} data-second></div>
-        <div className={`pageElement ${navBar.thirdBar}`} onClick={HandleClick} data-third></div>
+        <div
+          className={`pageElement ${navBar.firstBar}`}
+          onClick={HandleClick}
+          data-first
+        ></div>
+        <div
+          className={`pageElement ${navBar.secondBar}`}
+          onClick={HandleClick}
+          data-second
+        ></div>
+        <div
+          className={`pageElement ${navBar.thirdBar}`}
+          onClick={HandleClick}
+          data-third
+        ></div>
       </div>
-    </div >
+    </div>
   );
 };
 

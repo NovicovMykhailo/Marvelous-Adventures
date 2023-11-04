@@ -1,9 +1,12 @@
-import { getImage } from 'helpers/imageConverter';
-import css from './ComicsModal.module.css';
+import { useContext } from 'react';
+import { ModalContext } from '../ModalContext/ModalContext';
+import css from '../ComicsModal/ComicsModal.module.css'
+import { getImage } from 'helpers';
 
 
-const Characters = ({ characters, openModal }) => {
 
+const Characters = ({ characters}) => {
+const {openCharackterModal} = useContext(ModalContext)
   
   return (
     <div>
@@ -11,7 +14,7 @@ const Characters = ({ characters, openModal }) => {
       <ul className={css.characters}>
         {characters.map(({ name, thumbnail, id }) => {
           return (
-            <li key={id} className={css.charactersListItem} onClick={()=>openModal(id)}>
+            <li key={id} className={css.charactersListItem} onClick={()=>openCharackterModal(id)}>
               <img className={css.charactersImage} src={getImage(thumbnail, 'med_Sq')} alt="character" title={name} width="60" />
               <p className={css.modalText}>{name}</p>
             </li>

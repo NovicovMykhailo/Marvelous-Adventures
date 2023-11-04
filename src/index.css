@@ -1,8 +1,5 @@
-@import "./../node_modules/modern-normalize/modern-normalize.css";
+@import './../node_modules/modern-normalize/modern-normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
-
-
-
 
 body {
   margin: 0;
@@ -13,66 +10,87 @@ body {
   font-weight: 400;
   background-color: var(--bg);
 }
-html::-webkit-scrollbar{
-  display:none;
+html::-webkit-scrollbar {
+  display: none;
 }
 
-
-img{
+img {
   display: block;
   width: 100%;
-  
 }
 
-h1,h2,h3,h4,h5,h6,p,a,li,ol,span, ul, ol{
-  margin:0;
-  padding:0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+ol,
+span,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
 }
-ol, li{
+ol,
+li {
   list-style: none;
 }
 
-:root{
-  --bg: #0C0B0B;
+:root {
+  --bg: #0c0b0b;
   --bg2: #171717;
-  --text-prime: #FAFAFA;
+  --text-prime: #fafafa;
   --text-secondary: #fafafa66;
-  --btn: #34387F;
+  --btn: #34387f;
   --radius: 8px;
 
-  --blue: #34387F;
+  --blue: #34387f;
   --red: #600404;
-  --green: #5B7F3C;
-
-
+  --green: #5b7f3c;
 }
 
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
 
-  .visuallyHidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-  }
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
 
-  .container{
-    width: 100%;
-    margin: 0 auto;
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768pxx;
   }
-  @media screen and (min-width: 768px) {
-    .container{
-      width: 768pxx
-    }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 1440px;
   }
-  @media screen and (min-width: 1440px) {
-    .container{
-      width: 1440px
-    }
-  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:is(:hover, :focus),
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:is(:hover, :focus),
+select:-webkit-autofill,
+select:-webkit-autofill:is(:hover, :focus) {
+  /* border: 1px solid $main; */
+  -webkit-text-fill-color: var(--text-prime);
+  -webkit-box-shadow: 0 0 0px 1000px var(--blue) inset;
+  box-shadow: 0 0 0px 2000px var(--blue) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}

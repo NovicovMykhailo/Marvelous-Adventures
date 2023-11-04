@@ -1,12 +1,13 @@
+
 import CardContainer from './CardContainer/CardContainer';
 import CharactersHero from './CharactersHero/CharactersHero';
 import SearchForm from 'components/SearchForm/SearchForm';
 
-const CharactersPage = props => {
+const CharactersPage = () => {
   return (
     <div data-scroll-section>
       <CharactersHero />
-      <SearchForm/>
+      <SearchForm />
       <CardContainer />
     </div>
   );

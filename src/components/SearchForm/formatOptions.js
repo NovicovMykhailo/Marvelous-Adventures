@@ -10,8 +10,8 @@ export const formatOpts = [
 ];
 
 export const sortByOpts = [
-  { value: '-title', label: 'Title' },
   { value: '-focDate', label: 'Date' },
+  { value: '-title', label: 'Title' },
   { value: '-onsaleDate', label: 'On Sale Date' },
   { value: '-issueNumber', label: 'Issue Number' },
   { value: '-modified', label: 'Modified' },

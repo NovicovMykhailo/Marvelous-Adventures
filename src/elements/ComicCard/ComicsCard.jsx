@@ -1,4 +1,4 @@
-import { getImage } from 'helpers/imageConverter';
+import { getImage } from 'helpers';
 import css from './ComicsCard.module.css';
 
 const ComicsCard = ({ card, openModal, size }) => {

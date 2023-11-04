@@ -1,3 +1,3 @@
-export default function urlNormaliszer(url){
+export default function urlNormalizer(url){
     return url.replace('http:', 'https:')
 }

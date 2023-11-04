@@ -1,7 +1,7 @@
-import { getImage } from 'helpers/imageConverter';
+import { getImage } from 'helpers';
 import { useState, useEffect, useRef } from 'react';
 import useOnLoadImages from 'hooks/useOnLoadImages';
-import css from './ComicsModal.module.css';
+import css from '../ComicsModal/ComicsModal.module.css'
 
 const Gallery = ({ comicsData, stories, setHeight }) => {
   const { thumbnail, images } = comicsData;
@@ -26,21 +26,22 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
       }
     })
     .reverse();
+  const filteredGalleryItems = galleryItems.filter(item => item !== null);
 
- 
   const interval = 5000;
 
   useEffect(() => {
-    switcher();
-  }, [setHeight]);
+    setFadeProp(css.fadeIn);
+  }, []);
 
   useEffect(() => {
-    let i = galleryItems.length;
+    let i = filteredGalleryItems.length;
     const handle = setInterval(() => {
       if (i !== 1) {
         i -= 1;
-        setMainPhoto(galleryItems[i]);
-        switcher();
+        setMainPhoto(filteredGalleryItems[i]);
+
+        setFadeProp(css.fadeIn);
       } else {
         setFadeProp(css.fadeIn);
         setMainPhoto(thumbnail);
@@ -48,12 +49,7 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
     }, interval);
 
     return () => clearInterval(handle);
-  }, [galleryItems, thumbnail]);
-
-  const switcher = () => {
-    setFadeProp(css.fadeIn);
-    setTimeout(() => setFadeProp(css.fadeOut), interval - 1000);
-  };
+  }, [filteredGalleryItems, thumbnail]);
 
   return (
     <div className={css.photoBlock} ref={ref}>
@@ -71,7 +67,7 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
       </div>
       <ul className={css.imageGallery} ref={imageContainer}>
         {stories &&
-          stories.slice(0,10).map(({ id, thumbnail, title }) => {
+          stories.slice(0, 10).map(({ id, thumbnail, title }) => {
             if (!thumbnail.path.includes('image_not_available')) {
               return (
                 <li key={id}>

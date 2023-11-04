@@ -32,7 +32,7 @@
 }
 .charactersListItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   cursor: pointer;
 }
@@ -173,8 +173,9 @@
 }
 .imageGallery > li {
   border-radius: var(--radius);
-  width: 60px;
-  height: 60px;
+  width: calc((100% - 3 * 8px) / 4);
+  aspect-ratio: 1/1;
+  height: auto;
   overflow: hidden;
   cursor: pointer;
 }
@@ -192,4 +193,11 @@
 .fadeOut {
   opacity: 0;
   transition: opacity 1s ease;
+}
+
+/* ------------------- Charackters Modal */
+.cardList {
+  display: flex;
+  align-items: flex-start;
+  max-width: 556px;
 }

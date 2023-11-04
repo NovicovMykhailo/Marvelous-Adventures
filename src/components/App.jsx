@@ -3,8 +3,11 @@ import HomePage from 'pages/HomePage/HomePage';
 import CharactersPage from 'pages/CharactersPage/CharactersPage';
 import SharedLayout from 'pages/SharedLayout/SharedLayout';
 import { QueryClientProvider, QueryClient } from 'react-query';
+import { MouseSmooth } from 'react-mouse-smooth';
+
 export const App = () => {
   const queryClient = new QueryClient();
+  MouseSmooth({ time: 2000, size: 100 });
   return (
     <QueryClientProvider client={queryClient}>
       <Routes>

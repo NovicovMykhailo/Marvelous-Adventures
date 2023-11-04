@@ -11,10 +11,11 @@ export const formatStyles = {
     '&:hover': {
       borderColor: '#34387F',
     },
-    transition: "0.2s",
+    transition: '0.2s',
 
     color: isSelected ? '#FAFAFA' : '#FAFAFA66',
     backgroundColor: isSelected ? '#34387F' : 'transparent',
+    
     width: '200px',
 
     borderRadius: '100px',
@@ -28,10 +29,7 @@ export const formatStyles = {
     border: '1px solid #34387F',
     boxShadow: 'none',
   }),
-  valueContainer: styles => ({
-    ...styles,
-    padding: 0,
-  }),
+  valueContainer: styles => ({ ...styles, padding: 0 }),
   option: (styles, state) => ({
     ...styles,
     color: state.isSelected ? '#FAFAFA;' : '#FAFAFA66',
@@ -59,7 +57,6 @@ export const formatStyles = {
     borderRadius: '16px',
     border: 'none',
     boxShadow: 'px 4px 36px 0px rgba(0, 0, 0, 0.02)',
-    
   }),
   menuList: styles => ({
     ...styles,
@@ -68,11 +65,8 @@ export const formatStyles = {
     '&::-webkit-scrollbar': {
       display: 'none',
     },
-   
   }),
-  indicatorSeparator: () => ({
-    display: 'none',
-  }),
+  indicatorSeparator: () => ({ display: 'none' }),
   dropdownIndicator: (styles, state) => ({
     ...styles,
     padding: 0,
@@ -81,7 +75,7 @@ export const formatStyles = {
     cursor: 'pointer',
     transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : null,
   }),
-  placeholder: (styles, state) => ({
+  placeholder: styles => ({
     ...styles,
     color: '#FAFAFA',
   }),

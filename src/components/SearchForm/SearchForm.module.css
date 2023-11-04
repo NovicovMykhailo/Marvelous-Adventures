@@ -4,7 +4,8 @@
   max-width: 835px;
   gap: 16px;
 }
-.form > label {
+.form > label,
+.datePicker {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -12,7 +13,7 @@
   justify-content: flex-start;
   position: relative;
 }
-.form > label:last-child{
+.datePicker {
   height: 76px;
 }
 
@@ -47,7 +48,6 @@ input::placeholder {
   width: 167px;
   background-color: transparent;
   overflow: hidden;
-  
 }
 
 .picker {
@@ -56,7 +56,10 @@ input::placeholder {
   right: 16px;
   bottom: 14px;
   cursor: pointer;
-  transition: transform 0.1s ease;
+  transition: all 0.3s ease;
+}
+.picker:hover {
+  fill: #999999;
 }
 
 .picker.active {

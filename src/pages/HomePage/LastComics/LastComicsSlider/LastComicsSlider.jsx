@@ -1,9 +1,7 @@
 import { getHomePageComics } from 'services/api';
-import { useEffect, useRef, useState } from 'react';
-import {
-  readFromLocalStorage,
-  writeToLocalStorage,
-} from '../../../../helpers/LocalStotageApi';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { ModalContext } from 'components/Modal/ModalContext/ModalContext';
+import { readFromLocalStorage, writeToLocalStorage } from 'helpers/LocalStotageApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
@@ -12,22 +10,19 @@ import { ReactComponent as ArrowR } from '../../../../images/arrowR.svg';
 import { Mousewheel, Autoplay } from 'swiper/modules';
 
 import ComicsCard from 'elements/ComicCard/ComicsCard';
-import Modal from 'components/Modal/Modal';
-import ComicsModal from 'components/Modal/ComicsModal/ComicsModal';
-import CharacterModal from 'components/Modal/CharacktersModal/CharacterModal';
 import css from '../LastComics.module.css';
 import './LastComicsSlider.css';
 
+
 const LastComicsSlider = () => {
   const [data, setData] = useState('');
-  const [showModal, setShowModal] = useState(false);
-  const [showCharacterModal, setShowCharacteModal] = useState(false);
-  const [comicsCode, setComicsCode] = useState(null);
-  const [characterCode, setCharacterCode] = useState(null);
   const [isStartBtnActive, setStartBtnActive] = useState(true);
   const [isEndBtnActive, setIsEndBtnActive] = useState(false);
 
   const LastComicsSlider = useRef();
+  const {openModal} = useContext(ModalContext)
+
+
 
   useEffect(() => {
     if (!readFromLocalStorage('TopComics')) {
@@ -42,15 +37,6 @@ const LastComicsSlider = () => {
     }
   }, []);
 
-  const openModal = id => {
-    setShowModal(true);
-    setComicsCode(id);
-  };
-
-  const openCharackterModal = id => {
-    setShowCharacteModal(true);
-    setCharacterCode(id);
-  };
 
   const handleClick = e => {
     switch (e.target.attributes[4].nodeName) {
@@ -95,7 +81,7 @@ const LastComicsSlider = () => {
           {data &&
             data.map(card => (
               <SwiperSlide key={card.id}>
-                <ComicsCard card={card} openModal={openModal} size={'hero'} />
+                <ComicsCard card={card} openModal={()=>openModal(card.id)} size={'hero'} />
               </SwiperSlide>
             ))}
         </Swiper>
@@ -111,24 +97,6 @@ const LastComicsSlider = () => {
             onClick={handleClick}
           />
         </div>
-
-        {showModal && (
-          <Modal onClose={() => setShowModal(prev => !prev)} active={showModal}>
-            <ComicsModal
-              comicsCode={comicsCode}
-              closeModal={() => setShowModal(prev => !prev)}
-              openCharackterModal={openCharackterModal}
-            />
-          </Modal>
-        )}
-        {showCharacterModal && (
-          <Modal onClose={() => setShowCharacteModal(prev => !prev)} active={showModal}>
-            <CharacterModal
-              id={characterCode}
-              closeModal={() => setShowCharacteModal(prev => !prev)}
-            />
-          </Modal>
-        )}
       </div>
     
   );

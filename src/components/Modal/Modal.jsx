@@ -1,10 +1,12 @@
 
 
 
-import { useEffect } from 'react';
+import {  useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import useMountTransition from 'hooks/useMountTransition';
 import css from './Modal.module.css';
+
+
 
 
 export default function Modal({ onClose, children, active }) {
@@ -44,3 +46,5 @@ export default function Modal({ onClose, children, active }) {
     modalRoot
   );
 }
+
+

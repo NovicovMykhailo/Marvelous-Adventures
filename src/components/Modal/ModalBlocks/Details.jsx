@@ -1,4 +1,4 @@
-import css from './ComicsModal.module.css'
+import css from '../ComicsModal/ComicsModal.module.css'
 
 const Details = ({ comic }) => {
   const { format, prices, pageCount, dates } = comic;

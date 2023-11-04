@@ -1,39 +1,70 @@
 import axios from 'axios';
 import options from './options';
-import urlNormaliszer from 'helpers/urlNormalizer';
+import { filteredQuery, getObjFromParams, urlNormalizer } from 'helpers';
 
 const instance = axios.create({
   baseURL: 'https://gateway.marvel.com/v1/public',
   ...options,
 });
-//GET ALL
-export const getComics = async (page, params) => {
-  // const {orderBy, startYear,format, title}= params
-  const paramsObj = { orderBy: '-focDate', startYear: '2018', format: 'comic', noVariants: true, limit: '12' };
-  const searchParams = new URLSearchParams(paramsObj);
-  const offset = page * 12;
-  const res = await instance.get(`/comics?${searchParams}&offset=${offset}`);
+
+// Main Page
+export const getHomePageComics = async () => {
+  const params = new URLSearchParams({
+    orderBy: '-focDate',
+    startYear: '2022',
+    format: 'comic',
+    noVariants: 'true',
+    hasDigitalIssue: 'true',
+    limit: '12',
+  });
+  const res = await instance.get(`/comics?${params}`);
   return res.data.data;
 };
-//GET Comic by ID for Modal
+
+//SearchForm
+export const getComics = async ( searchParams) => {
+  const searchedValues =  filteredQuery(getObjFromParams(searchParams));
+
+  const defaultParams = {
+    orderBy: '-focDate',
+    startYear: '2018',
+    format: 'comic',
+    limit: 16,
+  };
+
+  const paramsToSearch = {...defaultParams, ...searchedValues}
+  console.log(searchedValues)
+  // const params = new URLSearchParams(paramsToSearch);
+
+  // const offset = searchParams.page * 12;
+  // const res = await instance.get(`/comics?${params}&offset=${offset}&noVariants=true`);
+  // return res.data.data;
+  return true;
+};
+//Comic by id
 export const getComicsById = async id => {
+  //comic data
   const comic = await instance.get(`/comics/${id}`);
+  //character photos
   const characters = await instance.get(`/characters?comics=${id}`);
 
-  const seriesSelector = comic.data.data.results[0].series.resourceURI;
   const writersFiltered = comic.data.data.results[0].creators.items.filter(creator => creator.role === 'writer');
-
+  // get authors photo and info
   const writerObj = await Promise.all(
     writersFiltered.map(async writer => {
       const name = writer.name.split(' ');
-      const result = await instance.get(`/creators?firstName=${name[0]}&lastName=${name[1]}`).then(result => result.data.data.results[0]);
+      const result = await instance
+        .get(`/creators?firstName=${name[0]}&lastName=${name[1]}`)
+        .then(result => result.data.data.results[0]);
       return result;
     })
   );
-
-  const series = await axios.get(urlNormaliszer(seriesSelector), options);
+  //get series for stories
+  const seriesSelector = comic.data.data.results[0].series.resourceURI;
+  const series = await axios.get(urlNormalizer(seriesSelector), options);
+  //get storiesList for gallery images
   const storiesSelector = series.data.data.results[0].comics.collectionURI;
-  const stories = await axios.get(urlNormaliszer(storiesSelector), options);
+  const stories = await axios.get(urlNormalizer(storiesSelector), options);
 
   const res = {
     result: comic.data.data.results[0],
@@ -45,13 +76,8 @@ export const getComicsById = async id => {
 
   return res;
 };
-//GET TOP 12 COMIC for Main Page
-export const getHomePageComics = async () => {
-  const res = await instance.get('/comics?orderBy=-focDate&startYear=2022&format=comic&noVariants=true&hasDigitalIssue=true&limit=12');
-  return res.data.data;
-};
-//GET Character Info By ID
 
+//Character by id
 export const getCaracter = async id => {
   const res = await instance.get(`/characters/${id}`);
 
@@ -63,21 +89,23 @@ export const getCaracter = async id => {
       .reverse()
       .splice(0, 3)
       .map(async ({ resourceURI }) => {
-        const result = await axios.get(urlNormaliszer(resourceURI), options).then(result => result.data.data.results[0]);
+        const result = await axios.get(urlNormalizer(resourceURI), options).then(result => result.data.data.results[0]);
         return result;
       })
   );
+
   const storiesData = await Promise.all(
     storiesSelector.map(async ({ resourceURI }) => {
-      const result = await axios.get(urlNormaliszer(resourceURI), options).then(result => result.data.data.results[0]);
+      const result = await axios.get(urlNormalizer(resourceURI), options).then(result => result.data.data.results[0]);
       return result;
     })
   );
-  console.log('storiesData', storiesData);
+
   const response = {
     character: res.data.data.results[0],
     comicsList: comicsData,
     stories: storiesData,
   };
+
   return response;
 };

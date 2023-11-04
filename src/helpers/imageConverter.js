@@ -42,7 +42,7 @@ const sizeList = {
   med_Land: ' landscape_medium',
 };
 
-export function getImage(url, size) {
+export default function getImage(url, size) {
   const { path, extension } = url;
 
   return `${path}/${sizeList[size || "full_P"]}.${extension}`;

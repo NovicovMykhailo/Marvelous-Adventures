@@ -1,5 +1,6 @@
-import { getImage } from 'helpers/imageConverter';
-import css from './ComicsModal.module.css';
+
+import { getImage } from 'helpers';
+import css from '../ComicsModal/ComicsModal.module.css'
 
 const Creators = ({ creators }) => {
   if (creators[0]) {

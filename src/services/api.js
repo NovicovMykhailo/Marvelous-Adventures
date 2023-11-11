@@ -1,6 +1,6 @@
 import axios from 'axios';
 import options from './options';
-import { filteredQuery, getObjFromParams, urlNormalizer } from 'helpers';
+import { filteredQuery, getObjFromParams, urlNormalizer, findTitle } from 'helpers';
 
 const instance = axios.create({
   baseURL: 'https://gateway.marvel.com/v1/public',
@@ -22,24 +22,32 @@ export const getHomePageComics = async () => {
 };
 
 //SearchForm
-export const getComics = async ( searchParams) => {
-  const searchedValues =  filteredQuery(getObjFromParams(searchParams));
+export const getComics = async searchParams => {
+  const searchedValues = filteredQuery(getObjFromParams(searchParams));
 
   const defaultParams = {
     orderBy: '-focDate',
-    startYear: '2018',
     format: 'comic',
     limit: 16,
   };
 
-  const paramsToSearch = {...defaultParams, ...searchedValues}
-  console.log(searchedValues)
-  // const params = new URLSearchParams(paramsToSearch);
+  const title = searchParams.title ? findTitle(searchedValues) : null;
+  const paramsToSearch = filteredQuery({ title, ...defaultParams, ...searchedValues });
 
-  // const offset = searchParams.page * 12;
-  // const res = await instance.get(`/comics?${params}&offset=${offset}&noVariants=true`);
-  // return res.data.data;
-  return true;
+
+  const offset = Number(paramsToSearch.page) * Number(paramsToSearch.limit);
+
+  delete paramsToSearch.page;
+
+  const params = new URLSearchParams(paramsToSearch);
+
+  const res = await instance.get(`/comics?${params}&offset=${offset}&noVariants=true`);
+
+  return res.data.data;
+
+
+  // return new Promise((resolve, reject) => setTimeout(resolve, 5000))
+
 };
 //Comic by id
 export const getComicsById = async id => {

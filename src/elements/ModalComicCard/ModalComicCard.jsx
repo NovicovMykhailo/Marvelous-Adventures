@@ -16,7 +16,7 @@ const ModalComicCard = ({ card }) => {
   return (
     <Link
       to={'/search'}
-      state={{ name: `${title.slice(0, index).toLowerCase()}` }}
+      state={{ name: `${title.slice(0, index).toLowerCase()}` , type: 'searchBar' }}
       onClick={() => setTimeout(closeAllModals(), 1000)}
       className={`${css.card}`}
       title={`${title} \nby: ${authors.map(author => author.name).join(' and ')}`}

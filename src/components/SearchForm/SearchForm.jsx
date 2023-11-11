@@ -1,22 +1,26 @@
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
+import { toast } from 'react-toastify';
 import { formatOpts, sortByOpts } from './formatOptions';
+import toastId from 'elements/Toasts/toastId';
 
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-import { getObjFromParams } from 'helpers';
+import { getObjFromParams, resetDate, filteredQuery } from 'helpers';
 
 import { ReactComponent as Picker } from './indicator.svg';
 import { ReactComponent as Search } from '../../images/search.svg';
+import Loader from 'elements/Loader/Loader';
 
 import { formatStyles } from './select-format-styles';
 import { orderStyles } from './select-order-styles';
 import css from './SearchForm.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import './datePicker.css';
+import InfoToast from '../../elements/Toasts/InfoToast';
 
-const SearchForm = () => {
+const SearchForm = ({ isSet, disabled }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const values = getObjFromParams(searchParams);
   const { state } = useLocation();
@@ -33,7 +37,7 @@ const SearchForm = () => {
       ? sortByOpts[sortByOpts.indexOf(sortByOpts.find(({ value }) => value === values.orderBy))]
       : sortByOpts[0]
   );
-  const [startDate, setStartDate] = useState(values.startYear ? new Date(values.startYear) : new Date());
+  const [startDate, setStartDate] = useState(values.startYear ? new Date(values.startYear) : new Date(2010, 6, 7, 12));
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const pickerRef = useRef();
@@ -48,13 +52,18 @@ const SearchForm = () => {
   };
 
   const onSubmit = () => {
-    const paramsObj = {
-      orderBy: `${selectedOrder?.value}` || null,
-      startYear: `${new Date(startDate).getFullYear()}` || null,
-      format: `${selectedFormat?.value}` || null,
-      title: `${searchQue}` || null,
-    };
-    setSearchParams(paramsObj);
+    if (searchQue !== '') {
+      const paramsObj = {
+        orderBy: `${selectedOrder?.value}` || null,
+        startYear: `${resetDate(startDate)}`,
+        format: `${selectedFormat?.value}` || null,
+        title: `${searchQue}` || null,
+      };
+      setSearchParams(filteredQuery(paramsObj));
+      isSet(prev => (prev += 1));
+    } else {
+      toast(<InfoToast />, { toastId: toastId.info });
+    }
   };
 
   return (
@@ -64,12 +73,13 @@ const SearchForm = () => {
         <input
           className={css.search}
           type="search"
-          name="query"
           placeholder="Enter text"
           value={searchQue}
+          required={true}
+          disabled={disabled}
           onChange={e => setSearchQue(e.target.value)}
         />
-        <Search className={css.icon} onClick={onSubmit} />
+        {disabled ? <Loader /> : <Search className={css.icon} onClick={onSubmit} />}
       </label>
       <label>
         <span className={css.lableText}>Format</span>
@@ -93,6 +103,8 @@ const SearchForm = () => {
           onCalendarOpen={() => setIsCalendarOpen(true)}
           onCalendarClose={() => setIsCalendarOpen(false)}
           ref={pickerRef}
+          isClearable
+          placeholderText="Any date"
           dropdownMode="select"
         />
         <Picker

@@ -1,5 +1,6 @@
 import BottomTab from './BottomTab';
 import css from './HeroCardRight.module.css';
+import { isSpiderName } from 'helpers';
 import { Link } from 'react-router-dom';
 
 const HeroCardRight = ({ color }) => {
@@ -27,7 +28,7 @@ const HeroCardRight = ({ color }) => {
         ></div>
         <Link
           to={'/search'}
-          state={{ name: `${names[color].toLowerCase()}` }}
+          state={{ name: `${isSpiderName(names[color].toLowerCase())}` }}
           className={css.cardName}
           data-swiper-parallax-x="300"
           data-swiper-parallax-duration={paralaxDuration}

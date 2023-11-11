@@ -1,5 +1,6 @@
 .card {
   flex-grow: 1;
+  max-width: 346px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -8,17 +9,21 @@
   cursor: pointer;
   overflow: hidden;
   border: 1px solid transparent;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transition: all .17s ease-in-out;
+  background-color: transparent;
 }
 
 .card:hover {
-  transform: scale(0.99);
-  filter: drop-shadow(0px 0px 3px rgb(41, 37, 57))
+  filter: drop-shadow(0px 0px 3px rgb(131, 114, 198));
+  transform: translate3d(0,-20px,0);
+
+
 
 }
 .card:hover .cardImage {
-  transform: scale(0.99);
-  filter: drop-shadow(0px 0px 3px rgb(164, 164, 164))
+  box-shadow: 0 24px 20px -15px rgba(130, 13, 120, 0.773);
+  filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
+
 }
 
 .cardImage {
@@ -27,8 +32,15 @@
   overflow: hidden;
 }
 
+.hero {
+  flex-grow: 1;
+  max-width: 100%;
+
+}
+
 .hero > .cardImage {
   height: 519px;
+
   object-fit: cover;
   object-position: top;
 }

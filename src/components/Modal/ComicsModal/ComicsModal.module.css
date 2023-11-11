@@ -29,13 +29,24 @@
   border-radius: var(--radius);
   width: 60px;
   height: 60px;
+  aspect-ratio: 1/1;
+  transition: all 0.12s ease-in-out
 }
+
+.charactersListItem:hover  .charactersImage{
+  transform: scale(1.2)
+}
+
 .charactersListItem {
   display: flex;
   align-items: flex-start;
   gap: 8px;
   cursor: pointer;
+
 }
+
+
+
 .characters {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -157,6 +168,7 @@
   height: auto;
   border-radius: var(--radius);
 }
+
 .imgBG {
   border-radius: var(--radius);
   display: block;
@@ -182,6 +194,13 @@
 .galleryImage {
   object-fit: contain;
   transform: scale(1.8);
+  transition: all 0.12s ease-in-out
+}
+
+
+
+.galleryImage:hover{
+  transform: scale(2)
 }
 
 /* animation */

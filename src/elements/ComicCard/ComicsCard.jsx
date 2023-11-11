@@ -12,7 +12,7 @@ const ComicsCard = ({ card, openModal, size }) => {
   const authors = creators.items.filter(author => author.role === 'writer');
 
   return (
-    <div
+    <div data-scroll data-scroll-speed="1"
       className={`${css.card} ${styles[size]}`}
       onClick={() => openModal(id)}
       title={`${title} \nby: ${authors.map(author => author.name).join(' and ')}`}

@@ -6,11 +6,12 @@ import { ReactComponent as Next } from './iconRight.svg';
 
 // import { useState } from 'react';
 
-const PaginationComponent = ({currentPage, changePage, totalPages = 10}) => {
+const PaginationComponent = ({currentPage, changePage, totalPages = 10, isClicked}) => {
   // const [page, setPage] = useState(0);
 
 
   const handlePageChange = page => {
+    isClicked(true)
     changePage(page)
   };
 

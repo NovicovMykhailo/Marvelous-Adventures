@@ -91,3 +91,20 @@
   font-size: 16px;
 
 }
+.react-datepicker__close-icon {
+  right: 30%;
+}
+.react-datepicker__close-icon::after {
+  cursor: pointer;
+  background-color: var(--blue);
+  color: var(--text-prime);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  font-size: 18px;
+  line-height: 1;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  content: "×";
+}

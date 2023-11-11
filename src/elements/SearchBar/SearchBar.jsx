@@ -14,7 +14,7 @@ const SearchBar = props => {
   };
 
   function onSubmit() {
-    navigate(`/search`, { state: { name: `${q.toLowerCase()}` } });
+    navigate(`/search`, { state: { name: `${q.toLowerCase()}`, type: 'searchBar' } });
     setQ('');
   }
 

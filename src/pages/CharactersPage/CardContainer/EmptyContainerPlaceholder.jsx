@@ -1,6 +1,6 @@
 import css from './CardContainer.module.css';
 
-const ContainerPlaceholder = props => {
+const EmptyContainerPlaceholder = () => {
   return (
     <div className={css.placeholder}>
       <p className={css.text}>Try looking for something else..</p>
@@ -8,4 +8,4 @@ const ContainerPlaceholder = props => {
   );
 };
 
-export default ContainerPlaceholder;
+export default EmptyContainerPlaceholder;

@@ -8,19 +8,19 @@
     cursor: pointer;
     overflow: hidden;
     border: 1px solid transparent;
-    transition: transform 0.2s ease, filter 0.2s ease;
+    transition: all .17s ease-in-out;
     text-decoration: none;
     color: var(--text-prime)
   }
   
   .card:hover {
-    transform: scale(0.99);
-    filter: drop-shadow(0px 0px 3px rgb(41, 37, 57))
+    filter: drop-shadow(0px 0px 3px rgb(131, 114, 198));
+    transform: translate3d(0,-10px,0);
   
   }
   .card:hover .cardImageBlock{
-    transform: scale(0.99);
-    filter: drop-shadow(0px 0px 3px rgb(164, 164, 164))
+    box-shadow: 0 18px 20px -15px rgba(130, 13, 120, 0.773);
+    filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
   }
   
   .cardImage {

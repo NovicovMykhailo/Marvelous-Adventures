@@ -1,27 +1,36 @@
 {
   "files": {
-    "main.css": "/marvelous-adventures/static/css/main.718bd04e.css",
-    "main.js": "/marvelous-adventures/static/js/main.5ba18b10.js",
+    "main.css": "/marvelous-adventures/static/css/main.a3f47d68.css",
+    "main.js": "/marvelous-adventures/static/js/main.2418fc9b.js",
+    "static/media/char-hero-dsk.png": "/marvelous-adventures/static/media/char-hero-dsk.931ac46d6fa540d94a6a.png",
+    "static/media/spiner-4-toasts.gif": "/marvelous-adventures/static/media/spiner-4-toasts.9bb27d9aba115ddb8c5b.gif",
+    "static/media/mainSpinner.gif": "/marvelous-adventures/static/media/mainSpinner.5a9422872b108c3b43f0.gif",
     "static/media/panther-dsk.png": "/marvelous-adventures/static/media/panther-dsk.4a68b8ec28633b83272e.png",
     "static/media/hulk-dsk.png": "/marvelous-adventures/static/media/hulk-dsk.07075f1fb5205f2413eb.png",
     "static/media/spider-dsk.png": "/marvelous-adventures/static/media/spider-dsk.b6dafa5ae63c40f05e99.png",
     "static/media/hulk-r-dsk.png": "/marvelous-adventures/static/media/hulk-r-dsk.da44a1c39d569c8b9fbf.png",
     "static/media/panther-r-dsk.png": "/marvelous-adventures/static/media/panther-r-dsk.4b9e506429dd105c35f9.png",
     "static/media/spider-r-dsk.png": "/marvelous-adventures/static/media/spider-r-dsk.b62560dfbb1dfc641074.png",
+    "static/media/hulk.png": "/marvelous-adventures/static/media/hulk.c06a230e6b0746642b00.png",
+    "static/media/shield.png": "/marvelous-adventures/static/media/shield.399d6704967147530c96.png",
     "static/media/logo.svg": "/marvelous-adventures/static/media/logo.da7f0f3d52e1f009ac5dbe1e5e3e4c9d.svg",
     "static/media/insta.svg": "/marvelous-adventures/static/media/insta.b33ff9b40b40fbb4f6a2c44c58521d40.svg",
     "index.html": "/marvelous-adventures/index.html",
+    "static/media/BGImage.svg": "/marvelous-adventures/static/media/BGImage.42f12140d77520b80e7e.svg",
     "static/media/tweet.svg": "/marvelous-adventures/static/media/tweet.fd5cc5242b1577e6c05511f823e3ab79.svg",
     "static/media/arrowR.svg": "/marvelous-adventures/static/media/arrowR.bbc65c4d8632781a58f250d0d5d1dbf7.svg",
     "static/media/arrow.svg": "/marvelous-adventures/static/media/arrow.ebcde9d4f2aad84b6169dde9d8f28174.svg",
     "static/media/search.svg": "/marvelous-adventures/static/media/search.5804bf024cba0fe3218b939b794871d2.svg",
     "static/media/fb.svg": "/marvelous-adventures/static/media/fb.ec368342021068bff626201741c32b5f.svg",
+    "static/media/indicator.svg": "/marvelous-adventures/static/media/indicator.8b67539a5261250c034d598aef3d6e47.svg",
     "static/media/close.svg": "/marvelous-adventures/static/media/close.d3e18fa924d81215bc9262d69665be72.svg",
-    "main.718bd04e.css.map": "/marvelous-adventures/static/css/main.718bd04e.css.map",
-    "main.5ba18b10.js.map": "/marvelous-adventures/static/js/main.5ba18b10.js.map"
+    "static/media/iconLeft.svg": "/marvelous-adventures/static/media/iconLeft.090c6356b12dd276e51ef85bb9010652.svg",
+    "static/media/iconRight.svg": "/marvelous-adventures/static/media/iconRight.a7a95f3a4101c8e3e2b3f52bec904f86.svg",
+    "main.a3f47d68.css.map": "/marvelous-adventures/static/css/main.a3f47d68.css.map",
+    "main.2418fc9b.js.map": "/marvelous-adventures/static/js/main.2418fc9b.js.map"
   },
   "entrypoints": [
-    "static/css/main.718bd04e.css",
-    "static/js/main.5ba18b10.js"
+    "static/css/main.a3f47d68.css",
+    "static/js/main.2418fc9b.js"
   ]
 }

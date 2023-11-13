@@ -8,7 +8,7 @@ const Creators = ({ creators }) => {
       <div>
         <h3 className={css.modalTitle}>Creator</h3>
         <ul className={css.creatorsBlock}>
-          {creators.map(creator => {
+          {creators?.map(creator => {
             const { id, thumbnail, fullName } = creator;
             return (
               <li key={id} className={css.creatorCard}>

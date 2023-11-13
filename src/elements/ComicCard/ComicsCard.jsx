@@ -17,7 +17,7 @@ const ComicsCard = ({ card, openModal, size }) => {
       onClick={() => openModal(id)}
       title={`${title} \nby: ${authors.map(author => author.name).join(' and ')}`}
     >
-      <img className={css.cardImage} src={getImage(thumbnail)} alt="character" />
+      <img className={`${css.cardImage} animate`} src={getImage(thumbnail)} alt="character" />
       <ul className={css.cardBottomTab}>
         <li className={css.cardTitle}>{title}</li>
         <li className={css.cardAuthor}>

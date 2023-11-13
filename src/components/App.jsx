@@ -23,7 +23,7 @@ export const App = () => {
   }, [limit, width]);
 
 
-  MouseSmooth({ time: 2000, size: 100 });
+  MouseSmooth({ time: 1000, size: 100 });
   return (
 
       <Routes>

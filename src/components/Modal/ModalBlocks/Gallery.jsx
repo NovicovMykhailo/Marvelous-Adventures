@@ -1,16 +1,21 @@
 import { getImage } from 'helpers';
 import { useState, useEffect, useRef } from 'react';
 import useOnLoadImages from 'hooks/useOnLoadImages';
-import css from '../ComicsModal/ComicsModal.module.css'
+
+import css from '../ComicsModal/ComicsModal.module.css';
+
 
 const Gallery = ({ comicsData, stories, setHeight }) => {
   const { thumbnail, images } = comicsData;
   const [mainPhoto, setMainPhoto] = useState(thumbnail);
   const [fadeProp, setFadeProp] = useState(css.fadeOut);
 
+  const [counter, setCounter] = useState(0);
+
   const ref = useRef(null);
   const imageContainer = useRef(null);
   const imagesAreLoaded = useOnLoadImages(imageContainer);
+  const interval = 4000;
 
   useEffect(() => {
     setHeight(ref.current.clientHeight);
@@ -18,6 +23,7 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
 
   // animation
   let galleryItems = stories
+    .slice(0, 10)
     .map(({ thumbnail }) => {
       if (!thumbnail.path.includes('image_not_available')) {
         return thumbnail;
@@ -28,33 +34,45 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
     .reverse();
   const filteredGalleryItems = galleryItems.filter(item => item !== null);
 
-  const interval = 5000;
-
   useEffect(() => {
-    setFadeProp(css.fadeIn);
+    setTimeout(()=>{
+      setFadeProp(css.fadeIn);
+      setCounter(filteredGalleryItems.length);
+    }, 500)
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    let i = filteredGalleryItems.length;
-    const handle = setInterval(() => {
-      if (i !== 1) {
-        i -= 1;
-        setMainPhoto(filteredGalleryItems[i]);
 
-        setFadeProp(css.fadeIn);
+  useEffect(() => {
+    const handle = setInterval(async () => {
+      if (counter !== 1) {
+      
+        setCounter(prev => (prev -= 1));
+        setFadeProp(css.fadeOut);
+        setTimeout(()=>{
+          setMainPhoto(filteredGalleryItems[counter - 1]);
+          setFadeProp(css.fadeIn);
+        }, 500)
       } else {
-        setFadeProp(css.fadeIn);
+        setFadeProp(css.fadeOut);
         setMainPhoto(thumbnail);
+        setTimeout(()=>{
+          setMainPhoto(thumbnail);
+          setCounter(filteredGalleryItems.length);
+          setFadeProp(css.fadeIn);
+        }, 500)
+       
       }
     }, interval);
 
     return () => clearInterval(handle);
-  }, [filteredGalleryItems, thumbnail]);
+  }, [counter, filteredGalleryItems, thumbnail]);
 
   return (
     <div className={css.photoBlock} ref={ref}>
       <span className={css.imgBG}>
-        <img className={`${css.img} ${fadeProp}`} src={getImage(mainPhoto)} alt="cover" />
+        <img className={`${css.img} ${fadeProp} animate`} src={getImage(mainPhoto)} alt="cover" />
       </span>
 
       <div>
@@ -72,10 +90,13 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
               return (
                 <li key={id}>
                   <img
-                    className={css.galleryImage}
+                    className={`${css.galleryImage} animate`}
                     src={getImage(thumbnail)}
                     alt="galery"
-                    onClick={() => setMainPhoto(thumbnail)}
+                    onClick={() => {
+                      setMainPhoto(thumbnail);
+                      setFadeProp(css.fadeIn);
+                    }}
                     title={title}
                   />
                 </li>

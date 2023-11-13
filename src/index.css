@@ -104,3 +104,25 @@ select:-webkit-autofill:is(:hover, :focus) {
   --toastify-text-color-dark: var(--text-prime);
   --toastify-color-dark: #0c0b0b31 ;
 }
+
+
+
+.animate {
+  animation: animate 2s;
+}
+.relative{
+  position:relative
+}
+
+
+@keyframes animate {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+

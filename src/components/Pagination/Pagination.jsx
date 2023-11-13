@@ -4,10 +4,10 @@ import { ReactComponent as Prev } from './iconLeft.svg';
 import { ReactComponent as Next } from './iconRight.svg';
 
 
-// import { useState } from 'react';
+
 
 const PaginationComponent = ({currentPage, changePage, totalPages = 10, isClicked}) => {
-  // const [page, setPage] = useState(0);
+
 
 
   const handlePageChange = page => {

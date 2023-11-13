@@ -45,8 +45,6 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
       try {
         setStatus('isFetching');
 
-   
-
         isFormDisabled(true);
         searchParams.set('limit', limit);
         if (state?.name) {
@@ -125,7 +123,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     //change if page changed
 
     if (clicked) {
-      if (page > 0) {
+
         const prevParams = getObjFromParams(searchParams);
         const newParams = { ...prevParams, page };
         setSearchParams(newParams);
@@ -155,7 +153,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
 
         // console.log('changing page');
         return;
-      }
+
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -272,6 +270,15 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     }
   }, [comics, limit]);
 
+// page Up    
+  useEffect(() => {
+    window.scrollTo({
+      top: 800,
+      behavior: 'smooth',
+    });
+  }, [clicked]);
+  
+// skeleton array generator
   function skeleton(count) {
     let arr = [];
     for (let i = 0; i < count; i += 1) {
@@ -279,6 +286,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     }
     return arr;
   }
+
 
   //component
   if (status === 'isFetching') {
@@ -293,11 +301,8 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     return <div>Error: {error.message}</div>;
   } else if (status === 'isSuccess' || status === 'isPending') {
     return (
-      <div style={{ position: 'relative' }}>
-        {status === 'isPending' && (
-          // <div style={{ width: '100%', textAlign: 'center', margin: '24px 60px' }}> isPending... </div>
-          <PendingScreen />
-        )}
+      <div className='relative'>
+        {status === 'isPending' && <PendingScreen />}
         <div className={css.grid}>
           {comics && comics?.results?.length > 0 ? (
             comics.results.map(card => (

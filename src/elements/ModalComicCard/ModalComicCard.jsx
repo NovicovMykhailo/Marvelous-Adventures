@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getImage, pageToTop } from 'helpers';
+import { getImage, pageToTop, urlNormalizer } from 'helpers';
 import { useContext } from 'react';
 import { ModalContext } from 'components/Modal/ModalContext/ModalContext';
 import css from './ModalComicCard.module.css';
@@ -20,7 +20,7 @@ const ModalComicCard = ({ card }) => {
       title={`${title} \nby: ${authors.map(author => author.name).join(' and ')}`}
     >
       <div className={css.cardImageBlock}>
-        <img className={`${css.cardImage} animate`} src={getImage(thumbnail)} alt="character" />
+        <img className={`${css.cardImage} animate`} src={urlNormalizer(getImage(thumbnail))} alt="character" />
       </div>
 
       <ul className={css.cardBottomTab}>

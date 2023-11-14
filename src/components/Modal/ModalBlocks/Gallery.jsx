@@ -1,4 +1,4 @@
-import { getImage } from 'helpers';
+import { getImage, urlNormalizer } from 'helpers';
 import { useState, useEffect, useRef } from 'react';
 import useOnLoadImages from 'hooks/useOnLoadImages';
 
@@ -71,7 +71,7 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
   return (
     <div className={css.photoBlock} ref={ref}>
       <span className={css.imgBG}>
-        <img className={`${css.img} ${fadeProp} animate`} src={getImage(mainPhoto)} alt="cover" />
+        <img className={`${css.img} ${fadeProp} animate`} src={urlNormalizer(getImage(mainPhoto))} alt="cover" />
       </span>
       <ul className={css.imageGallery} ref={imageContainer}>
         {stories &&
@@ -81,7 +81,7 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
                 <li key={id}>
                   <img
                     className={`${css.galleryImage} animate`}
-                    src={getImage(thumbnail)}
+                    src={urlNormalizer(getImage(thumbnail))}
                     alt="galery"
                     onClick={() => {
                       setMainPhoto(thumbnail);

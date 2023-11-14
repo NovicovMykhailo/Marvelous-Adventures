@@ -1,5 +1,5 @@
 
-import { getImage } from 'helpers';
+import { getImage, urlNormalizer } from 'helpers';
 import css from '../ComicsModal/ComicsModal.module.css'
 
 
@@ -15,7 +15,7 @@ const Creators = ({ creators }) => {
             const { id, thumbnail, fullName } = creator;
             return (
               <li key={id} className={css.creatorCard}>
-                <img className={css.creatorImage} src={getImage(thumbnail, 'med_Sq')} alt="author" title={fullName}></img>
+                <img className={css.creatorImage} src={urlNormalizer(getImage(thumbnail, 'med_Sq'))} alt="author" title={fullName}></img>
                 <div className={css.creatorDescr}>
                   <p className={css.creatorRole}>Writer</p>
                   <p className={css.modalText}>{fullName}</p>

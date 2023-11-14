@@ -21,13 +21,15 @@
 .text {
   max-width: 192px;
 }
+
 .grid{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 64px;
-  column-gap: 16px;
-
   padding-top: 64px;
 
+}
+.grid{
+  column-gap: 16px;
 }

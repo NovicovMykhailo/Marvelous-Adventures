@@ -10,10 +10,8 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HashRouter >
-      {/* <BrowserRouter basename="/marvelous-adventures"> */}
         <App />
         <ToastWrapper />
-      {/* </BrowserRouter> */}
     </HashRouter>
   </React.StrictMode>
 );

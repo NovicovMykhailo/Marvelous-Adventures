@@ -1,13 +1,13 @@
 import css from './CardContainer.module.css';
 
 import { getComics } from '../../../services/api';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState} from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { ModalContext } from 'components/Modal/ModalContext/ModalContext';
 
-import { getObjFromParams, pageToTop } from 'helpers';
+import { getObjFromParams } from 'helpers';
 
 import PaginationComponent from 'components/Pagination/Pagination';
 
@@ -23,6 +23,7 @@ import PendingScreen from './PendingScreen';
 const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
   const { state } = useLocation();
   const { openModal } = useContext(ModalContext);
+
 
   //search data
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,12 +45,13 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     (async () => {
       try {
         setStatus('isFetching');
-
         isFormDisabled(true);
         searchParams.set('limit', limit);
+
         if (state?.name) {
           searchParams.set('title', state.name);
         }
+
         if (Number(searchParams.getAll('page')) !== 0) {
           setPage(Number(searchParams.getAll('page')));
           if (page !== 0) {
@@ -58,7 +60,6 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
         } else searchParams.set('page', page);
 
         setSearchParams(searchParams);
-        // console.log('Init');
         const data = await toast.promise(getComics(searchParams), {
           pending: {
             render() {
@@ -82,14 +83,8 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
             toastId: toastId.error,
           },
         });
-        window.scrollTo({
-          top: 800,
-          behavior: 'smooth',
-        });
-        // const data = await getComics(searchParams);
         setComics(data);
         setPrevSearchState(searchParams);
-
         setStatus('isSuccess');
         isFormDisabled(false);
         return;
@@ -123,6 +118,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     //change if page changed
 
     if (clicked) {
+     
       const prevParams = getObjFromParams(searchParams);
       const newParams = { ...prevParams, page };
       setSearchParams(newParams);
@@ -140,7 +136,6 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
           },
           toastId: toastId.success,
         },
-
         error: {
           render() {
             return <ErrorToast />;
@@ -274,11 +269,6 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     }
   }, [comics, limit]);
 
-  // page Up
-  useEffect(() => {
-    pageToTop();
-  }, [clicked]);
-
   // skeleton array generator
   function skeleton(count) {
     let arr = [];
@@ -305,8 +295,8 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
         {status === 'isPending' && <PendingScreen />}
         <div className={css.grid}>
           {comics && comics?.results?.length > 0 ? (
-            comics.results.map(card => (
-              <ComicsCard card={card} key={card.id} openModal={() => openModal(card.id)} size={'basic'} />
+            comics.results.map((card, i) => (
+              <ComicsCard card={card} key={card.id} openModal={() => openModal(card.id)} size={'basic'} i={i}/>
             ))
           ) : (
             <EmptyContainerPlaceholder />

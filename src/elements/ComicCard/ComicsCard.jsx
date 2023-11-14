@@ -1,7 +1,9 @@
 import { getImage, urlNormalizer } from 'helpers';
 import css from './ComicsCard.module.css';
+import { motion } from 'framer-motion';
+import { cardVariants } from 'elements/Animations/animation-settings';
 
-const ComicsCard = ({ card, openModal, size }) => {
+const ComicsCard = ({ card, openModal, size , i}) => {
   const { title, thumbnail, creators, id } = card;
 
   const styles = {
@@ -12,19 +14,21 @@ const ComicsCard = ({ card, openModal, size }) => {
   const authors = creators.items.filter(author => author.role === 'writer');
 
   return (
-    <div data-scroll data-scroll-speed="1"
+    <motion.div
+      variants={cardVariants}
+      animate="visible"
+      initial="hidden"
+      custom={i}
       className={`${css.card} ${styles[size]}`}
       onClick={() => openModal(id)}
       title={`${title} \nby: ${authors.map(author => author.name).join(' and ')}`}
     >
-      <img className={`${css.cardImage} animate`} src={urlNormalizer(getImage(thumbnail))} alt="character" />
+      <img className={`${css.cardImage}`} src={urlNormalizer(getImage(thumbnail))} alt="character" />
       <ul className={css.cardBottomTab}>
         <li className={css.cardTitle}>{title}</li>
-        <li className={css.cardAuthor}>
-          {authors.map(author => author.name).join(', ')}
-        </li> 
+        <li className={css.cardAuthor}>{authors.map(author => author.name).join(', ')}</li>
       </ul>
-    </div>
+    </motion.div>
   );
 };
 

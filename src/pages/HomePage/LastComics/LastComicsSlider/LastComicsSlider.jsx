@@ -79,9 +79,9 @@ const LastComicsSlider = () => {
           onSlideChange={isButtonActive}
         >
           {data &&
-            data.map(card => (
+            data.map((card, i) => (
               <SwiperSlide key={card.id}>
-                <ComicsCard card={card} openModal={()=>openModal(card.id)} size={'hero'} />
+                <ComicsCard card={card} openModal={()=>openModal(card.id)} size={'hero'} i={i}/>
               </SwiperSlide>
             ))}
         </Swiper>

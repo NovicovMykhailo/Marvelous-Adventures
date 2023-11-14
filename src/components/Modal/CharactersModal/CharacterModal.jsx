@@ -62,8 +62,8 @@ const CharacterModal = ({ id, closeModal }) => {
           <>
             <p className={css.modalTitle}>List of comics</p>
             <ul className={css.charactersListItem}>
-              {comicsList?.map(comic => (
-                <ModalComicCard key={comic.id} card={comic} />
+              {comicsList?.map((comic, i) => (
+                <ModalComicCard key={comic.id} card={comic} i={i}/>
               ))}
             </ul>
           </>

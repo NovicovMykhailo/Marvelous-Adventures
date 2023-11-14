@@ -9,6 +9,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.1",
+    "framer-motion": "^10.16.5",
     "i": "^0.3.7",
     "locomotive-scroll": "^4.1.4",
     "md5": "^2.3.0",

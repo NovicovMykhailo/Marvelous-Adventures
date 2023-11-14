@@ -3,8 +3,11 @@ import { getImage, pageToTop, urlNormalizer } from 'helpers';
 import { useContext } from 'react';
 import { ModalContext } from 'components/Modal/ModalContext/ModalContext';
 import css from './ModalComicCard.module.css';
+import { motion } from 'framer-motion';
+import { cardVariants } from 'elements/Animations/animation-settings';
 
-const ModalComicCard = ({ card }) => {
+
+const ModalComicCard = ({ card, i }) => {
   const { title, thumbnail, creators } = card;
   const { closeAllModals } = useContext(ModalContext);
 
@@ -19,9 +22,13 @@ const ModalComicCard = ({ card }) => {
       className={`${css.card}`}
       title={`${title} \nby: ${authors.map(author => author.name).join(' and ')}`}
     >
-      <div className={css.cardImageBlock}>
-        <img className={`${css.cardImage} animate`} src={urlNormalizer(getImage(thumbnail))} alt="character" />
-      </div>
+      <motion.div       variants={cardVariants}
+      animate="visible"
+      initial="hidden"
+      custom={i} 
+      className={css.cardImageBlock}>
+        <img className={`${css.cardImage}`} src={urlNormalizer(getImage(thumbnail))} alt="character" />
+      </motion.div>
 
       <ul className={css.cardBottomTab}>
         <li className={css.cardTitle}>{title}</li>

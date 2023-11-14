@@ -2,6 +2,7 @@ import css from './Pagination.module.css';
 import { Pagination } from 'react-headless-pagination';
 import { ReactComponent as Prev } from './iconLeft.svg';
 import { ReactComponent as Next } from './iconRight.svg';
+import { pageToTop } from 'helpers';
 
 
 
@@ -13,6 +14,8 @@ const PaginationComponent = ({currentPage, changePage, totalPages = 10, isClicke
   const handlePageChange = page => {
     isClicked(true)
     changePage(page)
+    pageToTop() 
+
   };
 
   return (

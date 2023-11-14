@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/marvelous-adventures/static/css/main.5f4d5043.css",
-    "main.js": "/marvelous-adventures/static/js/main.44596b9f.js",
+    "main.js": "/marvelous-adventures/static/js/main.551e2849.js",
     "static/media/char-hero-dsk.png": "/marvelous-adventures/static/media/char-hero-dsk.931ac46d6fa540d94a6a.png",
     "static/media/spiner-4-toasts.gif": "/marvelous-adventures/static/media/spiner-4-toasts.9bb27d9aba115ddb8c5b.gif",
     "static/media/mainSpinner.gif": "/marvelous-adventures/static/media/mainSpinner.5a9422872b108c3b43f0.gif",
@@ -27,10 +27,10 @@
     "static/media/iconLeft.svg": "/marvelous-adventures/static/media/iconLeft.090c6356b12dd276e51ef85bb9010652.svg",
     "static/media/iconRight.svg": "/marvelous-adventures/static/media/iconRight.a7a95f3a4101c8e3e2b3f52bec904f86.svg",
     "main.5f4d5043.css.map": "/marvelous-adventures/static/css/main.5f4d5043.css.map",
-    "main.44596b9f.js.map": "/marvelous-adventures/static/js/main.44596b9f.js.map"
+    "main.551e2849.js.map": "/marvelous-adventures/static/js/main.551e2849.js.map"
   },
   "entrypoints": [
     "static/css/main.5f4d5043.css",
-    "static/js/main.44596b9f.js"
+    "static/js/main.551e2849.js"
   ]
 }

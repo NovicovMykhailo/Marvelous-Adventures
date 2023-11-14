@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 import { ModalContext } from 'components/Modal/ModalContext/ModalContext';
 
-import { getObjFromParams } from 'helpers';
+import { getObjFromParams, pageToTop } from 'helpers';
 
 import PaginationComponent from 'components/Pagination/Pagination';
 
@@ -272,10 +272,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
 
 // page Up    
   useEffect(() => {
-    window.scrollTo({
-      top: 800,
-      behavior: 'smooth',
-    });
+    pageToTop()
   }, [clicked]);
   
 // skeleton array generator

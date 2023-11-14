@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getImage } from 'helpers';
+import { getImage, pageToTop } from 'helpers';
 import { useContext } from 'react';
 import { ModalContext } from 'components/Modal/ModalContext/ModalContext';
 import css from './ModalComicCard.module.css';
@@ -15,7 +15,7 @@ const ModalComicCard = ({ card }) => {
     <Link
       to={'/search'}
       state={{ name: `${title.slice(0, index).toLowerCase()}`, type: 'searchBar' }}
-      onClick={() => setTimeout(closeAllModals(), 1000)}
+      onClick={() => {setTimeout(closeAllModals(), 1000); pageToTop()}}
       className={`${css.card}`}
       title={`${title} \nby: ${authors.map(author => author.name).join(' and ')}`}
     >

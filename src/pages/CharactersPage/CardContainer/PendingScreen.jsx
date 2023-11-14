@@ -14,9 +14,9 @@ export default PendingScreen;
 
 const styles = {
   container: {
-    display: 'grid',
-    justifyItems: 'center',
-    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
     zIndex: 50,
     backgroundColor: '#ffffff3b',
     pointerEvent: 'none',
@@ -33,5 +33,6 @@ const styles = {
     filter: 'opacity(0.8)',
     height: '400px',
     width: 'auto',
+    marginTop: '120px',
   },
 };

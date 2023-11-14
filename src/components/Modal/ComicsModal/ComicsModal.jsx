@@ -46,7 +46,7 @@ const ComicsModal = ({ comicsCode, closeModal }) => {
       {status === 'fullfield' && <Gallery stories={stories} comicsData={comicsData} setHeight={getHeight} />}
       {status === 'pending' && <GallerySkeleton />}
       <div className={css.descriptionBlock} style={{ height: height }} ref={descriptionBlock}>
-        {status === 'fullfield' && creators?.length > 0 && (
+        {status === 'fullfield' && creators && (
           <About comic={comicsData} creators={creators} seriesAbout={seriesDesription} characters={characters} />
         )}
         {status === 'pending' && <AboutSkeleton />}

@@ -8,5 +8,6 @@ export { default as urlNormalizer } from './urlNormalizer.js';
 export { default as findTitle } from './findTitle.js';
 export { default as isSpiderName } from './spirerMan-normalizer.js';
 export { default as resetDate } from './resetDate.js';
+export { default as pageToTop } from './pageToTop.js';
 export { default as lorem } from './loremDescription.js';
 export * as LocalStorageApi from './LocalStotageApi.js';

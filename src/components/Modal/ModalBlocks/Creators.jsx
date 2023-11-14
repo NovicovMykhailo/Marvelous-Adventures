@@ -2,13 +2,16 @@
 import { getImage } from 'helpers';
 import css from '../ComicsModal/ComicsModal.module.css'
 
+
 const Creators = ({ creators }) => {
-  if (creators[0]) {
+  const filteredCreators = creators.filter(creator => creator !== undefined)
+  if (creators) {
+    
     return (
       <div>
         <h3 className={css.modalTitle}>Creator</h3>
         <ul className={css.creatorsBlock}>
-          {creators?.map(creator => {
+          {filteredCreators.map(creator => {
             const { id, thumbnail, fullName } = creator;
             return (
               <li key={id} className={css.creatorCard}>

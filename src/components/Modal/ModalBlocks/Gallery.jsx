@@ -23,7 +23,7 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
 
   // animation
   let galleryItems = stories
-    .slice(0, 10)
+    .slice(0, 8)
     .map(({ thumbnail }) => {
       if (!thumbnail.path.includes('image_not_available')) {
         return thumbnail;
@@ -56,7 +56,6 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
         }, 500)
       } else {
         setFadeProp(css.fadeOut);
-        setMainPhoto(thumbnail);
         setTimeout(()=>{
           setMainPhoto(thumbnail);
           setCounter(filteredGalleryItems.length);
@@ -74,18 +73,9 @@ const Gallery = ({ comicsData, stories, setHeight }) => {
       <span className={css.imgBG}>
         <img className={`${css.img} ${fadeProp} animate`} src={getImage(mainPhoto)} alt="cover" />
       </span>
-
-      <div>
-        {images?.length > 0 &&
-          images.map(image => {
-            if (image.path !== thumbnail.path) {
-              return <img className={css.imageThumbs} src={getImage(image)} alt="sample" />;
-            } else return null;
-          })}
-      </div>
       <ul className={css.imageGallery} ref={imageContainer}>
         {stories &&
-          stories.slice(0, 10).map(({ id, thumbnail, title }) => {
+          stories.slice(0, 8).map(({ id, thumbnail, title }) => {
             if (!thumbnail.path.includes('image_not_available')) {
               return (
                 <li key={id}>

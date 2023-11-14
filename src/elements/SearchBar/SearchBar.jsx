@@ -2,13 +2,13 @@ import { useState } from 'react';
 import searchIcon from '../../images/search.svg';
 import css from './SearchBar.module.css';
 import { useNavigate } from 'react-router-dom';
-const SearchBar = props => {
+const SearchBar = () => {
   const [q, setQ] = useState('');
   const navigate = useNavigate();
 
 
   const onKeyDown = e => {
-    if(e.target.name === 'searchBar'){
+    if(e.target.name === 'searchBar'){  
       if (e.code === 'Enter' || e.code === 'NumpadEnter') {
         onSubmit();
       }

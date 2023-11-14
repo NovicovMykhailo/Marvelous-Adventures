@@ -123,37 +123,35 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     //change if page changed
 
     if (clicked) {
-
-        const prevParams = getObjFromParams(searchParams);
-        const newParams = { ...prevParams, page };
-        setSearchParams(newParams);
-        toast.promise(fetchPage(new URLSearchParams(newParams)), {
-          pending: {
-            render() {
-              return <PendingToast />;
-            },
-            icon: false,
-            toastId: toastId.pending,
+      const prevParams = getObjFromParams(searchParams);
+      const newParams = { ...prevParams, page };
+      setSearchParams(newParams);
+      toast.promise(fetchPage(new URLSearchParams(newParams)), {
+        pending: {
+          render() {
+            return <PendingToast />;
           },
-          success: {
-            render() {
-              return <SuccessToast />;
-            },
-            toastId: toastId.success,
+          icon: false,
+          toastId: toastId.pending,
+        },
+        success: {
+          render() {
+            return <SuccessToast />;
           },
+          toastId: toastId.success,
+        },
 
-          error: {
-            render() {
-              return <ErrorToast />;
-            },
-            icon: false,
-            toastId: toastId.error,
+        error: {
+          render() {
+            return <ErrorToast />;
           },
-        });
+          icon: false,
+          toastId: toastId.error,
+        },
+      });
 
-        // console.log('changing page');
-        return;
-
+      // console.log('changing page');
+      return;
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -229,8 +227,14 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     };
 
     if (state?.type === 'searchBar' && state?.name) {
-      const prevParams = getObjFromParams(prevSearchState);
-      const newParams = { ...prevParams, page: 0, title: state?.name };
+      let newParams;
+      if (prevSearchState) {
+        const prevParams = getObjFromParams(prevSearchState);
+        newParams = { ...prevParams, page: 0, title: state?.name };
+      } else {
+        newParams = { page: 0, title: state?.name };
+      }
+
       setSearchParams(newParams);
       setPage(0);
       toast.promise(fetchPage(new URLSearchParams(newParams)), {
@@ -270,12 +274,12 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     }
   }, [comics, limit]);
 
-// page Up    
+  // page Up
   useEffect(() => {
-    pageToTop()
+    pageToTop();
   }, [clicked]);
-  
-// skeleton array generator
+
+  // skeleton array generator
   function skeleton(count) {
     let arr = [];
     for (let i = 0; i < count; i += 1) {
@@ -283,7 +287,6 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     }
     return arr;
   }
-
 
   //component
   if (status === 'isFetching') {
@@ -298,7 +301,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     return <div>Error: {error.message}</div>;
   } else if (status === 'isSuccess' || status === 'isPending') {
     return (
-      <div className='relative'>
+      <div className="relative">
         {status === 'isPending' && <PendingScreen />}
         <div className={css.grid}>
           {comics && comics?.results?.length > 0 ? (

@@ -63,3 +63,7 @@
   height: 24px;
 }
 
+.paginationButtons:has(.navigationIcon){
+  width: 32px;
+  padding: 0;
+}

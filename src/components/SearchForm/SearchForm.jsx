@@ -7,7 +7,7 @@ import toastId from 'elements/Toasts/toastId';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-import { getObjFromParams, resetDate, filteredQuery } from 'helpers';
+import { getObjFromParams, resetDate, filteredQuery, isEnglish } from 'helpers';
 
 import { ReactComponent as Picker } from './indicator.svg';
 import { ReactComponent as Search } from '../../images/search.svg';
@@ -88,7 +88,7 @@ const SearchForm = ({ isSet, disabled }) => {
           value={searchQue}
           required={true}
           disabled={disabled}
-          onChange={e => setSearchQue(e.target.value)}
+          onChange={e => setSearchQue(isEnglish(e.target.value))}
         />
         {disabled ? <Loader /> : <Search className={css.icon} onClick={onSubmit} />}
       </label>

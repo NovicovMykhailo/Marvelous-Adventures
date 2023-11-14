@@ -2,6 +2,7 @@ import { useState } from 'react';
 import searchIcon from '../../images/search.svg';
 import css from './SearchBar.module.css';
 import { useNavigate } from 'react-router-dom';
+import { isEnglish } from 'helpers';
 const SearchBar = () => {
   const [q, setQ] = useState('');
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const SearchBar = () => {
         placeholder="search"
         onKeyDown={onKeyDown}
         value={q}
-        onChange={e => setQ(e.target.value)}
+        onChange={e => setQ(isEnglish(e.target.value))}
       />
       <img className={css.icon} src={searchIcon} alt="search" onClick={onSubmit} />
     </div>

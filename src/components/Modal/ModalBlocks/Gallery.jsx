@@ -6,7 +6,7 @@ import css from '../ComicsModal/ComicsModal.module.css';
 
 
 const Gallery = ({ comicsData, stories, setHeight }) => {
-  const { thumbnail, images } = comicsData;
+  const { thumbnail} = comicsData;
   const [mainPhoto, setMainPhoto] = useState(thumbnail);
   const [fadeProp, setFadeProp] = useState(css.fadeOut);
 

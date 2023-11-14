@@ -37,7 +37,7 @@ const SearchForm = ({ isSet, disabled }) => {
       ? sortByOpts[sortByOpts.indexOf(sortByOpts.find(({ value }) => value === values.orderBy))]
       : sortByOpts[0]
   );
-  const [startDate, setStartDate] = useState(values.startYear ? new Date(values.startYear) : new Date(2010, 6, 7, 12));
+  const [startDate, setStartDate] = useState(values.startYear ? new Date(values.startYear) : null);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const pickerRef = useRef();
@@ -50,6 +50,16 @@ const SearchForm = ({ isSet, disabled }) => {
     const tooltipText = `Tooltip for year: ${year}`;
     return <span title={tooltipText}>{year}</span>;
   };
+  useEffect(()=>{
+    function submitByEnterKey(e){
+    if(e.target.name ==="searchForm"){
+      if(e.code === 'Enter' || e.code === 'NumpadEnter'  ){
+        onSubmit()
+      }}
+    }
+    window.addEventListener('keydown', submitByEnterKey)
+    return ()=> window.removeEventListener('keydown', submitByEnterKey)
+  })
 
   const onSubmit = () => {
     if (searchQue !== '') {
@@ -74,6 +84,7 @@ const SearchForm = ({ isSet, disabled }) => {
           className={css.search}
           type="search"
           placeholder="Enter text"
+          name='searchForm'
           value={searchQue}
           required={true}
           disabled={disabled}

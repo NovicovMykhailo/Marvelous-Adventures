@@ -30,9 +30,9 @@ const styles = {
   },
 
   image: {
-    filter: 'opacity(0.8)',
+    filter: 'opacity(0.9)',
     height: '400px',
     width: 'auto',
-    marginTop: '120px',
+    marginTop: '140px',
   },
 };

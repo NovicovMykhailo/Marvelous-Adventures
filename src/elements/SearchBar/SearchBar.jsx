@@ -8,9 +8,12 @@ const SearchBar = props => {
 
 
   const onKeyDown = e => {
-    if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-      onSubmit();
+    if(e.target.name === 'searchBar'){
+      if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+        onSubmit();
+      }
     }
+  
   };
 
   function onSubmit() {
@@ -23,6 +26,7 @@ const SearchBar = props => {
       <input
         className={css.input}
         type="text"
+        name="searchBar"
         placeholder="search"
         onKeyDown={onKeyDown}
         value={q}

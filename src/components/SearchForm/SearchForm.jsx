@@ -88,6 +88,7 @@ const SearchForm = ({ isSet, disabled }) => {
           value={searchQue}
           required={true}
           disabled={disabled}
+          
           onChange={e => setSearchQue(isEnglish(e.target.value))}
         />
         {disabled ? <Loader /> : <Search className={css.icon} onClick={onSubmit} />}

@@ -34,7 +34,6 @@ export const getComics = async searchParams => {
   const title = searchParams.title ? findTitle(searchedValues) : null;
   const paramsToSearch = filteredQuery({ title, ...defaultParams, ...searchedValues });
 
-
   const offset = Number(paramsToSearch.page) * Number(paramsToSearch.limit);
 
   delete paramsToSearch.page;
@@ -44,32 +43,40 @@ export const getComics = async searchParams => {
   const res = await instance.get(`/comics?${params}&offset=${offset}&noVariants=true`);
 
   return res.data.data;
-
-
-  // return new Promise((resolve, reject) => setTimeout(resolve, 5000))
-
 };
+
 //Comic by id
 export const getComicsById = async id => {
   //comic data
-  const comic = await instance.get(`/comics/${id}`);
+  const fetchComic = async id => {
+    return await instance.get(`/comics/${id}`);
+  };
   //character photos
-  const characters = await instance.get(`/characters?comics=${id}`);
-
-  const writersFiltered = comic.data.data.results[0].creators.items.filter(creator => creator.role === 'writer');
-  // get authors photo and info
-  const writerObj = await Promise.all(
-    writersFiltered.map(async writer => {
-      const name = writer.name.split(' ');
-      const result = await instance
-        .get(`/creators?firstName=${name[0]}&lastName=${name[1]}`)
-        .then(result => result.data.data.results[0]);
-      return result;
-    })
-  );
+  const fetchCharacters = async () => {
+    return await instance.get(`/characters?comics=${id}`);
+  };
+  // get authors
+  const fetchAuthors = async comic => {
+    const writersFiltered = comic.data.data.results[0].creators.items.filter(creator => creator.role === 'writer');
+    return await Promise.all(
+      writersFiltered.map(async writer => {
+        const name = writer.name.split(' ');
+        const result = await instance
+          .get(`/creators?firstName=${name[0]}&lastName=${name[1]}`)
+          .then(result => result.data.data.results[0]);
+        return result;
+      })
+    );
+  };
   //get series for stories
-  const seriesSelector = comic.data.data.results[0].series.resourceURI;
-  const series = await axios.get(urlNormalizer(seriesSelector), options);
+  const fetchSeries = async comic => {
+    const seriesSelector = comic.data.data.results[0].series.resourceURI;
+    return await axios.get(urlNormalizer(seriesSelector), options);
+  };
+  // Optimizing fetches
+  const [comic, characters] = await Promise.all([fetchComic(id), fetchCharacters(id)]);
+  const [writerObj, series] = await Promise.all([fetchAuthors(comic), fetchSeries(comic)]);
+
   //get storiesList for gallery images
   const storiesSelector = series.data.data.results[0].comics.collectionURI;
   const stories = await axios.get(urlNormalizer(storiesSelector), options);
@@ -89,31 +96,36 @@ export const getComicsById = async id => {
 export const getCaracter = async id => {
   const res = await instance.get(`/characters/${id}`);
 
-  const comicsListSelector = res.data.data.results[0].comics.items;
-  const storiesSelector = res.data.data.results[0].series.items;
-
-  const comicsData = await Promise.all(
-    comicsListSelector
-      .reverse()
-      .splice(0, 3)
-      .map(async ({ resourceURI }) => {
-        const result = await axios.get(urlNormalizer(resourceURI), options).then(result => result.data.data.results[0]);
-        return result;
-      })
-  );
-
-  const storiesData = await Promise.all(
-    storiesSelector.map(async ({ resourceURI }) => {
+  const getComicData = async res => {
+    const comicsListSelector = res.data.data.results[0].comics.items;
+    return await Promise.all(
+      comicsListSelector
+        .reverse()
+        .splice(0, 3)
+        .map(async ({ resourceURI }) => {
+          const result = await axios
+            .get(urlNormalizer(resourceURI), options)
+            .then(result => result.data.data.results[0]);
+          return result;
+        })
+    );
+  };
+  const getStoriesData = async res => {
+    const storiesSelector = res.data.data.results[0].series.items;
+    return await Promise.all (storiesSelector.map(async ({ resourceURI }) => {
       const result = await axios.get(urlNormalizer(resourceURI), options).then(result => result.data.data.results[0]);
-      return result;
-    })
-  );
+      return result
+    }));
+  };
+
+  const [comicsData, storiesData] = await Promise.all([getComicData(res), getStoriesData(res)]);
 
   const response = {
     character: res.data.data.results[0],
     comicsList: comicsData,
     stories: storiesData,
   };
+
 
   return response;
 };

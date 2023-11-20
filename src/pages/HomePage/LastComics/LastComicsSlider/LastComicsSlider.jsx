@@ -12,6 +12,7 @@ import { Mousewheel, Autoplay } from 'swiper/modules';
 import ComicsCard from 'elements/ComicCard/ComicsCard';
 import css from '../LastComics.module.css';
 import './LastComicsSlider.css';
+import { AnimationContext } from 'elements/Animations/AnimationContext';
 
 
 const LastComicsSlider = () => {
@@ -21,6 +22,7 @@ const LastComicsSlider = () => {
 
   const LastComicsSlider = useRef();
   const {openModal} = useContext(ModalContext)
+  const { animationState } = useContext(AnimationContext);
 
 
 
@@ -55,6 +57,10 @@ const LastComicsSlider = () => {
   function isButtonActive(e) {
     e.isBeginning ? setStartBtnActive(true) : setStartBtnActive(false);
     e.isEnd ? setIsEndBtnActive(true) : setIsEndBtnActive(false);
+  }
+
+  if (LastComicsSlider.current){
+    animationState ? LastComicsSlider.current.swiper.autoplay.start() : LastComicsSlider.current.swiper.autoplay.stop()
   }
 
   return (

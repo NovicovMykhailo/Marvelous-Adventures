@@ -12,11 +12,11 @@ const GallerySkeleton = props => (
     foregroundColor={foregroundColor}
     {...props}
   >
-    <rect x="0" y="0" rx="8" ry="8" width="332" height="445" />
-    <rect x="0" y="454" rx="8" ry="8" width="80" height="80" />
-    <rect x="84" y="454" rx="8" ry="8" width="80" height="80" />
-    <rect x="168" y="454" rx="8" ry="8" width="80" height="80" />
-    <rect x="252" y="454" rx="8" ry="8" width="80" height="80" />
+    <rect x="0" y="0" rx="8" ry="8" width="332" height="498" />
+    <rect x="0" y="507" rx="8" ry="8" width="80" height="80" />
+    <rect x="84" y="507" rx="8" ry="8" width="80" height="80" />
+    <rect x="168" y="507" rx="8" ry="8" width="80" height="80" />
+    <rect x="252" y="507" rx="8" ry="8" width="80" height="80" />
   </ContentLoader>
 );
 

@@ -294,12 +294,12 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
       <div className="relative">
         {status === 'isPending' && <PendingScreen />}
         <div className={css.grid}>
-          {comics && comics?.results?.length > 0 ? (
+          {comics && comics?.results?.length > 0 && !state?.name? (
             comics.results.map((card, i) => (
               <ComicsCard card={card} key={card.id} openModal={() => openModal(card.id)} size={'basic'} i={i}/>
             ))
           ) : (
-            <EmptyContainerPlaceholder />
+             <EmptyContainerPlaceholder />
           )}
         </div>
         {totalPages > 1 && (

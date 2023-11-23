@@ -29,5 +29,7 @@
   row-gap: 64px;
   column-gap: 16px;
   padding-top: 64px;
+  justify-content: center;
+
 
 }

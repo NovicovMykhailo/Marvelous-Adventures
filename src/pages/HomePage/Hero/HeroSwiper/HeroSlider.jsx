@@ -18,20 +18,27 @@ const HeroSlider = () => {
     thirdBar: '',
   });
 
+
+
   function onSlideChange(e) {
     setTimeout(() => {
       switch (e.activeIndex) {
         case 0:
           setNavBar({ firstBar: 'active', secondBar: '', thirdBar: '' });
+          swiperRef.current.swiper.mousewheel.enable()
           break;
         case 1:
           setNavBar({ firstBar: '', secondBar: 'active', thirdBar: '' });
+          swiperRef.current.swiper.mousewheel.enable()
           break;
         case 2:
           setNavBar({ firstBar: '', secondBar: '', thirdBar: 'active' });
+          swiperRef.current.swiper.mousewheel.disable()
           break;
         default:
           setNavBar({ firstBar: 'active', secondBar: '', thirdBar: '' });
+    
+
           break;
       }
     }, 1300);
@@ -66,6 +73,7 @@ const HeroSlider = () => {
         height={780}
         direction={'vertical'}
         ref={swiperRef}
+        mousewheel={true}
         effect={'slide'}
         parallax={true}
         slidesPerView={1}

@@ -2,9 +2,13 @@ import { getImage, urlNormalizer } from 'helpers';
 import css from './ComicsCard.module.css';
 import { motion } from 'framer-motion';
 import { cardVariants } from 'elements/Animations/animation-settings';
+import useAnimation from 'hooks/useAnimation';
+import { useRef } from 'react';
 
-const ComicsCard = ({ card, openModal, size , i}) => {
+const ComicsCard = ({ card, openModal, size, i }) => {
   const { title, thumbnail, creators, id } = card;
+  const ref = useRef(null);
+  useAnimation(ref);
 
   const styles = {
     hero: css.hero,
@@ -23,7 +27,13 @@ const ComicsCard = ({ card, openModal, size , i}) => {
       onClick={() => openModal(id)}
       title={`${title} \nby: ${authors.map(author => author.name).join(' and ')}`}
     >
-      <img className={`${css.cardImage}`} src={urlNormalizer(getImage(thumbnail))} alt="character" />
+      <img
+        className={`${css.cardImage}`}
+        src={urlNormalizer(getImage(thumbnail))}
+        alt="character"
+        ref={ref}
+        data-item
+      />
       <ul className={css.cardBottomTab}>
         <li className={css.cardTitle}>{title}</li>
         <li className={css.cardAuthor}>{authors.map(author => author.name).join(', ')}</li>

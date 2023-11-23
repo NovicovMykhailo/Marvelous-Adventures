@@ -72,7 +72,7 @@ const LastComicsSlider = () => {
           containerModifierClass={'swiper-lastComics'}
           slidesPerView={3}
           spaceBetween={16}
-          speed={2000}
+          speed={800}
           ref={LastComicsSlider}
           modules={[Autoplay, Mousewheel]}
           effect={'slide'}

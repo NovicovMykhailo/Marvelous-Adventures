@@ -39,6 +39,8 @@ const styles = {
     height: '100%',
     alignItems: 'center',
     gap: '40px',
+
+
   },
   toastText: {
     textTransform: 'capitalize',

@@ -1,13 +1,15 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
+import css from './AboutSkeleton.module.css'
 import { backgroundColor, foregroundColor } from "./options"
 
 const GallerySkeleton = props => (
   <ContentLoader
     speed={2}
-    width={343}
+    width="100%"
     height="100%"
     viewBox="0 0 335 600"
+    className={css.gallery}
     backgroundColor={backgroundColor}
     foregroundColor={foregroundColor}
     {...props}

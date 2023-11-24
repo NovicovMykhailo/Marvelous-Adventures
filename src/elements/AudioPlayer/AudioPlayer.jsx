@@ -6,8 +6,10 @@ import { ReactComponent as VolumeMed } from './svg/volume-medium.svg';
 import { ReactComponent as VolumeFull } from './svg/volume-high.svg';
 import YouTube from 'react-youtube';
 import css from './AudioPlayer.module.css';
+import useWindowResize from 'hooks/useWindowResize';
 
 const AudioPlayer = () => {
+  const {width} = useWindowResize()
   const [status, setStatus] = useState('play');
   const [position, setPosition] = useState(0);
   const [volume, setVolume] = useState(100);
@@ -16,6 +18,7 @@ const AudioPlayer = () => {
   const player = useRef();
   const { setIsAnimationShouldPlay } = useContext(AnimationContext);
   const icon = status === 'play' ? '▷' : '||';
+
 
   const opts = {
     height: '0',
@@ -97,13 +100,13 @@ const AudioPlayer = () => {
         <button onClick={handlePLay} className={css.button} disabled={!showStatusBar}>
           {icon}
         </button>
-        <p className={css.title}>Music & Animation</p>
+        <p className={css.title}>{width >= 768 ? 'Music & Animation' : 'play'}</p>
         {showStatusBar && (
           <input
             className={css.input}
             onChange={onChange}
             style={{
-              background: `linear-gradient(to right, #34387f 0%, #34387f ${position}%, #fafafa66 ${position}%, #fafafa66 100%)`,
+              background: `linear-gradient(to right, #34387f 0%, #34387f ${position}%, #fafafa00 ${position}%, #fafafa00 100%)`,
             }}
             type="range"
             name="range"

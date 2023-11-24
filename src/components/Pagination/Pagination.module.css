@@ -19,11 +19,12 @@
   font-weight: 500;
   line-height: 18px;
 
-  margin-top: 64px;
+  margin-top: 40px;
+  margin-bottom: 80px;
+
 }
 
 .paginationButtons {
- 
   min-width: 32px;
   height: 32px;
   padding: 10px;
@@ -36,19 +37,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  
- 
 }
 
 .buttonsActive {
   border-color: var(--blue);
-
 }
-.paginationButtons[disabled], .paginationButtons[disabled]>.navigationIcon{
+.paginationButtons[disabled],
+.paginationButtons[disabled] > .navigationIcon {
   border-color: transparent;
   color: var(--text-secondary);
   fill: var(--text-secondary);
-
 }
 
 .paginationButtons:hover {
@@ -63,7 +61,12 @@
   height: 24px;
 }
 
-.paginationButtons:has(.navigationIcon){
+.paginationButtons:has(.navigationIcon) {
   width: 32px;
   padding: 0;
+}
+@media screen and (min-width: 768px) {
+  .paginationButtonsBlock {
+    margin-top: 64px;
+  }
 }

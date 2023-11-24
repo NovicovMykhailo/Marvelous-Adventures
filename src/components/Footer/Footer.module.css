@@ -1,36 +1,79 @@
 .footer {
-  display: flex;
-  padding: 64px;
+  /* display: flex; */
+  padding: 40px 20px;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  /* flex-wrap: wrap; */
+  gap: 20px;
 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
 }
-.footer:first-child, .footer > ul{
-  width: 202px;
-}
-
 
 .comics {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 18px;
   font-weight: 400;
-  text-align: center;
-  width: 202px;
+  text-align: right;
+}
+
+.comics {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
 }
 .liscenceBlock {
   width: 100%;
   padding-top: 18px;
   padding-bottom: 18px;
   background-color: #34387f;
- 
 }
 
 .liscence {
   text-align: center;
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 400;
-  line-height: 18px;
-  letter-spacing: 0.28px;
+  line-height: 12px;
+  letter-spacing: 0.2px;
+}
+@media screen and (min-width: 375px) {
+  .footer {
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .footer {
+    grid-template-columns: auto 33.3% auto;
+  }
+  .comics {
+    text-align: center;
+  }
+  .footer > ul {
+    justify-content: flex-end;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    padding: 32px 64px;
+  }
+
+  .comics {
+    font-size: 16px;
+    text-align: center;
+  }
+  .liscence {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.28px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .footer {
+    padding: 64px;
+  }
 }

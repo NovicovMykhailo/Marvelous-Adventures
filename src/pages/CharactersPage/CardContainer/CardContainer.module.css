@@ -30,6 +30,13 @@
   column-gap: 16px;
   padding-top: 64px;
   justify-content: center;
+  padding: 48px 20px 0 20px;
 
+}
 
+@media screen and (min-width: 768px){
+  .grid{
+
+    padding: 56px 32px 0 32px;
+  }
 }

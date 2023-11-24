@@ -1,7 +1,8 @@
 .header{
      display: flex;
      justify-content: space-between;
-     padding: 24px 32px;
+     align-items: center;
+     padding: 24px 20px;
      position: absolute;
      top:0;
      left:50%;
@@ -9,4 +10,9 @@
      width: 100%;
      z-index: 35;
      
+}
+@media screen and (min-width: 768px) {
+     .header{
+          padding: 24px 32px;
+     }
 }

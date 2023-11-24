@@ -1,25 +1,24 @@
 .modalCard {
-  width: 70%;
-  min-width: 1000px;
+  width: 100%;
   margin: 0 auto;
   background-color: var(--bg);
   color: var(--text-prime);
   border-radius: var(--radius);
   position: relative;
-  padding: 64px 32px;
+  padding:40px 20px 64px 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 16px;
 }
 
 .descriptionBlock {
-  width: calc(100% - (332px + 16px));
+
   padding: 32px 16px;
   background-color: var(--bg2);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
   min-height: 498px;
   height: 100%;
 }
@@ -39,17 +38,21 @@
 
 .charactersListItem {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
+  align-items: center;
+  gap: 32px;
   cursor: pointer;
+
+  flex-direction: row;
+}
+.charItems{
+  flex-direction: column;
 
 }
 
 
-
 .characters {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 15px;
   column-gap: 16px;
 
@@ -71,32 +74,40 @@
 
 .modalTitle {
   color: var(--text-prime);
-
-  font-size: 24px;
-
+  font-size: 18px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: -0.48px;
+  
+}
+.modalTitle:not(:first-child){
+  margin-top: 16px;
 }
 
 .modalText {
   color: var(--text-prime);
 
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
+
+}
+.modalText > li:first-child{
+  margin-top: 16px;
 }
 .modalText > li:not(:last-child) {
-  margin-bottom: 0.6em;
+  margin-bottom: 0.4em;
 }
 
 /* About block */
 .aboutHeader {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 19px;
+  align-items: flex-start;
+  gap: 4px;
+
 }
 
 .authorDetailTitle {
@@ -105,7 +116,7 @@
   color: var(--text-secondary);
   position: relative;
 
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
@@ -121,7 +132,7 @@
 }
 .details > li {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   flex-direction: column;
 }
 .decoLine {
@@ -129,13 +140,13 @@
   width: 1px;
   border: 1px solid var(--text-secondary);
 }
+
 .detailName {
   color: var(--text-secondary);
-
-  font-size: 12px;
+  font-size: 10px;
   font-style: normal;
   font-weight: 400;
-  line-height: 14px;
+  line-height: 12px;
   text-transform: uppercase;
 }
 
@@ -146,15 +157,16 @@
 }
 .creatorsBlock {
   display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 .creatorRole {
   color: var(--text-secondary);
 
-  font-size: 12px;
+  font-size: 10px;
   font-style: normal;
   font-weight: 400;
-  line-height: 14px;
+  line-height: 12px;
 }
 
 .creatorImage{
@@ -175,9 +187,7 @@
 }
 
 /* Gallery */
-.photoBlock {
-  width: 332px;
-}
+
 .img {
   opacity: 1;
   background-color: var(--bg2);
@@ -214,8 +224,6 @@
   transition: all 0.12s ease-in-out
 }
 
-
-
 .galleryImage:hover{
   transform: scale(2)
 }
@@ -236,4 +244,74 @@
   display: flex;
   align-items: flex-start;
   max-width: 556px;
+}
+
+
+
+@media screen and (min-width: 768px) {
+  .descriptionBlock {
+    gap: 32
+  }
+  .photoBlock {
+    width: 332px;
+  }
+  .aboutHeader{
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 19px;
+  }
+  .characters {
+
+    grid-template-columns: repeat(3, 1fr);
+
+  }.creatorsBlock{
+    flex-direction: row;
+  }
+  .charactersListItem {
+    gap: 8px;
+    flex-direction: row;
+  }
+  .modalTitle {
+    font-size: 24px;
+  }
+  .authorDetailTitle ,.modalText{
+    font-size: 16px;
+  }
+  .modalText > li:not(:last-child) {
+    margin-bottom: 0.6em;
+  }
+
+  .details > li {
+    gap:8px;
+  }
+  .detailName {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .creatorRole {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .aboutHeader {  margin-bottom: 16px;}
+
+  
+}
+
+@media screen and (min-width: 1440px) {
+  .modalCard {
+    width: 70%;
+    min-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--bg);
+    color: var(--text-prime);
+    border-radius: var(--radius);
+    position: relative;
+    padding: 64px 32px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+  .descriptionBlock{
+     width: calc(100% - (332px + 16px));
+  }
 }

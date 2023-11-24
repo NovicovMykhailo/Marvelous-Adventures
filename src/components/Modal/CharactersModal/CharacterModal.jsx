@@ -6,6 +6,7 @@ import CloseBtn from 'elements/CloseBtn/CloseBtn';
 import { dateFormater, blockSplitter, lorem } from 'helpers';
 import { AboutSkeleton, ComicsListSkeleton, GallerySkeleton } from '../Skeletons';
 import { Gallery } from '../ModalBlocks';
+import useWindowResize from 'hooks/useWindowResize';
 
 const CharacterModal = ({ id, closeModal }) => {
   const [character, setCharacter] = useState(null);
@@ -13,7 +14,7 @@ const CharacterModal = ({ id, closeModal }) => {
   const [stories, setStories] = useState(null);
   const [height, setHeight] = useState(null);
   const [status, setStatus] = useState('init');
-
+  const { width } = useWindowResize();
   const descriptionBlock = useRef(null);
 
   function getHeight(galleryHeight) {
@@ -42,7 +43,7 @@ const CharacterModal = ({ id, closeModal }) => {
       <CloseBtn onClick={closeModal} />
       {status === 'fullfield' && <Gallery stories={stories} comicsData={character} setHeight={getHeight} />}
       {status === 'pending' && <GallerySkeleton />}
-      <div className={css.descriptionBlock} style={{ height: height }} ref={descriptionBlock}>
+      <div className={css.descriptionBlock} style={{ height: width > 500 ? height : '100%' }} ref={descriptionBlock}>
         {status === 'fullfield' && (
           <>
             <div className={css.aboutHeader}>
@@ -61,9 +62,9 @@ const CharacterModal = ({ id, closeModal }) => {
         {status === 'fullfield' && (
           <>
             <p className={css.modalTitle}>List of comics</p>
-            <ul className={css.charactersListItem}>
+            <ul className={`${css.charactersListItem} ${css.charItems}`}>
               {comicsList?.map((comic, i) => (
-                <ModalComicCard key={comic.id} card={comic} i={i}/>
+                <ModalComicCard key={comic.id} card={comic} i={i} />
               ))}
             </ul>
           </>

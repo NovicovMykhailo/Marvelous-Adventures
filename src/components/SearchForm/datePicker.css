@@ -3,6 +3,7 @@
   border-radius: 20px;
   border-color: transparent;
   padding: 0;
+
 }
 .react-datepicker__header {
   background-color: var(--bg2);
@@ -15,10 +16,7 @@
   font-family: 'Poppins', sans-serif;
   color: var(--text-prime);
 }
-.react-datepicker__day
-  .react-datepicker__day--030
-  .react-datepicker__day--selected
-  .react-datepicker__day--today {
+.react-datepicker__day .react-datepicker__day--030 .react-datepicker__day--selected .react-datepicker__day--today {
   background-color: var(--blue);
 }
 .react-datepicker__day:hover,
@@ -73,23 +71,40 @@
 .react-datepicker__year-wrapper {
   display: flex;
   flex-wrap: nowrap;
-  width: 153px;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+.react-datepicker__year {
+  margin-left: 0;
+  margin-right: 0;
+}
+.react-datepicker__navigation-icon--previous:before {
+  right: 2px;
+}
+.react-datepicker__navigation-icon--next:before {
+  left: 2px;
+}
+.react-datepicker__year--container{
+  width: 100%;
+}
 
+.react-datepicker__year,
+
+.react-datepicker {
+  width: calc(100vw / 2 - 28px);
+}
 
 .react-datepicker__year .react-datepicker__year-text {
   display: inline-block;
-  width: calc( 150px - 30px);
-  font-size: 14px;
+  width: 70%;
+  font-size: 12px;
   margin: 3px;
 }
 .react-datepicker__year .react-datepicker__year-text > span {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
-
 }
 .react-datepicker__close-icon {
   right: 30%;
@@ -106,5 +121,32 @@
   text-align: center;
   display: table-cell;
   vertical-align: middle;
-  content: "×";
+  content: '×';
+}
+
+@media screen and (min-width: 500px) {
+  .react-datepicker__year,
+  .react-datepicker {
+    width: calc( 100vw /3 - 38px);
+  }
+  .react-datepicker__navigation-icon--previous:before {
+    right: -2px;
+  }
+  .react-datepicker__navigation-icon--next:before {
+    left: -2px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .react-datepicker {
+    width: 166px;
+  }
+  .react-datepicker__year .react-datepicker__year-text {
+    width: calc(150px - 30px);
+    font-size: 14px;
+  }
+  .react-datepicker__year,
+  .react-datepicker {
+    width: 166px;
+  }
 }

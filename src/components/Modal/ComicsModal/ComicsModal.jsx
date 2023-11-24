@@ -4,6 +4,8 @@ import css from './ComicsModal.module.css';
 import CloseBtn from '../../../elements/CloseBtn/CloseBtn';
 import { AboutSkeleton, CreatorsSkeleton, DetailsSkeleton, GallerySkeleton, CharacktersSkeleton } from '../Skeletons';
 import { Characters, Creators, Details, About, Gallery } from '../ModalBlocks';
+import useWindowResize from 'hooks/useWindowResize';
+
 
 const ComicsModal = ({ comicsCode, closeModal }) => {
   const [comicsData, setComicsData] = useState(null);
@@ -12,6 +14,7 @@ const ComicsModal = ({ comicsCode, closeModal }) => {
   const [stories, setStories] = useState(null);
   const [height, setHeight] = useState(null);
   const [seriesDesription, setSeriesDesription] = useState(null);
+  const {width} = useWindowResize()
 
   const [status, setStatus] = useState('init');
 
@@ -45,7 +48,7 @@ const ComicsModal = ({ comicsCode, closeModal }) => {
       <CloseBtn onClick={closeModal} />
       {status === 'fullfield' && <Gallery stories={stories} comicsData={comicsData} setHeight={getHeight} />}
       {status === 'pending' && <GallerySkeleton />}
-      <div className={css.descriptionBlock} style={{ height: height }} ref={descriptionBlock}>
+      <div className={css.descriptionBlock} style={{ height: width > 500 ? height : '' }} ref={descriptionBlock}>
         {status === 'fullfield' && creators && (
           <About comic={comicsData} creators={creators} seriesAbout={seriesDesription} characters={characters} />
         )}

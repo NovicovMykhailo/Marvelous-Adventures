@@ -52,6 +52,10 @@ li {
   --blue: #34387f;
   --red: #600404;
   --green: #5b7f3c;
+
+  --mob: 375px;
+  --tab: 768px;
+  --dsk: 1440px;
 }
 
 .visuallyHidden {
@@ -72,9 +76,10 @@ li {
   width: 100%;
   margin: 0 auto;
 }
+
 @media screen and (min-width: 768px) {
   .container {
-    width: 768pxx;
+    width: 768px;
   }
 }
 @media screen and (min-width: 1440px) {

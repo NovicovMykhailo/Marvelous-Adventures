@@ -1,5 +1,5 @@
 .goBackBtn{
-font-size: 14px;
+   font-size: 12px;
 font-style: normal;
 font-weight: 500;
 line-height: 18px; 
@@ -13,7 +13,8 @@ position: absolute;
 bottom: 64px;
 right: 32px;
 
-padding: 6px 23px;
+padding: 10px 20px;
+
 border-radius: 1000px;
 border: 1px solid var(--text-secondary);
 will-change: transform;
@@ -26,3 +27,13 @@ cursor: pointer;
 .goBackBtn:is(:hover, :active){
    transform: scale(1.1);
 }
+
+
+@media screen and (min-width: 768px){
+   .goBackBtn{
+      font-size: 14px;
+      padding: 12px 24px;
+   }
+
+}
+

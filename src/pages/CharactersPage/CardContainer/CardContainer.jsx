@@ -1,7 +1,7 @@
 import css from './CardContainer.module.css';
 
 import { getComics } from '../../../services/api';
-import { useContext, useEffect, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -23,8 +23,12 @@ import PendingScreen from './PendingScreen';
 const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
   const { state } = useLocation();
   const { openModal } = useContext(ModalContext);
+  const  value = useState();
+  window.onresize = refreshPage
 
-
+  window.addEventListener('offline', function () {
+    setComics([]);
+  });
   //search data
   const [searchParams, setSearchParams] = useSearchParams();
   const [prevSearchState, setPrevSearchState] = useState();
@@ -35,10 +39,12 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
 
   //pagination state
   const [page, setPage] = useState(0);
-  const [limit] = useState(cardLimit);
   const [clicked, setClicked] = useState(false);
   const [currentPage, setCurrentPage] = useState(page);
   const [totalPages, setTotalPages] = useState(0);
+
+  // screen width Listener
+
 
   //    >>>>>>>    //  On Load Fetch
   useEffect(() => {
@@ -46,7 +52,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
       try {
         setStatus('isFetching');
         isFormDisabled(true);
-        searchParams.set('limit', limit);
+        searchParams.set('limit', cardLimit);
 
         if (state?.name) {
           searchParams.set('title', state.name);
@@ -118,7 +124,6 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     //change if page changed
 
     if (clicked) {
-     
       const prevParams = getObjFromParams(searchParams);
       const newParams = { ...prevParams, page };
       setSearchParams(newParams);
@@ -264,10 +269,10 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
   //    >>>>>>>    // Pagination
   useEffect(() => {
     if (comics) {
-      setTotalPages(Math.floor(comics.total / limit + 1));
-      setCurrentPage(comics?.offset / limit);
+      setTotalPages(Math.floor(comics.total / cardLimit + 1));
+      setCurrentPage(comics?.offset / cardLimit);
     }
-  }, [comics, limit]);
+  }, [comics, cardLimit]);
 
   // skeleton array generator
   function skeleton(count) {
@@ -278,28 +283,36 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     return arr;
   }
 
+  function refreshPage() {
+    const prevParams = getObjFromParams(searchParams);
+    const newParams = { ...prevParams, limit: cardLimit };
+    setSearchParams(newParams);
+    setPrevSearchState(searchParams)
+    value[1](Math.random());
+  }
+
   //component
   if (status === 'isFetching') {
     return (
       <div className={css.grid}>
-        {skeleton(limit).map((_, index) => (
+        {skeleton(cardLimit).map((_, index) => (
           <CardElSkeleton key={index} />
         ))}
       </div>
     );
   } else if (status === 'isError') {
-    return <div>Error: {error.message}</div>;
+    return <div>Error: {error}</div>;
   } else if (status === 'isSuccess' || status === 'isPending') {
     return (
       <div className="relative">
         {status === 'isPending' && <PendingScreen />}
         <div className={css.grid}>
-          {comics && comics?.results?.length > 0 && !state?.name? (
+          {comics && comics?.results?.length > 0 && !state?.name ? (
             comics.results.map((card, i) => (
-              <ComicsCard card={card} key={card.id} openModal={() => openModal(card.id)} size={'basic'} i={i}/>
+              <ComicsCard card={card} key={card.id} openModal={() => openModal(card.id)} size={'basic'} i={i} />
             ))
           ) : (
-             <EmptyContainerPlaceholder />
+            <EmptyContainerPlaceholder />
           )}
         </div>
         {totalPages > 1 && (

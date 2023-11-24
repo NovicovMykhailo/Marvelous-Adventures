@@ -91,7 +91,7 @@ const SearchForm = ({ isSet, disabled }) => {
           
           onChange={e => setSearchQue(isEnglish(e.target.value))}
         />
-        {disabled ? <Loader /> : <Search className={css.icon} onClick={onSubmit} />}
+        {<Search className={css.icon} onClick={onSubmit} />}
       </label>
       <label>
         <span className={css.lableText}>Format</span>

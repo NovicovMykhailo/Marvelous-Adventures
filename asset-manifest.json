@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/marvelous-adventures/static/css/main.dd87f7f5.css",
-    "main.js": "/marvelous-adventures/static/js/main.e97a0b34.js",
+    "main.css": "/marvelous-adventures/static/css/main.85afe47b.css",
+    "main.js": "/marvelous-adventures/static/js/main.59d458af.js",
     "static/media/char-hero-dsk.png": "/marvelous-adventures/static/media/char-hero-dsk.931ac46d6fa540d94a6a.png",
     "static/media/spiner-4-toasts.gif": "/marvelous-adventures/static/media/spiner-4-toasts.9bb27d9aba115ddb8c5b.gif",
+    "static/media/char-hero-tab.png": "/marvelous-adventures/static/media/char-hero-tab.539df222624023ab171b.png",
+    "static/media/char-hero-mob.png": "/marvelous-adventures/static/media/char-hero-mob.ab377a40c8e32a44ecaf.png",
     "static/media/panther-dsk.png": "/marvelous-adventures/static/media/panther-dsk.4a68b8ec28633b83272e.png",
     "static/media/hulk-dsk.png": "/marvelous-adventures/static/media/hulk-dsk.07075f1fb5205f2413eb.png",
     "static/media/spider-dsk.png": "/marvelous-adventures/static/media/spider-dsk.b6dafa5ae63c40f05e99.png",
@@ -29,11 +31,11 @@
     "static/media/close.svg": "/marvelous-adventures/static/media/close.d3e18fa924d81215bc9262d69665be72.svg",
     "static/media/iconLeft.svg": "/marvelous-adventures/static/media/iconLeft.090c6356b12dd276e51ef85bb9010652.svg",
     "static/media/iconRight.svg": "/marvelous-adventures/static/media/iconRight.a7a95f3a4101c8e3e2b3f52bec904f86.svg",
-    "main.dd87f7f5.css.map": "/marvelous-adventures/static/css/main.dd87f7f5.css.map",
-    "main.e97a0b34.js.map": "/marvelous-adventures/static/js/main.e97a0b34.js.map"
+    "main.85afe47b.css.map": "/marvelous-adventures/static/css/main.85afe47b.css.map",
+    "main.59d458af.js.map": "/marvelous-adventures/static/js/main.59d458af.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd87f7f5.css",
-    "static/js/main.e97a0b34.js"
+    "static/css/main.85afe47b.css",
+    "static/js/main.59d458af.js"
   ]
 }

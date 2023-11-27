@@ -1,7 +1,7 @@
 import css from './CardContainer.module.css';
 
 import { getComics } from '../../../services/api';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -23,8 +23,7 @@ import PendingScreen from './PendingScreen';
 const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
   const { state } = useLocation();
   const { openModal } = useContext(ModalContext);
-  const  value = useState();
-  window.onresize = refreshPage
+  const isPageLoaded = useRef(false);
 
   window.addEventListener('offline', function () {
     setComics([]);
@@ -43,16 +42,20 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
   const [currentPage, setCurrentPage] = useState(page);
   const [totalPages, setTotalPages] = useState(0);
 
-  // screen width Listener
-
 
   //    >>>>>>>    //  On Load Fetch
   useEffect(() => {
-    (async () => {
+    setStatus('isFetching');
+
+    const firstFetch = async () => {
       try {
-        setStatus('isFetching');
+        // setStatus('isFetching');
         isFormDisabled(true);
-        searchParams.set('limit', cardLimit);
+        if (Number(searchParams.getAll('limit')) === 0) {
+          searchParams.set('limit', cardLimit);
+        } else {
+          searchParams.set('limit', Number(searchParams.getAll('limit')));
+        }
 
         if (state?.name) {
           searchParams.set('title', state.name);
@@ -91,17 +94,35 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
         });
         setComics(data);
         setPrevSearchState(searchParams);
+        isPageLoaded.current = true;
         setStatus('isSuccess');
         isFormDisabled(false);
         return;
-      } catch (error) {
+      } catch (error) { 
         setStatus('isError');
-        setError(error.message);
+        setError(error);
         isFormDisabled(false);
       }
-    })();
+    };
+ 
+    firstFetch();
+
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
+  // handle reload and unload
+  useEffect(() => {
+    isPageLoaded.current = false;
+    function handleBeforeUnload(e) {
+      e.preventDefault();
+      isPageLoaded.current = false;
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
   }, []);
 
   //    >>>>>>>    // Handle Pagination
@@ -118,7 +139,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
       } catch (error) {
         isFormDisabled(false);
         setStatus('isError');
-        setError(error.message);
+        setError(error);
       }
     };
     //change if page changed
@@ -171,7 +192,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
       } catch (error) {
         isFormDisabled(false);
         setStatus('isError');
-        setError(error.message);
+        setError(error);
       }
     }
 
@@ -208,6 +229,59 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFormSearch]);
 
+  //    >>>>>>>    // Handle Resize
+  useEffect(() => {
+  
+    if (isPageLoaded.current) {
+      const prevParams = getObjFromParams(searchParams);
+      const newParams = { ...prevParams, limit: cardLimit };
+      setSearchParams(newParams);
+      setPrevSearchState(searchParams);
+      const fetchPage = async params => {
+        setStatus('isPending');
+        isFormDisabled(true);
+        try {
+          setPrevSearchState(params);
+          const data = await getComics(params);
+          setComics(data);
+          setStatus('isSuccess');
+          isFormDisabled(false);
+        } catch (error) {
+          isFormDisabled(false);
+          setStatus('isError');
+          setError(error);
+        }
+      };
+      toast.promise(fetchPage(new URLSearchParams(newParams)), {
+        pending: {
+          render() {
+            return <PendingToast />;
+          },
+          icon: false,
+          toastId: toastId.pending,
+        },
+        success: {
+          render() {
+            return <SuccessToast />;
+          },
+          toastId: toastId.success,
+        },
+
+        error: {
+          render() {
+            return <ErrorToast />;
+          },
+          icon: false,
+          toastId: toastId.error,
+        },
+      });
+      console.log('incide bhandel resize');
+    }
+
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardLimit]);
+
   //    >>>>>>>    // Handle Search Bar
   useEffect(() => {
     const fetchPage = async params => {
@@ -222,7 +296,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
       } catch (error) {
         isFormDisabled(false);
         setStatus('isError');
-        setError(error.message);
+        setError(error);
       }
     };
 
@@ -283,14 +357,6 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
     return arr;
   }
 
-  function refreshPage() {
-    const prevParams = getObjFromParams(searchParams);
-    const newParams = { ...prevParams, limit: cardLimit };
-    setSearchParams(newParams);
-    setPrevSearchState(searchParams)
-    value[1](Math.random());
-  }
-
   //component
   if (status === 'isFetching') {
     return (
@@ -301,7 +367,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
       </div>
     );
   } else if (status === 'isError') {
-    return <div>Error: {error}</div>;
+    return <div>Error: {error.response.data.status}</div>;
   } else if (status === 'isSuccess' || status === 'isPending') {
     return (
       <div className="relative">

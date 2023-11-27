@@ -16,19 +16,13 @@ const BottomTab = ({ color }) => {
   }
 
   return (
-    <div
-      className={css.bottomTab}
-      data-swiper-parallax-opacity="-1"
-      data-swiper-parallax-duration={paralaxDuration}
-    >
-      <p
-        className={css.characters}
-        data-swiper-parallax-scale="0.15"
-        data-swiper-parallax-duration={paralaxDuration}
-      >
+    <div className={css.bottomTab} data-swiper-parallax-opacity="-1" data-swiper-parallax-duration={paralaxDuration}>
+      <p className={css.characters} data-swiper-parallax-scale="0.15" data-swiper-parallax-duration={paralaxDuration}>
         Characters
       </p>
-      <p className={css.description}>{descriptions}</p>
+      <p className={css.description} data-swiper-parallax-scale="0.05" data-swiper-parallax-duration={paralaxDuration}>
+        {descriptions}
+      </p>
     </div>
   );
 };

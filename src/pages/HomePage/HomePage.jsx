@@ -6,7 +6,10 @@ const HomePage = () => {
     <>
       <h1 className="visuallyHidden">Web-based platform: Marvelous Adventures</h1>
       <HeroSlider />
+
       <LastComicsSlider />
+
+    
     </>
   );
 };

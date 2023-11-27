@@ -1,9 +1,37 @@
+.lastComics{
+  padding-left: 20px;
+}
 .lastComics .swiper {
   width: 100%;
-  height: 600px;
+ 
+  height: 434px;
   overflow: visible;
 }
 
 .lastComics {
   overflow-x: hidden;
+}
+@media screen and (min-width: 768px) {
+  .lastComics{
+    padding-left: 32px;
+  }
+  .lastComics .swiper {
+    height: 585px;
+    overflow: visible;
+  }
+
+  .lastComics {
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .lastComics .swiper {
+    height: 600px;
+    overflow: visible;
+  }
+
+  .lastComics {
+    overflow-x: hidden;
+  }
 }

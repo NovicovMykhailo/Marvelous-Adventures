@@ -29,6 +29,12 @@
   aspect-ratio: 2/3;
 }
 
+.card.hero{
+
+  max-width: 332px;
+  height: calc( 100% / 2 + 150px);
+}
+
 .hero {
   flex-grow: 1;
   max-width: 100%;
@@ -71,16 +77,31 @@
   font-size: 16px;
   line-height: 18px;
 }
+@media screen and (min-width: 375px){
+  .card.hero{
+    max-width:none;
+
+  }
+
+}
 
 @media screen and (min-width: 500px) {
   .card {
     max-width: calc(100vw / 2 - 32px);
   }
+
+
 }
 @media screen and (min-width: 768px) {
   .card {
     max-width: 346px;
   }
+  .card.hero{
+    max-width:none;
+    width: 448px;
+    height: 558px;
+  }
+
 }
 @media screen and (min-width: 1440px) {
   .card:hover {

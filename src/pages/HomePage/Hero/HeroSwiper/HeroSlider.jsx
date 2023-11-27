@@ -18,26 +18,23 @@ const HeroSlider = () => {
     thirdBar: '',
   });
 
-
-
   function onSlideChange(e) {
     setTimeout(() => {
       switch (e.activeIndex) {
         case 0:
           setNavBar({ firstBar: 'active', secondBar: '', thirdBar: '' });
-          swiperRef.current.swiper.mousewheel.enable()
+          swiperRef.current.swiper.mousewheel.enable();
           break;
         case 1:
           setNavBar({ firstBar: '', secondBar: 'active', thirdBar: '' });
-          swiperRef.current.swiper.mousewheel.enable()
+          swiperRef.current.swiper.mousewheel.enable();
           break;
         case 2:
           setNavBar({ firstBar: '', secondBar: '', thirdBar: 'active' });
-          swiperRef.current.swiper.mousewheel.disable()
+          swiperRef.current.swiper.mousewheel.disable();
           break;
         default:
           setNavBar({ firstBar: 'active', secondBar: '', thirdBar: '' });
-    
 
           break;
       }
@@ -60,18 +57,15 @@ const HeroSlider = () => {
         break;
     }
   }
-  if (swiperRef.current){
-    animationState ? swiperRef.current.swiper.autoplay.start() : swiperRef.current.swiper.autoplay.stop()
+  if (swiperRef.current) {
+    animationState ? swiperRef.current.swiper.autoplay.start() : swiperRef.current.swiper.autoplay.stop();
   }
-
-
-
 
   return (
     <div className="hero">
       <Swiper
-        height={780}
-        direction={'vertical'}
+        // height={780}
+        // direction={'vertical'}
         ref={swiperRef}
         mousewheel={true}
         effect={'slide'}
@@ -80,9 +74,32 @@ const HeroSlider = () => {
         spaceBetween={0}
         modules={[Autoplay, Parallax, Mousewheel]}
         speed={2500}
-        autoplay={{delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true}}
+        autoplay={{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
         className="swiper"
         onSlideChange={onSlideChange}
+        breakpoints={{
+          375: {
+            height: 1086,
+            direction: 'horizontal',
+            slidesPerView: 1,
+            spaceBetween: 0,
+            mousewheel:false
+          },
+          768: {
+            height: 1095,
+            direction: 'horizontal',
+            slidesPerView: 1,
+            spaceBetween: 0,
+            mousewheel:false
+          },
+          1440: {
+            height: 780,
+            direction: 'vertical',
+            slidesPerView: 1,
+            spaceBetween: 0,
+            mousewheel:true
+          },
+        }}
       >
         <SwiperSlide data-blue>
           <HeroSlide1 />

@@ -7,10 +7,13 @@ import { ReactComponent as VolumeFull } from './svg/volume-high.svg';
 import YouTube from 'react-youtube';
 import css from './AudioPlayer.module.css';
 import useWindowResize from 'hooks/useWindowResize';
+import { useLocation } from 'react-router-dom';
 
 const AudioPlayer = () => {
-  const {width} = useWindowResize()
+  const { width } = useWindowResize();
   const [status, setStatus] = useState('play');
+  const { pathname } = useLocation();
+
   const [position, setPosition] = useState(0);
   const [volume, setVolume] = useState(100);
   const [showStatusBar, setShowStatusBar] = useState(false);
@@ -18,7 +21,6 @@ const AudioPlayer = () => {
   const player = useRef();
   const { setIsAnimationShouldPlay } = useContext(AnimationContext);
   const icon = status === 'play' ? '▷' : '||';
-
 
   const opts = {
     height: '0',
@@ -96,7 +98,18 @@ const AudioPlayer = () => {
 
   return (
     <div className={css.relative}>
-      <div className={css.player}>
+      <div
+        className={css.player}
+        style={
+          pathname === '/search'
+            ? width <= 768 && width > 311
+              ? { inset: '405px auto auto 32px' }
+              : width > 768
+              ? {}
+              : { inset: '450px auto auto 32px' }
+            : {}
+        }
+      >
         <button onClick={handlePLay} className={css.button} disabled={!showStatusBar}>
           {icon}
         </button>

@@ -11,8 +11,8 @@
   padding: 0 24px 0 24px;
   height: 40px;
   position: absolute;
-  top: 406px;
-  left: 20px;
+  inset: 478px 20px auto auto;
+
   z-index: 15;
 }
 
@@ -78,15 +78,49 @@
   position: relative;
 }
 
-@media screen and (min-width: 768px) {
-  .player{
-    left: 32px;
+@media screen and (min-width: 290px) {
+  .player {
+    inset: 420px 20px auto auto;
+
   }
+}
+@media screen and (min-width: 304px) {
+  .player {
+    inset: 400px 20px auto auto;
+
+  }
+}
+@media screen and (min-width: 333px) {
+  .player {
+    inset: 382px 20px auto auto;
+
+  }
+}
+
+@media screen and (min-width: 398px) {
+  .player {
+    inset: 363px 20px auto auto;
+  }
+}
+
+@media screen and (min-width: 462px) {
+  .player {
+    inset: 348px 20px auto auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .player {
+    inset: 25px 29% auto auto;
+    z-index: 40;
+  }
+
+
   .title {
     font-size: 14px;
   }
   .input {
-    inset: 41px 0 0 12px;
+    inset: 38px 0 0 12px;
   }
 
   .title:before {
@@ -97,14 +131,12 @@
     margin: 0 10px 0 0;
   }
 
-  .player {
-    height: 44px;
-    top: 673px;
-  }
+
 }
 
 @media screen and (min-width: 1440px) {
-  /* .player {
-     top: 670px;
-  } */
+  .player {
+    inset: 670px auto auto 32px;
+    z-index: 15;
+  }
 }

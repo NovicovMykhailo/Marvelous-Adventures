@@ -3,35 +3,65 @@
   width: 100%;
   justify-content: flex-start;
   display: flex;
-  align-items: center;
-  padding-left: 32px;
-  gap: 145px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 20px;
+  gap: 40px;
 }
 
 .infoBlock {
-  width: 538px;
-
+  width: 100%;
+  padding-top: 92px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
+
 .about {
   color: var(--text-secondary);
-  font-size: 18px;
-  line-height: 160%;
+  font-size: 14px;
+  line-height: 18px;
   text-transform: uppercase;
 }
 .title {
-  font-size: 80px;
+  font-size: 44px;
   font-style: normal;
   font-weight: 500;
-  line-height: 80px;
+  line-height: 44px;
   letter-spacing: -1.6px;
+  max-width: 323px;
 }
 .description {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 18px;
+  text-wrap: balance;
+  max-width: 437px;
 }
+
+.imageBlock {
+  display: flex;
+  flex-direction: column;
+  height: 97%;
+  justify-content: flex-end;
+  gap: 20px;
+  width: 100%;
+}
+
+.imageBlock > div:nth-child(1) {
+  align-self: flex-start;
+}
+.imageBlock > div:nth-child(2) {
+  align-self: flex-end;
+}
+
+.vertLine {
+  display: block;
+  width: 2px;
+  height: 800px;
+  background-color: #fff;
+  margin-left: 77px;
+}
+
 .slideBtn {
   font-size: 14px;
   font-weight: 500;
@@ -65,27 +95,56 @@
   transform: scale(1.1) !important;
 }
 
-.vertLine {
-  display: block;
-  width: 2px;
-  height: 800px;
-  background-color: #fff;
-  margin-left: 77px;
+@media screen and (min-width: 768px) {
+  .slide {
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+  .infoBlock {
+    width: 100%;
+    padding-top: 146px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 538px;
+  }
+  .about {
+    font-size: 18px;
+    line-height: 28.8px;
+  }
+  .title {
+    font-size: 80px;
+    line-height: 80px;
+    letter-spacing: -1.6px;
+    max-width: none;
+  }
+  .description {
+    font-size: 16px;
+  }
+  .imageBlock {
+    flex-direction: row;
+    gap: 32px;
+  }
+  .imageBlock > div:nth-child(1) {
+    align-self: flex-end;
+  }
 }
-
-.imageBlock {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-  height: 97%;
-  justify-content: flex-end;
-  gap: 32px;
+@media screen and (min-width: 1440px) {
+  .slide {
+    flex-direction: row;
+    align-items: center;
+    padding-left: 32px;
+    gap: 145px;
+  }
+  .infoBlock {
+    flex-grow: 1;
+    padding-top: 0;
+  }
+  .description {
+    font-size: 16px;
+    max-width: none;
+  }
+  .imageBlock > div:nth-child(2) {
+    align-self: flex-start;
+  }
 }
-
-.imageBlock > div:nth-child(1) {
-  align-self: flex-end;
-}
-
-
-
-

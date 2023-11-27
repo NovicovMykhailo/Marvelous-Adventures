@@ -1,9 +1,12 @@
 .container {
-  width: 352px;
+  /* width: 190px; */
   position: relative;
+  width: calc(100vw / 2 + 3px);
+  height: 500px;
 }
 .cardRight {
-  height: 540px;
+  aspect-ratio: 95/128;
+
   position: relative;
   overflow: hidden;
   background-color: #171717;
@@ -18,34 +21,32 @@
   display: block;
   position: absolute;
   z-index: 0;
-  bottom: 20%;
-  right: 0;
+  inset: 30% -5% auto auto;
+  /* top: 30%;
+  right: 0; */
 
-  transition: transform 0.3s ease;  
+  transition: transform 0.3s ease;
 
-
-  width: 332px;
-  height: 300px;
+  width: calc(100vw / 2 + 3px);
+  aspect-ratio: 1/1;
+  /* height: 300px; */
   flex-shrink: 0;
   border-radius: 200000px;
-  
 
   filter: blur(47px);
 }
-.cardRight.blue ~ .light{
-  background: #34387f ;
+.cardRight.blue ~ .light {
+  background: #34387f;
 }
-.cardRight.red ~ .light{
+.cardRight.red ~ .light {
   background: #600404;
   filter: blur(47px);
 }
-.cardRight.green ~ .light{
-  background: #5B7F3C;
+.cardRight.green ~ .light {
+  background: #5b7f3c;
 
-filter: blur(47px);
-
+  filter: blur(47px);
 }
-
 
 /* image */
 .charImage {
@@ -60,23 +61,24 @@ filter: blur(47px);
 }
 .charImage.blue {
   background-image: url('../../images/Hero/RightCard/panther-r-dsk.png');
-  background-size: 261px 417px;
+  background-size: 120%;
+  background-position: top left 25px;
 }
 .charImage.red {
   background-image: url('../../images/Hero/RightCard/spider-r-dsk.png');
-  background-position: bottom 16px right 16px;
-  background-size: 227px 359px;
+  background-position: bottom right 8px;
+  background-size: 83%;
 }
 .charImage.green {
   background-image: url('../../images/Hero/RightCard/hulk-r-dsk.png');
-  background-position: bottom 34px left 16px;
-  background-size: 300px 389px;
+  background-position: bottom 22px right 0;
+  background-size: 90%;
   transform: scale(1.1);
 }
 
 /* Lines */
 .lines {
-  transform: rotate(112.073deg) translate(-35px, -18%);
+  transform: rotate(112.073deg) translate(calc(100% - 99%), -1%) scaleY(1.5);
 }
 
 .lines:nth-child(1),
@@ -123,10 +125,10 @@ filter: blur(47px);
 
 /* bottom tab text */
 .bottomTab {
-  width: 320px;
-  margin-top: 32px;
+  width: 100%;
+  margin-top: 16px;
   display: flex;
-  gap: 59px;
+  gap: 14px;
   padding-top: 16px;
   border-top: 2px solid var(--text-secondary);
   position: absolute;
@@ -161,12 +163,13 @@ filter: blur(47px);
   letter-spacing: -0.24px;
 }
 .description {
-  width: 195px;
+  /* width: 195px; */
   color: var(--text-secondary);
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
   letter-spacing: -0.24px;
+  text-wrap: balance;
 }
 
 /*  bottom sphere */
@@ -185,21 +188,22 @@ filter: blur(47px);
 
   border-radius: 50%;
 
-  font-size: 24px;
+  font-size: calc(100vw / 35);
   font-weight: 500;
-  line-height: 24px;
-  letter-spacing: -0.48px;
+  line-height: calc(100vw / 30);
+  letter-spacing: -0.22px;
   text-transform: uppercase;
   text-align: left;
   z-index: 4;
+  aspect-ratio: 1/1;
 
-  width: 144px;
-  height: 144px;
+  width: calc(100vw / 4 - 12.5px);
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(101, 101, 101, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .cardRight.green > .cardName {
+  text-align: center;
   background: radial-gradient(81.15% 81.15% at 50% 18.85%, #5b7f3c 0%, #171717 100%);
 }
 .cardRight.blue > .cardName {
@@ -209,6 +213,89 @@ filter: blur(47px);
   background: radial-gradient(81.15% 81.15% at 50% 18.85%, #600404 0%, #171717 100%);
 }
 
-.cardName:hover,  .container:has(.cardRight > .cardName:hover)  #lightBulb{
-  transform: scale(1.1) !important
+.cardName:hover,
+.container:has(.cardRight > .cardName:hover) #lightBulb {
+  transform: scale(1.1) !important;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  .container {
+    height: 600px;
+  }
+  .cardName > span {
+    display: inline-block;
+    width: 80%;
+  }
+
+  .lines {
+    transform: rotate(112.073deg) translate(calc(100% - 99%), -12%) scale(1.1);
+  }
+}
+@media screen and (min-width: 670px) and (max-width: 767px) {
+  .container {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    position: relative;
+    width: calc(100vw / 2 + 3px);
+    height: 553px;
+  }
+  .light {
+    inset: auto 8% 8% auto;
+    width: 332px;
+    height: 300px;
+  }
+  .cardName{
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.48px;
+    width: 144px;
+    
+  }
+  .lines {
+    transform: rotate(112.073deg) translate(-35px, -18%);
+  }
+  .bottomTab {
+    gap: 59px;
+  }
+
+  .charImage.blue {
+    background-size: 261px 417px;
+    background-position: bottom right;
+  }
+  .charImage.red {
+    background-image: url('../../images/Hero/RightCard/spider-r-dsk.png');
+    background-position: bottom 16px right 16px;
+    background-size: 227px 359px;
+  }
+  .charImage.green {
+    background-image: url('../../images/Hero/RightCard/hulk-r-dsk.png');
+    background-position: bottom 34px left 16px;
+    background-size: 300px 389px;
+    transform: scale(1.1);
+  }
+
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 352px;
+    position: relative;
+  }
+  .cardRight {
+    height: 540px;
+  }
+  .light {
+    inset: auto 0 -5% auto;
+    width: 332px;
+    height: 300px;
+  }
+
+  .bottomTab {
+    width: 320px;
+    margin-top: 32px;
+  }
 }

@@ -22,8 +22,8 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  margin-top: 32px;
-  margin-bottom: 128px;
+  margin-top: 128px;
+  margin-bottom: 18px;
 }
 .arrowR,
 .arrowL {
@@ -48,4 +48,12 @@
   border: 1px solid var(--text-secondary);
   fill: var(--text-secondary);
   background-color: transparent;
+}
+
+@media screen and (min-width: 768px){
+  .LastComicsPaginations{
+    margin-top: 32px;
+    margin-bottom: 128px;
+
+  }
 }

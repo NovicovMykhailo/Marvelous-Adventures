@@ -77,7 +77,7 @@
     max-width: calc(100vw / 2 - 32px);
   }
 }
-@media screen and (min-width: 748px) {
+@media screen and (min-width: 768px) {
   .card {
     max-width: 346px;
   }

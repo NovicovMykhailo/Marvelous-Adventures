@@ -5,14 +5,13 @@
   color: var(--text-prime);
   border-radius: var(--radius);
   position: relative;
-  padding:40px 20px 64px 20px;
+  padding: 40px 20px 64px 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 .descriptionBlock {
-
   padding: 32px 16px;
   background-color: var(--bg2);
   border-radius: var(--radius);
@@ -29,11 +28,11 @@
   width: 60px;
   height: 60px;
   aspect-ratio: 1/1;
-  transition: all 0.12s ease-in-out
+  transition: all 0.12s ease-in-out;
 }
 
-.charactersListItem:hover  .charactersImage{
-  transform: scale(1.2)
+.charactersListItem:hover .charactersImage {
+  transform: scale(1.2);
 }
 
 .charactersListItem {
@@ -44,11 +43,9 @@
 
   flex-direction: row;
 }
-.charItems{
+.charItems {
   flex-direction: column;
-
 }
-
 
 .characters {
   display: grid;
@@ -78,9 +75,8 @@
   font-weight: 500;
   line-height: 24px;
   letter-spacing: -0.48px;
-  
 }
-.modalTitle:not(:first-child){
+.modalTitle:not(:first-child) {
   margin-top: 16px;
 }
 
@@ -91,9 +87,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
-
 }
-.modalText > li:first-child{
+.modalText > li:first-child {
   margin-top: 16px;
 }
 .modalText > li:not(:last-child) {
@@ -107,7 +102,6 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 4px;
-
 }
 
 .authorDetailTitle {
@@ -169,15 +163,15 @@
   line-height: 12px;
 }
 
-.creatorImage{
+.creatorImage {
   z-index: 1;
   position: relative;
 }
-.creatorImage::after{
+.creatorImage::after {
   content: '';
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
   width: 60px;
   height: 60px;
   background-image: url('../../../images/creator404.jpg');
@@ -221,11 +215,11 @@
 .galleryImage {
   object-fit: contain;
   transform: scale(1.8);
-  transition: all 0.12s ease-in-out
+  transition: all 0.12s ease-in-out;
 }
 
-.galleryImage:hover{
-  transform: scale(2)
+.galleryImage:hover {
+  transform: scale(2);
 }
 
 /* animation */
@@ -246,25 +240,22 @@
   max-width: 556px;
 }
 
-
-
 @media screen and (min-width: 768px) {
+
+  .modalCard {
+    padding: 64px 32px;
+  }
   .descriptionBlock {
-    gap: 32
+    gap: 32px;
   }
-  .photoBlock {
-    width: 332px;
-  }
-  .aboutHeader{
+
+  .aboutHeader {
     flex-direction: row;
     align-items: center;
     margin-bottom: 19px;
   }
-  .characters {
-
-    grid-template-columns: repeat(3, 1fr);
-
-  }.creatorsBlock{
+ 
+  .creatorsBlock {
     flex-direction: row;
   }
   .charactersListItem {
@@ -274,15 +265,19 @@
   .modalTitle {
     font-size: 24px;
   }
-  .authorDetailTitle ,.modalText{
+  .authorDetailTitle,
+  .modalText {
     font-size: 16px;
   }
   .modalText > li:not(:last-child) {
     margin-bottom: 0.6em;
   }
+  .characters {
+    grid-template-columns: repeat(2, 33%);
+  }
 
   .details > li {
-    gap:8px;
+    gap: 8px;
   }
   .detailName {
     font-size: 12px;
@@ -292,9 +287,27 @@
     font-size: 12px;
     line-height: 14px;
   }
-  .aboutHeader {  margin-bottom: 16px;}
+  .aboutHeader {
+    margin-bottom: 16px;
+  }
+  /* Gallery Block  */
+  .photoBlock {
+    display: flex;
+    gap: 8px;
+    width: 100%
+  }
+  .imgBG{
+    flex-shrink: 0.7;
+  }
+  .imageGallery{
+   flex-direction: row;
+   align-content: flex-start;
+   margin-top: 0;
+  }
+  .imageGallery > li{
+    width: calc(100% / 2 - 35px)
+  }
 
-  
 }
 
 @media screen and (min-width: 1440px) {
@@ -311,7 +324,23 @@
     flex-direction: row;
     gap: 16px;
   }
-  .descriptionBlock{
-     width: calc(100% - (332px + 16px));
+  .descriptionBlock {
+    width: calc(100% - (332px + 16px));
+  }
+  .photoBlock {
+    display: block;
+    width: 332px;
+  }
+  .characters {
+    /* display: flex; */
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .imageGallery {
+    margin-top: 8px;
+  }
+  .imageGallery > li {
+    text-wrap: pretty;
+    width: calc((100% - 3 * 8px) / 4);
+
   }
 }

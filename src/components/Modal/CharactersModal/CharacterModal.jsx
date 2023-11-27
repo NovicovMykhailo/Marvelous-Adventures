@@ -43,7 +43,7 @@ const CharacterModal = ({ id, closeModal }) => {
       <CloseBtn onClick={closeModal} />
       {status === 'fullfield' && <Gallery stories={stories} comicsData={character} setHeight={getHeight} />}
       {status === 'pending' && <GallerySkeleton />}
-      <div className={css.descriptionBlock} style={{ height: width > 500 ? height : '100%' }} ref={descriptionBlock}>
+      <div className={css.descriptionBlock} style={{ height: width >= 1440 ? height : '100%' }} ref={descriptionBlock}>
         {status === 'fullfield' && (
           <>
             <div className={css.aboutHeader}>

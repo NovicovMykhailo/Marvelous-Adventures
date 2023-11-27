@@ -51,11 +51,11 @@
 @media screen and (min-width: 375px) {
   .charHero {
     background-size: contain;
-     background-position: right center;
+     background-position: center center;
   }
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 460px) {
   .charHero {
     background: linear-gradient(257deg, rgba(255, 255, 255, 0) 25%, rgba(0, 0, 0, 1) 70%),
       linear-gradient(2deg, #0c0b0b 2.15%, rgba(12, 11, 11, 0) 32.65%),

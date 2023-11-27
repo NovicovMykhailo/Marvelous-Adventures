@@ -11,7 +11,7 @@ import { getObjFromParams, resetDate, filteredQuery, isEnglish } from 'helpers';
 
 import { ReactComponent as Picker } from './indicator.svg';
 import { ReactComponent as Search } from '../../images/search.svg';
-import Loader from 'elements/Loader/Loader';
+
 
 import { formatStyles } from './select-format-styles';
 import { orderStyles } from './select-order-styles';

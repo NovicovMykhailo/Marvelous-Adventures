@@ -12,13 +12,13 @@
   padding: 0 20px;
 }
 
-.form > label:nth-child(1) {
+.form > .label:nth-child(1) {
   grid-area: query;
 }
-.form > label:nth-child(2) {
+.form > .label:nth-child(2) {
   grid-area: format;
 }
-.form > label:nth-child(3) {
+.form > .label:nth-child(3) {
   grid-area: order;
 }
 
@@ -31,7 +31,7 @@
   width: 100%;
 }
 
-.form > label,
+.form > .label,
 .datePicker {
   display: flex;
   flex-direction: column;
@@ -135,7 +135,7 @@ input::placeholder {
     grid-template-areas: 'query format order date';
     padding: 0 32px;
   }
-  .form > label,
+  .form > .label,
   .datePicker {
     gap: 8px;
   }
@@ -185,7 +185,7 @@ input::placeholder {
     justify-content: center;
   }
 
-  .form > label,
+  .form > .label,
   .datePicker {
     display: flex;
     flex-direction: column;

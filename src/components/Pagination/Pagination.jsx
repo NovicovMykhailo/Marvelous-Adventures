@@ -30,8 +30,10 @@ const PaginationComponent = ({ currentPage, changePage, totalPages = 10, isClick
           <Pagination.PrevButton className={`${css.paginationButtons}`}>
             <Prev className={css.navigationIcon} />
           </Pagination.PrevButton>
+          <ul style={{display: 'flex', gap: "8px"}}>
+            <Pagination.PageButton activeClassName={css.buttonsActive} className={css.paginationButtons} />
+          </ul>
 
-          <Pagination.PageButton activeClassName={css.buttonsActive} className={css.paginationButtons} />
           <Pagination.NextButton className={`${css.paginationButtons}`}>
             <Next className={css.navigationIcon} />
           </Pagination.NextButton>

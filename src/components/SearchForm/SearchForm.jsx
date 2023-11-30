@@ -12,7 +12,6 @@ import { getObjFromParams, resetDate, filteredQuery, isEnglish, isSpiderName } f
 import { ReactComponent as Picker } from './indicator.svg';
 import { ReactComponent as Search } from '../../images/search.svg';
 
-
 import { formatStyles } from './select-format-styles';
 import { orderStyles } from './select-order-styles';
 import css from './SearchForm.module.css';
@@ -50,16 +49,17 @@ const SearchForm = ({ isSet, disabled }) => {
     const tooltipText = `Tooltip for year: ${year}`;
     return <span title={tooltipText}>{year}</span>;
   };
-  useEffect(()=>{
-    function submitByEnterKey(e){
-    if(e.target.name ==="searchForm"){
-      if(e.code === 'Enter' || e.code === 'NumpadEnter'  ){
-        onSubmit()
-      }}
+  useEffect(() => {
+    function submitByEnterKey(e) {
+      if (e.target.name === 'searchForm') {
+        if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+          onSubmit();
+        }
+      }
     }
-    window.addEventListener('keydown', submitByEnterKey)
-    return ()=> window.removeEventListener('keydown', submitByEnterKey)
-  })
+    window.addEventListener('keydown', submitByEnterKey);
+    return () => window.removeEventListener('keydown', submitByEnterKey);
+  });
 
   const onSubmit = () => {
     if (searchQue !== '') {
@@ -68,7 +68,6 @@ const SearchForm = ({ isSet, disabled }) => {
         startYear: `${resetDate(startDate)}`,
         format: `${selectedFormat?.value}` || null,
         title: `${isSpiderName(searchQue)}` || null,
-
       };
       setSearchParams(filteredQuery(paramsObj));
       isSet(prev => (prev += 1));
@@ -79,13 +78,13 @@ const SearchForm = ({ isSet, disabled }) => {
 
   return (
     <form className={css.form}>
-      <label>
-        <span className={css.lableText}>Title Starts With</span>
+      <div className={css.label}>
+        <p className={css.lableText}>Title Starts With</p>
         <input
           className={css.search}
           type="search"
           placeholder="Enter text"
-          name='searchForm'
+          name="searchForm"
           value={searchQue}
           required={true}
           disabled={disabled}
@@ -93,17 +92,18 @@ const SearchForm = ({ isSet, disabled }) => {
           onChange={e => setSearchQue(isEnglish(e.target.value))}
         />
         {<Search className={css.icon} onClick={onSubmit} />}
-      </label>
-      <label>
-        <span className={css.lableText}>Format</span>
+      </div>
+      <div className={css.label}>
+        <p className={css.lableText}>Format</p>
         <Select defaultValue={selectedFormat} onChange={setSelectedFormat} options={formatOpts} styles={formatStyles} />
-      </label>
-      <label>
-        <span className={css.lableText}>Order by</span>
+      </div>
+      <div className={css.label}>
+        <p className={css.lableText}>Order by</p>
+
         <Select defaultValue={selectedOrder} onChange={setSelectedOrder} options={sortByOpts} styles={orderStyles} />
-      </label>
-      <span className={css.datePicker}>
-        <span className={css.lableText}>Start Year</span>
+      </div>
+      <div className={css.datePicker}>
+        <p className={css.lableText}>Start Year</p>
         <DatePicker
           className={css.dateInput}
           wrapperClassName="datepicker"
@@ -124,7 +124,7 @@ const SearchForm = ({ isSet, disabled }) => {
           className={`${css.picker} ${isCalendarOpen && css.active}`}
           onClick={() => pickerRef.current.setOpen(true)}
         />
-      </span>
+      </div>
     </form>
   );
 };

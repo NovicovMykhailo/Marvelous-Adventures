@@ -272,7 +272,7 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
           toastId: toastId.error,
         },
       });
-      console.log('incide bhandel resize');
+      // console.log('incide bhandel resize');
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

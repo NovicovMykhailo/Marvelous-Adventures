@@ -214,7 +214,7 @@
 }
 
 .cardName:hover,
-.container:has(.cardRight > .cardName:hover) #lightBulb {
+.container:has(.cardRight > .cardName:hover) .light {
   transform: scale(1.1) !important;
 }
 

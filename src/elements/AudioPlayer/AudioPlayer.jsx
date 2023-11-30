@@ -48,6 +48,9 @@ const AudioPlayer = () => {
   function onReady(e) {
     e.target.setVolume(100);
     setShowStatusBar(true);
+    const iframe = document.querySelector('iframe');
+    iframe.style.opacity ="0";
+    iframe.removeAttribute('frameborder')
   }
 
   function onPlayerStateChange(e) {
@@ -63,6 +66,7 @@ const AudioPlayer = () => {
       interval = setInterval(() => updateProgressBar(e), 100);
     }
     setInterval(() => updateProgressBar(e), 100);
+
   }
 
   function handlePLay() {

@@ -76,6 +76,17 @@ const SearchForm = ({ isSet, disabled }) => {
     }
   };
 
+  function removeAtribute() {
+    const select1 = document.querySelector('#select1 input');
+    const select2 = document.querySelector('#select2 input')
+    select1.removeAttribute('autocorrect');
+    select2.removeAttribute('autocorrect');
+
+  }
+  setTimeout(() => {
+    removeAtribute();
+  }, 1500);
+
   return (
     <form className={css.form}>
       <div className={css.label}>
@@ -95,12 +106,23 @@ const SearchForm = ({ isSet, disabled }) => {
       </div>
       <div className={css.label}>
         <p className={css.lableText}>Format</p>
-        <Select defaultValue={selectedFormat} onChange={setSelectedFormat} options={formatOpts} styles={formatStyles} />
+        <Select
+          defaultValue={selectedFormat}
+          onChange={setSelectedFormat}
+          options={formatOpts}
+          styles={formatStyles}
+          id="select1"
+        />
       </div>
       <div className={css.label}>
         <p className={css.lableText}>Order by</p>
-
-        <Select defaultValue={selectedOrder} onChange={setSelectedOrder} options={sortByOpts} styles={orderStyles} />
+        <Select
+          defaultValue={selectedOrder}
+          onChange={setSelectedOrder}
+          options={sortByOpts}
+          styles={orderStyles}
+          id="select2"
+        />
       </div>
       <div className={css.datePicker}>
         <p className={css.lableText}>Start Year</p>

@@ -24,5 +24,6 @@ const styles = {
     textTransform: 'capitalize',
     textAlign: 'center',
   },
-  toastImg: { width: '70px', transform: 'scaleX(-1)', filter: 'drop-shadow(0 0 0.75rem gray)' },
+  toastImg: { width: '70px', transform: 'scaleX(-1)', filter: 'drop-shadow( 0px 0px 0.75rem  rgb(128, 128, 128))' },
 };
+

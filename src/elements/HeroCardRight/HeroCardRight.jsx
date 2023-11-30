@@ -51,7 +51,7 @@ const HeroCardRight = ({ color }) => {
           </span>
         </Link>
       </div>
-      <span className={css.light} id={css['lightBulb']}></span>
+      <span className={css.light} ></span>
       <BottomTab color={color} />
     </div>
   );

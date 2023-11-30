@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/marvelous-adventures/static/css/main.08da1f95.css",
-    "main.js": "/marvelous-adventures/static/js/main.3b3632e4.js",
+    "main.css": "/marvelous-adventures/static/css/main.a93cf71b.css",
+    "main.js": "/marvelous-adventures/static/js/main.1089555f.js",
     "static/media/char-hero-dsk.png": "/marvelous-adventures/static/media/char-hero-dsk.931ac46d6fa540d94a6a.png",
     "static/media/spiner-4-toasts.gif": "/marvelous-adventures/static/media/spiner-4-toasts.9bb27d9aba115ddb8c5b.gif",
     "static/media/char-hero-tab.png": "/marvelous-adventures/static/media/char-hero-tab.539df222624023ab171b.png",
@@ -22,8 +22,8 @@
     "static/media/BGImage.svg": "/marvelous-adventures/static/media/BGImage.42f12140d77520b80e7e.svg",
     "static/media/tweet.svg": "/marvelous-adventures/static/media/tweet.fd5cc5242b1577e6c05511f823e3ab79.svg",
     "static/media/volume-low.svg": "/marvelous-adventures/static/media/volume-low.2bbd9ef4a9c75f0e8033d106af5ef8c9.svg",
-    "static/media/arrowR.svg": "/marvelous-adventures/static/media/arrowR.bbc65c4d8632781a58f250d0d5d1dbf7.svg",
-    "static/media/arrow.svg": "/marvelous-adventures/static/media/arrow.ebcde9d4f2aad84b6169dde9d8f28174.svg",
+    "static/media/arrowR.svg": "/marvelous-adventures/static/media/arrowR.a1ad0644a4a8cc97afaff9e70becd7bc.svg",
+    "static/media/arrow.svg": "/marvelous-adventures/static/media/arrow.fb4bb1b7d0fb31e6119bbf5bad15e840.svg",
     "static/media/volume-mute.svg": "/marvelous-adventures/static/media/volume-mute.a7e9e238f0565f9b6a70511ce3bd0e34.svg",
     "static/media/search.svg": "/marvelous-adventures/static/media/search.5804bf024cba0fe3218b939b794871d2.svg",
     "static/media/fb.svg": "/marvelous-adventures/static/media/fb.ec368342021068bff626201741c32b5f.svg",
@@ -31,11 +31,11 @@
     "static/media/close.svg": "/marvelous-adventures/static/media/close.d3e18fa924d81215bc9262d69665be72.svg",
     "static/media/iconLeft.svg": "/marvelous-adventures/static/media/iconLeft.090c6356b12dd276e51ef85bb9010652.svg",
     "static/media/iconRight.svg": "/marvelous-adventures/static/media/iconRight.a7a95f3a4101c8e3e2b3f52bec904f86.svg",
-    "main.08da1f95.css.map": "/marvelous-adventures/static/css/main.08da1f95.css.map",
-    "main.3b3632e4.js.map": "/marvelous-adventures/static/js/main.3b3632e4.js.map"
+    "main.a93cf71b.css.map": "/marvelous-adventures/static/css/main.a93cf71b.css.map",
+    "main.1089555f.js.map": "/marvelous-adventures/static/js/main.1089555f.js.map"
   },
   "entrypoints": [
-    "static/css/main.08da1f95.css",
-    "static/js/main.3b3632e4.js"
+    "static/css/main.a93cf71b.css",
+    "static/js/main.1089555f.js"
   ]
 }

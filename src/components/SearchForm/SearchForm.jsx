@@ -7,7 +7,7 @@ import toastId from 'elements/Toasts/toastId';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-import { getObjFromParams, resetDate, filteredQuery, isEnglish } from 'helpers';
+import { getObjFromParams, resetDate, filteredQuery, isEnglish, isSpiderName } from 'helpers';
 
 import { ReactComponent as Picker } from './indicator.svg';
 import { ReactComponent as Search } from '../../images/search.svg';
@@ -67,7 +67,8 @@ const SearchForm = ({ isSet, disabled }) => {
         orderBy: `${selectedOrder?.value}` || null,
         startYear: `${resetDate(startDate)}`,
         format: `${selectedFormat?.value}` || null,
-        title: `${searchQue}` || null,
+        title: `${isSpiderName(searchQue)}` || null,
+
       };
       setSearchParams(filteredQuery(paramsObj));
       isSet(prev => (prev += 1));
@@ -88,7 +89,7 @@ const SearchForm = ({ isSet, disabled }) => {
           value={searchQue}
           required={true}
           disabled={disabled}
-          
+          title={searchQue}
           onChange={e => setSearchQue(isEnglish(e.target.value))}
         />
         {<Search className={css.icon} onClick={onSubmit} />}

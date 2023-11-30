@@ -25,8 +25,9 @@ const AudioPlayer = () => {
   const opts = {
     height: '0',
     width: '0',
-    playerVars: { autoplay: 0, controls: 1, loop: 1, wmode: 'opaque' },
+    playerVars: { autoplay: 0, controls: 1, loop: 1, wmode: 'opaque', playlist:'FOabQZHT4qY' },
     videoId: 'FOabQZHT4qY',
+    
   };
 
   const getVolumeIcon = volume => {
@@ -102,9 +103,9 @@ const AudioPlayer = () => {
         className={css.player}
         style={
           pathname === '/search'
-            ? width <= 768 && width > 311
+            ? width < 768 && width > 311
               ? { inset: '405px auto auto 32px' }
-              : width > 768
+              : width >= 768
               ? {}
               : { inset: '450px auto auto 32px' }
             : {}

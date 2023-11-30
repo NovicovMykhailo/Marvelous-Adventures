@@ -9,7 +9,9 @@ import HeroSlide3 from '../HeroSlide3';
 
 import './HeroSlider.css';
 
+
 const HeroSlider = () => {
+
   const swiperRef = useRef();
   const { animationState } = useContext(AnimationContext);
   const [navBar, setNavBar] = useState({
@@ -61,11 +63,11 @@ const HeroSlider = () => {
     animationState ? swiperRef.current.swiper.autoplay.start() : swiperRef.current.swiper.autoplay.stop();
   }
 
+
+
   return (
     <div className="hero">
       <Swiper
-        // height={780}
-        // direction={'vertical'}
         ref={swiperRef}
         mousewheel={true}
         effect={'slide'}
@@ -83,21 +85,21 @@ const HeroSlider = () => {
             direction: 'horizontal',
             slidesPerView: 1,
             spaceBetween: 0,
-            mousewheel:false
+            mousewheel: false
           },
           768: {
             height: 1095,
             direction: 'horizontal',
             slidesPerView: 1,
             spaceBetween: 0,
-            mousewheel:false
+            mousewheel: false
           },
-          1440: {
+          1400: {
             height: 780,
             direction: 'vertical',
             slidesPerView: 1,
             spaceBetween: 0,
-            mousewheel:true
+            // mousewheel: true
           },
         }}
       >

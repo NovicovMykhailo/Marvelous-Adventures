@@ -12,7 +12,7 @@ const CharactersHero = props => {
           className={css.about}
           variants={pVariants}
           animate="visible"
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.9 }}
           initial="hidden"
         >
           Web-based platform
@@ -21,7 +21,7 @@ const CharactersHero = props => {
           variants={h2Varians}
           animate="visible"
           initial="hidden"
-          transition={{ delay: 0.5, duration: 0.5 }}
+          transition={{ delay: 0.5, duration: 0.9 }}
           className={css.title}
         >
           Comics
@@ -30,7 +30,7 @@ const CharactersHero = props => {
           variants={pVariants}
           animate="visible"
           initial="hidden"
-          transition={{ delay: 0.7, duration: 0.5 }}
+          transition={{ delay: 0.7, duration: 0.9 }}
           className={css.description}
         >
           Comics is a medium used to express ideas with images, often combined with text or other visual information.

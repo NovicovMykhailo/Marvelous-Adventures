@@ -5,22 +5,23 @@ import SharedLayout from 'pages/SharedLayout/SharedLayout';
 
 import { MouseSmooth } from 'react-mouse-smooth';
 import useWindowDimensions from 'hooks/useWindowResize';
+import { AnimatePresence } from 'framer-motion';
 
 export const App = () => {
   const { width } = useWindowDimensions();
 
   let limit = width >= 1100 ? 16 : width < 500 ? 5 : 8;
 
-
-
   MouseSmooth({ time: 1000, size: 100 });
   return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/search" element={<CharactersPage limit={limit > 0 && limit} />} />
-      </Route>
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
+    <AnimatePresence mode="wait">
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/search" element={<CharactersPage limit={limit > 0 && limit} />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </AnimatePresence>
   );
 };

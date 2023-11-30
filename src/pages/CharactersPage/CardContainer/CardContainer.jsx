@@ -19,6 +19,7 @@ import PendingToast from 'elements/Toasts/PendingToast';
 import EmptyContainerPlaceholder from './EmptyContainerPlaceholder';
 import CardElSkeleton from 'components/Modal/Skeletons/CardElSkeleton';
 import PendingScreen from './PendingScreen';
+import LoadAnimation from 'elements/Animations/LoadAnimation';
 
 const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
   const { state } = useLocation();
@@ -41,7 +42,6 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
   const [clicked, setClicked] = useState(false);
   const [currentPage, setCurrentPage] = useState(page);
   const [totalPages, setTotalPages] = useState(0);
-
 
   //    >>>>>>>    //  On Load Fetch
   useEffect(() => {
@@ -98,19 +98,17 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
         setStatus('isSuccess');
         isFormDisabled(false);
         return;
-      } catch (error) { 
+      } catch (error) {
         setStatus('isError');
         setError(error);
         isFormDisabled(false);
       }
     };
- 
-    firstFetch();
 
+    firstFetch();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   // handle reload and unload
   useEffect(() => {
@@ -231,7 +229,6 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
 
   //    >>>>>>>    // Handle Resize
   useEffect(() => {
-  
     if (isPageLoaded.current) {
       const prevParams = getObjFromParams(searchParams);
       const newParams = { ...prevParams, limit: cardLimit };
@@ -278,14 +275,13 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
       console.log('incide bhandel resize');
     }
 
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardLimit]);
 
   //    >>>>>>>    // Handle Search Bar
   useEffect(() => {
     const fetchPage = async params => {
-      setStatus('isPending');
+      setStatus('isFetching');
       isFormDisabled(true);
       try {
         setPrevSearchState(params);
@@ -304,9 +300,9 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
       let newParams;
       if (prevSearchState) {
         const prevParams = getObjFromParams(prevSearchState);
-        newParams = { ...prevParams, page: 0, title: state?.name };
+        newParams = { ...prevParams, page: 0, title: state?.name, limit: cardLimit };
       } else {
-        newParams = { page: 0, title: state?.name };
+        newParams = { page: 0, title: state?.name, limit: cardLimit };
       }
 
       setSearchParams(newParams);
@@ -360,14 +356,21 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
   //component
   if (status === 'isFetching') {
     return (
-      <div className={css.grid}>
-        {skeleton(cardLimit).map((_, index) => (
-          <CardElSkeleton key={index} />
-        ))}
-      </div>
+      <LoadAnimation>
+        <div className={css.grid}>
+          {skeleton(cardLimit).map((_, index) => (
+            <CardElSkeleton key={index} />
+          ))}
+        </div>
+      </LoadAnimation>
     );
   } else if (status === 'isError') {
-    return <div>Error: {error.response.data.status}</div>;
+    return (
+      <LoadAnimation>
+        <div>Error: {error.response.data.status}</div>
+        <EmptyContainerPlaceholder />
+      </LoadAnimation>
+    );
   } else if (status === 'isSuccess' || status === 'isPending') {
     return (
       <div className="relative">
@@ -378,7 +381,9 @@ const CardContainer = ({ cardLimit, isFormSearch, isFormDisabled }) => {
               <ComicsCard card={card} key={card.id} openModal={() => openModal(card.id)} size={'basic'} i={i} />
             ))
           ) : (
-            <EmptyContainerPlaceholder />
+            <LoadAnimation>
+              <EmptyContainerPlaceholder />
+            </LoadAnimation>
           )}
         </div>
         {totalPages > 1 && (

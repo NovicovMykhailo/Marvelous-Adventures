@@ -16,7 +16,7 @@ const HeroCardRight = ({ color }) => {
     red: 'Spider man',
     green: 'Hulk',
   };
-  const paralaxDuration = '3000';
+  const paralaxDuration = width < 1400 ? '800' : '3000';
 
   return (
     <div className={css.container}>

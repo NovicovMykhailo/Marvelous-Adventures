@@ -8,11 +8,14 @@ import HeroSlide2 from '../HeroSlide2';
 import HeroSlide3 from '../HeroSlide3';
 
 import './HeroSlider.css';
-
+import useWindowResize from 'hooks/useWindowResize';
 
 const HeroSlider = () => {
-
   const swiperRef = useRef();
+  const { width } = useWindowResize();
+
+  const animSpeed = width < 1440 ? 800 : 1300;
+
   const { animationState } = useContext(AnimationContext);
   const [navBar, setNavBar] = useState({
     firstBar: 'active',
@@ -40,7 +43,7 @@ const HeroSlider = () => {
 
           break;
       }
-    }, 1300);
+    }, animSpeed);
   }
 
   function HandleClick(e) {
@@ -63,8 +66,6 @@ const HeroSlider = () => {
     animationState ? swiperRef.current.swiper.autoplay.start() : swiperRef.current.swiper.autoplay.stop();
   }
 
-
-
   return (
     <div className="hero">
       <Swiper
@@ -75,7 +76,7 @@ const HeroSlider = () => {
         slidesPerView={1}
         spaceBetween={0}
         modules={[Autoplay, Parallax, Mousewheel]}
-        speed={2500}
+        // speed={2500}
         autoplay={{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
         className="swiper"
         onSlideChange={onSlideChange}
@@ -85,21 +86,23 @@ const HeroSlider = () => {
             direction: 'horizontal',
             slidesPerView: 1,
             spaceBetween: 0,
-            mousewheel: false
+            mousewheel: false,
+            speed: 800,
           },
           768: {
             height: 1095,
             direction: 'horizontal',
             slidesPerView: 1,
             spaceBetween: 0,
-            mousewheel: false
+            mousewheel: false,
+            speed: 800,
           },
           1400: {
             height: 780,
             direction: 'vertical',
             slidesPerView: 1,
             spaceBetween: 0,
-            // mousewheel: true
+            speed: 2500,
           },
         }}
       >

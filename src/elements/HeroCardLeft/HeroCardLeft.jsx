@@ -1,11 +1,15 @@
+import useWindowResize from 'hooks/useWindowResize';
 import css from './HeroCardLeft.module.css';
 const HeroCardLeft = ({ color }) => {
+  const {width} = useWindowResize()
   const colors = {
     blue: css.blue,
     red: css.red,
     green: css.green,
   };
-  const paralaxDuration  = "3500"
+
+  const paralaxDuration = width < 1400 ? '800' : '3500';
+
 
   return (
     <div

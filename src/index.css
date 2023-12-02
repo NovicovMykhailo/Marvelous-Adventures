@@ -10,6 +10,7 @@ body {
   color: var(--text-prime);
   font-weight: 400;
   background-color: var(--bg);
+  will-change: transform, scale;
 }
 html::-webkit-scrollbar {
   display: none;

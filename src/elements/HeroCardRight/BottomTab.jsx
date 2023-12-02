@@ -1,8 +1,11 @@
+import useWindowResize from 'hooks/useWindowResize';
 import css from './HeroCardRight.module.css';
 
 const BottomTab = ({ color }) => {
   let descriptions;
-  const paralaxDuration = '3000';
+  const {width} = useWindowResize()
+  const paralaxDuration = width < 1400 ? '800' : '3000';
+  // const paralaxDuration = '3000';
 
   if (color === 'blue') {
     descriptions =

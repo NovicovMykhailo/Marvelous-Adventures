@@ -87,7 +87,7 @@ const LastComicsSlider = () => {
             visibilityFullFit: false,
             autoResize: false,
             spaceBetween: 16,
-            speed: 600,
+            speed: 300,
           },
           768: {
             freeMode:true,

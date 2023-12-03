@@ -12,7 +12,7 @@ export const App = () => {
 
   let limit = width >= 1100 ? 16 : width < 500 ? 5 : 8;
 
-  width >= 1100 && MouseSmooth({ time: 1000, size: 100 });
+  width >= 1440 && MouseSmooth({ time: 1000, size: 100 });
   return (
     <AnimatePresence mode="wait">
       <Routes>

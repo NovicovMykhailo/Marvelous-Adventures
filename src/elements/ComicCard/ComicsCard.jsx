@@ -7,7 +7,9 @@ import { useRef } from 'react';
 
 const ComicsCard = ({ card, openModal, size, i }) => {
   const { title, thumbnail, creators, id } = card;
+
   const ref = useRef(null);
+
   useAnimation(ref);
 
   const styles = {

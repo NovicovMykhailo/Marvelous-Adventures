@@ -1,31 +1,30 @@
-import { useEffect,  useState } from "react";
+import { useEffect, useState } from 'react';
+import useWindowResize from './useWindowResize';
 
-const useAnimation = (ref) => {
+const useAnimation = ref => {
+  const { width } = useWindowResize();
 
-    const [isIntersecting, setIsIntersecting] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+      },
+      { threshold: width >= 1440 ? 0.2 : 0 }
+    );
+    observer.observe(ref.current);
 
-    useEffect(() => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          setIsIntersecting(entry.isIntersecting);
-        },
-        { threshold: 0.2 }
-      );
-      observer.observe(ref.current);
-  
-      return () => observer.disconnect();
-    }, [isIntersecting, ref]);
-  
-    useEffect(() => {
-      if (isIntersecting) {
-        ref.current.classList.add('active');
-        if( ref.current.querySelector('img')){
-          ref.current.querySelector('img').classList.add('active')
-        }
-        
+    return () => observer.disconnect();
+  }, [isIntersecting, ref, width]);
+
+  useEffect(() => {
+    if (isIntersecting) {
+      ref.current.classList.add('active');
+      if (ref.current.querySelector('img')) {
+        ref.current.querySelector('img').classList.add('active');
       }
-    }, [isIntersecting, ref]);
-
+    }
+  }, [isIntersecting, ref]);
 };
-export default useAnimation
+export default useAnimation;

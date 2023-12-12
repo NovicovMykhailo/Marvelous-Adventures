@@ -16,6 +16,15 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+#modal:has(div){
+  position: sticky;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  /* background-color: teal; */
+  z-index: 165165165165165;
+}
+
 img {
   display: block;
   width: 100%;

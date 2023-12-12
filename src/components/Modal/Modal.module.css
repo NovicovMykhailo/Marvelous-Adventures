@@ -1,45 +1,53 @@
-#modal {
-  width: 100vw;
-    height: 100vh;
-  z-index: 10;
-  position: relative;
-z-index: 100000000;
-}
 
 
 .Overlay {
-    
-    position: fixed;
-       overflow:hidden;
-    top: 0;
-    left: 0;
-    right:0;
-    bottom:0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #12141780;
-      
-      overflow-y: auto;
-   
-  }
-  .Overlay::-webkit-scrollbar{
-    display:none;
-  }
-  
-  .Modal {
-    max-width: 100vw;
-    max-height: 100vh;
-    transition:all 0.5s ease;
- 
-  }
-@media screen and (min-width: 768px){
+  overscroll-behavior: contain;
+  position: sticky;
+  overflow: hidden;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #121417c1;
+  overflow-y: auto;
+}
+.Overlay::-webkit-scrollbar {
+  display: none;
+}
+
+.Modal {
+  max-width: 100vw;
+  max-height: 95svh;
+  transition: all 0.5s ease;
+}
+@media screen and (min-width: 500px) {
   .Modal {
     max-width: calc(100vw - 48px);
     max-height: calc(100vh - 24px);
-
- 
   }
+
+
 }
+
+@media screen and (min-width: 768px) {
+  .Modal {
+    max-width: 768px;
+    max-height: calc(100vh - 24px);
+  }
+
+
+}
+@media screen and (min-width: 1440px) {
+  .Overlay{
+    align-items: center;
+  }
+  .Modal {
+    max-width: calc(100vw - 100px);
+    max-height: calc(100vh - 24px);
+  }
+
+
+}
+

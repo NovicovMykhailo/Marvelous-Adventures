@@ -5,7 +5,7 @@ import SharedLayout from 'pages/SharedLayout/SharedLayout';
 
 import { MouseSmooth } from 'react-mouse-smooth';
 import useWindowDimensions from 'hooks/useWindowResize';
-import { AnimatePresence } from 'framer-motion';
+//import { AnimatePresence } from 'framer-motion';
 
 export const App = () => {
   const { width } = useWindowDimensions();
@@ -14,7 +14,7 @@ export const App = () => {
 
   width >= 1440 && MouseSmooth({ time: 1000, size: 100 });
   return (
-    <AnimatePresence mode="wait">
+    
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
@@ -22,6 +22,6 @@ export const App = () => {
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </AnimatePresence>
+
   );
 };

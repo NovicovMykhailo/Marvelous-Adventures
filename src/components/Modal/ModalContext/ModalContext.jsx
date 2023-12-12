@@ -29,7 +29,7 @@ const ModalProvider = ({ children }) => {
         closeAllModals: ()=>{setShowModal(false); setShowCharacteModal(false)}
       }}
     >
-      {children}
+     
       {showModal && (
         <Modal onClose={() => setShowModal(prev => !prev)} active={showModal}>
           <ComicsModal
@@ -44,6 +44,7 @@ const ModalProvider = ({ children }) => {
           <CharacterModal id={characterCode} closeModal={() => setShowCharacteModal(prev => !prev)} />
         </Modal>
       )}
+     {children}
     </ModalContext.Provider>
   );
 };

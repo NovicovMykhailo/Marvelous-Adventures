@@ -20,8 +20,7 @@ html::-webkit-scrollbar {
   position: sticky;
   inset: 0;
   width: 100vw;
-  height: 100svh;
-  /* background-color: teal; */
+  height: 100vh;
   z-index: 165165165165165;
 }
 

@@ -9,18 +9,17 @@ import AudioPlayer from 'elements/AudioPlayer/AudioPlayer';
 const SharedLayout = () => {
   return (
     <div>
-<AnimationProvider>
+    <AnimationProvider>
       <ModalProvider>
         <div className="container">
             <Header />
             <AudioPlayer />
             <Outlet />
             <Footer />
-          
         </div>
       </ModalProvider>
-</AnimationProvider>
-      <License />
+     </AnimationProvider>
+     <License />
     </div>
   );
 };

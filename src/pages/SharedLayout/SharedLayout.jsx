@@ -8,7 +8,7 @@ import AudioPlayer from 'elements/AudioPlayer/AudioPlayer';
 
 const SharedLayout = () => {
   return (
-    <div>
+    
       <ModalProvider>
         <div className="container">
         <AnimationProvider>
@@ -20,7 +20,7 @@ const SharedLayout = () => {
         </div>
         <License />
      </ModalProvider>
-    </div>
+   
   );
 };
 

@@ -1,12 +1,14 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 import { backgroundColor, foregroundColor } from "./options"
+import css from './AboutSkeleton.module.css'
 
 const ComicsListSkeleton = props => (
   <ContentLoader
     speed={2}
-    width={556}
+    width='100%'
     height={250}
+    classname={css.comicsModalList}
     viewBox="0 0 556 250"
     backgroundColor={backgroundColor}
     foregroundColor={foregroundColor}

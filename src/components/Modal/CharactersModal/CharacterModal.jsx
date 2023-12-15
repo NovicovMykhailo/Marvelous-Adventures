@@ -39,7 +39,7 @@ const CharacterModal = ({ id, closeModal }) => {
   }, [id]);
 
   return (
-    <article className={css.modalCard}>
+    <article className={`${css.modalCard} ${css.characterCard}`}>
       <CloseBtn onClick={closeModal} />
       {status === 'fullfield' && <Gallery stories={stories} comicsData={character} setHeight={getHeight} />}
       {status === 'pending' && <GallerySkeleton />}

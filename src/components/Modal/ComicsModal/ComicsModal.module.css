@@ -11,6 +11,10 @@
   gap: 16px;
 }
 
+.characterCard{
+ width: 90%;
+}
+
 .descriptionBlock {
   padding: 32px 16px;
   background-color: var(--bg2);
@@ -312,8 +316,8 @@
 
 @media screen and (min-width: 1440px) {
   .modalCard {
-    width: 70%;
-    min-width: 1000px;
+    /* width: 70%;
+    min-width: 1000px; */
     margin: 0 auto;
     background-color: var(--bg);
     color: var(--text-prime);

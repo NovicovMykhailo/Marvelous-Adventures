@@ -19,12 +19,6 @@ const CharacktersSkeleton = props => (
     <rect x="0" y="56" rx="6" ry="6" width="60" height="60" />
     <rect x="70" y="77" rx="3" ry="3" width="90" height="18" />
 
-    {/* <rect x="202" y="56" rx="6" ry="6" width="60" height="60" />
-    <rect x="270" y="77" rx="3" ry="3" width="90" height="18" />
-
-    <rect x="393" y="56" rx="6" ry="6" width="60" height="60" />
-    <rect x="461" y="77" rx="3" ry="3" width="90" height="18" />  */}
-
     
   </ContentLoader>
 );

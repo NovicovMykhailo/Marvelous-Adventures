@@ -44,7 +44,7 @@
     align-items: center;
   }
   .Modal {
-    max-width: calc(100vw - 100px);
+    max-width: 1000px;
     max-height: calc(100vh - 24px);
   }
 

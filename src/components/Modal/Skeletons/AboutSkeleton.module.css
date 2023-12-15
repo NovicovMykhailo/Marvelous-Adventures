@@ -15,10 +15,14 @@
 
 .gallery,
 .about,
-.characters
- {
+.characters {
   width: 100%;
 }
+
+.comicsModalList{
+  width: 556px;
+}
+
 
 @media screen and (min-width: 500px) {
   .card {
@@ -44,5 +48,11 @@
 @media screen and (min-width: 1440px) {
   .card {
     width: calc(100% / 5);
+  }
+
+  .about,
+  .characters,
+  .comicsModalList {
+    width: 100%;
   }
 }
